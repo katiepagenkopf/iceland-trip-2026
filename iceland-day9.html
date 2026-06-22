@@ -243,49 +243,23 @@
   }
   .hotel-action-btn:active { opacity: 0.7; }
 
-  /* ── Excursion Card ── */
-  .excursion-card {
-    background: var(--card);
-    border-radius: 16px;
-    padding: 16px;
-    box-shadow: 0 1px 3px rgba(0,0,0,0.04);
-  }
-  .excursion-header { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 10px; }
-  .excursion-name { font-size: 19px; font-weight: 700; color: var(--text); }
-  .excursion-type { font-size: 15px; color: var(--secondary); margin-top: 2px; }
-  .excursion-badge {
-    display: inline-flex; align-items: center; gap: 5px;
-    padding: 5px 10px; border-radius: 8px; font-size: 14px; font-weight: 600;
-  }
+  
+  
+  
+  
+  
+  
   .badge-booked { background: #E0F7FA; color: #00695C; }
-  .excursion-details { display: flex; flex-direction: column; gap: 8px; margin-top: 12px; }
-  .excursion-detail-row { display: flex; align-items: center; gap: 10px; font-size: 16px; }
-  .excursion-detail-row .label { color: var(--secondary); width: 80px; flex-shrink: 0; font-weight: 500; }
-  .excursion-detail-row a { color: var(--blue); text-decoration: none; }
-  .excursion-detail-row a:active { opacity: 0.7; }
-
-  /* ── Meal Card ── */
-  .meal-card { background: var(--card); border-radius: 16px; padding: 16px; box-shadow: 0 1px 3px rgba(0,0,0,0.04); }
-  .meal-header { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 10px; }
-  .meal-name { font-size: 19px; font-weight: 700; color: var(--text); }
-  .meal-type { font-size: 15px; color: var(--secondary); margin-top: 2px; }
-  .meal-badge {
-    display: inline-flex; align-items: center; gap: 5px;
-    padding: 5px 10px; border-radius: 8px; font-size: 14px; font-weight: 600;
-  }
+  
+  
   .badge-walkin { background: #F2F2F7; color: #636366; white-space: nowrap; }
   .badge-rating { background: #FFF8E1; color: #F57F17; }
-  .meal-details { display: flex; flex-direction: column; gap: 8px; margin-top: 12px; }
-  .meal-detail-row { display: flex; align-items: center; gap: 10px; font-size: 16px; }
+  
+  
   .meal-detail-row .label { color: var(--secondary); width: 70px; flex-shrink: 0; font-weight: 500; }
   .meal-detail-row a { color: var(--blue); text-decoration: none; }
   .meal-detail-row a:active { opacity: 0.7; }
-  .meal-map-link {
-    display: flex; align-items: center; justify-content: center; gap: 6px;
-    margin-top: 14px; padding: 12px; background: var(--bg);
-    border-radius: 12px; text-decoration: none; color: var(--blue);
-    font-size: 15px; font-weight: 600;
-  }
+  
   .meal-map-link:active { opacity: 0.7; }
 
   /* ── Grocery Item ── */
@@ -516,59 +490,14 @@
 </div>
 </div>
 </div>
-<!-- Excursions -->
-<div class="section">
-<div class="section-label label-activity">Excursions</div>
-<div class="excursion-card">
-<div class="excursion-header">
-<div>
-<div class="excursion-name">Víðgelmir Lava Cave Tour</div>
-<div class="excursion-type">The Cave · Helmet &amp; headlamp provided</div>
-</div>
-<div class="excursion-badge badge-booked">12:00</div>
-</div>
-<div class="excursion-details">
-<div class="excursion-detail-row"><span class="label">Time</span><span>12:00pm (12:00)</span></div>
-<div class="excursion-detail-row"><span class="label">Operator</span><span>The Cave</span></div>
-<div class="excursion-detail-row"><span class="label">Phone</span><a href="tel:+354****3600">+354 783 3600</a></div>
+
 </div>
 </div>
-<div class="excursion-card" style="margin-top: 10px;">
-<div class="excursion-header">
-<div>
-<div class="excursion-name">Húsafell Canyon Baths</div>
-<div class="excursion-type">Geothermal pools in a highland canyon</div>
-</div>
-<div class="excursion-badge badge-booked">2:30pm (14:30)</div>
-</div>
-<div class="excursion-details">
-<div class="excursion-detail-row"><span class="label">Time</span><span>2:30pm (14:30)</span></div>
-<div class="excursion-detail-row"><span class="label">Phone</span><a href="tel:+354****1551">+354 435 1551</a></div>
+
 </div>
 </div>
 </div>
-<!-- Dinner Details -->
-<div class="section">
-<div class="section-label label-food">Dinner Details</div>
-<div class="meal-card">
-<div class="meal-header">
-<div>
-<div class="meal-name">Messinn</div>
-<div class="meal-type">Reykjavík · Farewell dinner</div>
-</div>
-<div class="meal-badge badge-rating">🍽️ Reserved</div>
-</div>
-<div class="meal-details">
-<div class="meal-detail-row"><span class="label">Time</span><span>7:30pm (19:30)</span></div>
-<div class="meal-detail-row"><span class="label">Type</span><span>Reserved · Dineout #8943892</span></div>
-<div class="meal-detail-row"><span class="label">Phone</span><a href="tel:+354****0095">+354 546 0095</a></div>
-<div class="meal-detail-row"><span class="label">Web</span><a href="https://messinn.com/" target="_blank">messinn.com</a></div>
-</div>
-<a class="meal-map-link" href="https://www.google.com/maps/dir/?api=1&amp;origin=H%C3%B3tel+Fr%C3%B3n&amp;destination=Messinn&amp;travelmode=walking" target="_blank">
-      📍 Walking directions from hotel (~4 min)
-    </a>
-</div>
-</div>
+
 <!-- Grocery -->
 <div class="section">
 <div class="section-label label-logistics">Grocery</div>

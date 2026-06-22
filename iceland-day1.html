@@ -209,54 +209,19 @@
   }
   .hotel-action-btn:active { opacity: 0.7; }
 
-  /* ── Dinner Card ── */
-  .dinner-card { background: var(--card); border-radius: 16px; padding: 16px; box-shadow: 0 1px 3px rgba(0,0,0,0.04); }
-  .dinner-header { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 10px; }
-  .dinner-name { font-size: 19px; font-weight: 700; color: var(--text); }
-  .dinner-type { font-size: 15px; color: var(--secondary); margin-top: 2px; }
-  .walk-badge {
-    display: inline-flex; align-items: center; gap: 5px;
-    background: #E8F5E9; color: #2E7D32; padding: 5px 10px;
-    border-radius: 8px; font-size: 14px; font-weight: 600;
-  }
-  .dinner-details { display: flex; flex-direction: column; gap: 8px; margin-top: 12px; }
-  .dinner-detail-row { display: flex; align-items: center; gap: 10px; font-size: 16px; }
+  
+  
+  
+  
+  
+  
+  
+  
   .dinner-detail-row .label { color: var(--secondary); width: 54px; flex-shrink: 0; font-weight: 500; }
   .dinner-detail-row a { color: var(--blue); text-decoration: none; }
   .dinner-detail-row a:active { opacity: 0.7; }
-  .dinner-map-link {
-    display: flex; align-items: center; justify-content: center; gap: 8px;
-    padding: 12px; background: var(--bg); border-radius: 12px; margin-top: 12px;
-    text-decoration: none; color: var(--blue); font-size: 15px; font-weight: 600;
-    transition: opacity 0.15s;
-  }
+  
   .dinner-map-link:active { opacity: 0.7; }
-
-  /* ── Nearby Alternatives ── */
-  .nearby-toggle {
-    display: flex; align-items: center; justify-content: space-between;
-    padding: 14px 16px; cursor: pointer; border-bottom: 0.5px solid var(--separator);
-  }
-  .nearby-toggle:active { background: var(--bg); }
-  .nearby-toggle .left { display: flex; align-items: center; gap: 10px; }
-  .nearby-toggle .icon { font-size: 22px; }
-  .nearby-toggle .title { font-size: 17px; font-weight: 600; }
-  .nearby-toggle .count { font-size: 15px; color: var(--secondary); }
-  .nearby-toggle .chevron { font-size: 16px; color: var(--tertiary); transition: transform 0.2s; }
-  .nearby-toggle.open .chevron { transform: rotate(90deg); }
-  .nearby-list { display: none; padding: 4px 0; }
-  .nearby-list.open { display: block; }
-  .nearby-item {
-    display: flex; align-items: center; padding: 12px 16px; gap: 12px;
-    text-decoration: none; color: inherit; border-bottom: 0.5px solid var(--separator);
-  }
-  .nearby-item:last-child { border-bottom: none; }
-  .nearby-item:active { background: var(--bg); }
-  .nearby-emoji { font-size: 20px; flex-shrink: 0; }
-  .nearby-info { flex: 1; min-width: 0; }
-  .nearby-name { font-size: 16px; font-weight: 600; margin-bottom: 2px; }
-  .nearby-type { font-size: 14px; color: var(--secondary); }
-  .nearby-rating { font-size: 14px; color: var(--orange); font-weight: 600; }
 
   /* ── Grocery Item ── */
   .grocery-item {
@@ -504,87 +469,16 @@
 </div>
 </div>
 </div>
-<!-- Dinner Details -->
-<div class="section">
-<div class="section-label">Dinner Details</div>
-<div class="dinner-card">
-<div class="dinner-header">
-<div>
-<div class="dinner-name">Grillmarkaðurinn</div>
-<div class="dinner-type">Icelandic · Grill · Farm-to-Table</div>
+
 </div>
-<div class="walk-badge">🚶 6 min walk</div>
-</div>
-<div class="dinner-details">
-<div class="dinner-detail-row"><span class="label">Time</span><span>8:00pm (20:00)</span></div>
-<div class="dinner-detail-row"><span class="label">Type</span><span>Reservation · Dineout #8943063</span></div>
-<div class="dinner-detail-row"><span class="label">Phone</span><a href="tel:+3545717777">+354 571 7777</a></div>
-<div class="dinner-detail-row"><span class="label">Web</span><a href="https://grillmarkadurinn.is/en" target="_blank">grillmarkadurinn.is</a></div>
-</div>
-<a class="dinner-map-link" href="https://www.google.com/maps/dir/?api=1&amp;origin=Hotel+Fr%C3%B3n,+Laugavegur+22a,+Reykjavik&amp;destination=Grillmarka%C3%B0urinn,+Austurstr%C3%A6ti+22,+Reykjavik&amp;travelmode=walking" target="_blank">
-      📍 Get walking directions from Hotel Frón
-    </a>
+
 </div>
 </div>
-<!-- Nearby Alternatives -->
-<div class="section">
-<div class="section-label">Nearby Alternatives</div>
-<div class="card">
-<div class="nearby-toggle" onclick="toggleNearby(this)">
-<div class="left">
-<span class="icon">🍽️</span>
-<span class="title">Other Reykjavik Restaurants</span>
-<span class="count">6 nearby</span>
-</div>
-<span class="chevron">›</span>
-</div>
-<div class="nearby-list">
-<a class="nearby-item" href="https://www.dillrestaurant.is/" target="_blank">
-<span class="nearby-emoji">🍽️</span>
-<div class="nearby-info"><div class="nearby-name">Dill Restaurant</div><div class="nearby-type">New Nordic · Fine Dining</div></div>
-<div class="nearby-links"><span class="nearby-rating">⭐ 4.5</span></div>
-</a>
-<a class="nearby-item" href="https://www.matarkjallarinn.is/" target="_blank">
-<span class="nearby-emoji">🍷</span>
-<div class="nearby-info"><div class="nearby-name">Matarkjallarinn</div><div class="nearby-type">Icelandic · Wine Bar</div></div>
-<div class="nearby-links"><span class="nearby-rating">⭐ 4.8</span></div>
-</a>
-<a class="nearby-item" href="https://fiskmarkadurinn.is/" target="_blank">
-<span class="nearby-emoji">🐟</span>
-<div class="nearby-info"><div class="nearby-name">Fiskmarkaðurinn</div><div class="nearby-type">Seafood · Icelandic</div></div>
-<div class="nearby-links"><span class="nearby-rating">⭐ 4.6</span></div>
-</a>
-<a class="nearby-item" href="https://www.apotekrestaurant.is/" target="_blank">
-<span class="nearby-emoji">🍸</span>
-<div class="nearby-info"><div class="nearby-name">Apotek Kitchen + Bar</div><div class="nearby-type">Modern · Cocktails</div></div>
-<div class="nearby-links"><span class="nearby-rating">⭐ 4.6</span></div>
-</a>
-<a class="nearby-item" href="https://kolrestaurant.is/" target="_blank">
-<span class="nearby-emoji">🔥</span>
-<div class="nearby-info"><div class="nearby-name">Kol Restaurant</div><div class="nearby-type">Icelandic · Grill</div></div>
-<div class="nearby-links"><span class="nearby-rating">⭐ 4.5</span></div>
-</a>
-<a class="nearby-item" href="https://maps.google.com/?q=Hlemmur+Math%C3%B6ll+Laugavegur+107+Reykjavik" target="_blank">
-<span class="nearby-emoji">🏬</span>
-<div class="nearby-info"><div class="nearby-name">Hlemmur Mathöll</div><div class="nearby-type">Food Hall · Multiple Vendors</div></div>
-<div class="nearby-links"><span class="nearby-rating">⭐ 4.3</span></div>
-</a>
-</div>
-</div>
-</div>
+
 <!-- Grocery -->
 <div class="section">
 <div class="section-label">Grocery Stores</div>
 <div class="card">
-<a class="grocery-item" href="https://www.google.com/maps/dir/?api=1&amp;origin=Hotel+Fr%C3%B3n,+Laugavegur+22a,+Reykjavik&amp;destination=B%C3%B3nus+Laugavegur+59,+Reykjavik&amp;travelmode=walking" target="_blank">
-<span class="grocery-emoji">🛒</span>
-<div class="grocery-info">
-<div class="grocery-name">Bónus</div>
-<div class="grocery-detail">Laugavegur 59 · Daily 10:00–23:00 · Cheapest in town</div>
-<div class="grocery-map-badge">📍 From hotel · 5 min walk</div>
-</div>
-<span class="grocery-link">›</span>
-</a>
 <a class="grocery-item" href="https://www.google.com/maps/dir/?api=1&amp;origin=Hotel+Fr%C3%B3n,+Laugavegur+22a,+Reykjavik&amp;destination=Kr%C3%B3nan+Hallveigarst%C3%ADgur+1,+Reykjavik&amp;travelmode=walking" target="_blank">
 <span class="grocery-emoji">🛒</span>
 <div class="grocery-info">
@@ -596,6 +490,9 @@
 </a>
 </div>
 </div>
+</div>
+
+
 <!-- Tips -->
 <div class="section">
 <div class="section-label">Tips</div>
@@ -612,11 +509,6 @@
 <div class="quote-text">The world is a book, and those who do not travel read only one page.</div>
 <div class="quote-author">— Saint Augustine</div>
 </div>
-<div class="footer">🇮🇸 Built with love for the Iceland crew</div><script>
-  function toggleNearby(el) {
-    el.classList.toggle('open');
-    el.nextElementSibling.classList.toggle('open');
-  }
-</script>
+<div class="footer">🇮🇸 Built with love for the Iceland crew</div>
 </body>
 </html>
