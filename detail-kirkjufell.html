@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>Kirkjufell</title>
+<style>
+  :root {
+    --bg: #F2F2F7; --card: #FFFFFF; --text: #1C1C1E;
+    --secondary: #636366; --tertiary: #8E8E93; --separator: #D1D1D6;
+    --blue: #007AFF; --green: #34C759; --orange: #FF9500;
+    --red: #FF3B30; --teal: #00C7BE;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'SF Pro Text', 'Helvetica Neue', sans-serif;
+    background: var(--bg); color: var(--text);
+    -webkit-font-smoothing: antialiased; -webkit-text-size-adjust: 100%;
+    padding: 0 0 40px 0; min-height: 100vh; font-size: 17px; line-height: 1.5;
+  }
+  .back-nav {
+    display: inline-flex; align-items: center; gap: 4px;
+    padding: 14px 20px 0 20px; text-decoration: none; color: var(--blue);
+    font-size: 15px; font-weight: 500;
+  }
+  .back-nav svg { width: 16px; height: 16px; }
+  .map-container {
+    background: white; margin: 12px 16px 0 16px; border-radius: 16px;
+    padding: 20px 20px 16px 20px; box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+  }
+  .map-svg { width: 100%; height: auto; display: block; }
+  .title-section { padding: 20px 20px 0 20px; }
+  .activity-name { font-size: 28px; font-weight: 700; letter-spacing: -0.5px; margin-bottom: 6px; }
+  .activity-subtitle { font-size: 17px; color: var(--secondary); font-weight: 400; line-height: 1.45; }
+  .activity-meta {
+    display: flex; flex-wrap: wrap; gap: 16px; margin-top: 12px;
+    padding-top: 12px; border-top: 0.5px solid var(--separator);
+  }
+  .meta-item { display: flex; align-items: center; gap: 6px; font-size: 15px; color: var(--secondary); }
+  .meta-item .icon { font-size: 18px; }
+  .action-buttons { display: flex; gap: 10px; padding: 16px 20px 0 20px; }
+  .action-btn {
+    flex: 1; display: flex; align-items: center; justify-content: center;
+    gap: 6px; padding: 14px 16px; border-radius: 14px; text-decoration: none;
+    font-size: 15px; font-weight: 600; transition: transform 0.15s;
+  }
+  .action-btn:active { transform: scale(0.97); }
+  .action-btn-primary { background: var(--blue); color: white; }
+  .action-btn-secondary { background: var(--card); color: var(--blue); box-shadow: 0 1px 3px rgba(0,0,0,0.04); }
+  .content-section { margin: 16px 16px 0 16px; }
+  .content-card {
+    background: var(--card); border-radius: 16px; padding: 20px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+  }
+  .content-card + .content-card { margin-top: 12px; }
+  .section-title { font-size: 20px; font-weight: 700; margin-bottom: 12px; letter-spacing: -0.3px; }
+  .content-text { font-size: 17px; line-height: 1.6; color: var(--text); }
+  .content-text p + p { margin-top: 12px; }
+  .content-text a { color: var(--blue); text-decoration: none; }
+  .content-text a:active { opacity: 0.7; }
+  .culture-note {
+    background: #F5F0FF; border-left: 4px solid #7C3AED;
+    border-radius: 0 12px 12px 0; padding: 16px; margin-top: 16px;
+  }
+  .culture-note-title {
+    font-size: 15px; font-weight: 700; color: #7C3AED;
+    margin-bottom: 6px; display: flex; align-items: center; gap: 6px;
+  }
+  .culture-note-text { font-size: 16px; line-height: 1.55; color: #374151; }
+  .quick-facts { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 16px; }
+  .fact-item { background: var(--bg); border-radius: 12px; padding: 14px; }
+  .fact-label {
+    font-size: 13px; font-weight: 600; color: var(--tertiary);
+    text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 4px;
+  }
+  .fact-value { font-size: 17px; font-weight: 600; color: var(--text); }
+  .story-block { margin-top: 16px; padding-top: 16px; border-top: 0.5px solid var(--separator); }
+  .story-quote {
+    font-size: 16px; font-style: italic; line-height: 1.55; color: var(--secondary);
+    padding-left: 16px; border-left: 3px solid var(--teal); margin-bottom: 12px;
+  }
+  .learn-more-list { list-style: none; padding: 0; }
+  .learn-more-list li { border-bottom: 0.5px solid var(--separator); }
+  .learn-more-list li:last-child { border-bottom: none; }
+  .learn-more-list a {
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 14px 0; text-decoration: none; color: var(--blue);
+    font-size: 16px; font-weight: 500;
+  }
+  .learn-more-list a:active { opacity: 0.7; }
+  .learn-more-list .arrow { font-size: 18px; color: var(--tertiary); }
+  .photo-container {
+    margin: 12px 0 0 0; border-radius: 12px; overflow: hidden;
+  }
+  .photo-container img {
+    width: 100%; height: auto; display: block;
+    object-fit: cover; max-height: 240px;
+  }
+  .bottom-spacer { height: 40px; }
+</style>
+</head>
+<body>
+<a href="iceland-day9.html" class="back-nav">
+  <svg viewBox="0 0 20 20" fill="currentColor"><path d="M12.707 5.293a1 1 0 010 1.414L9.414 10l3.293 3.293a1 1 0 01-1.414 1.414l-4-4a1 1 0 010-1.414l4-4a1 1 0 011.414 0z"/></svg>
+  Day 9
+</a>
+<div class="map-container">
+  <svg class="map-svg" viewBox="0 0 400 280" xmlns="http://www.w3.org/2000/svg">
+    <path d="M 346.1,30.6 324.8,50.7 344.2,59.1 336.4,78.5 354.2,75.0 346.1,95.7 357.0,83.6 379.0,94.7 365.3,111.8 380.4,113.4 364.3,117.9 382.1,119.9 379.8,132.1 357.5,130.0 375.2,137.1 363.6,137.6 371.1,147.5 347.8,147.2 356.1,158.3 333.5,186.8 314.7,177.0 317.3,186.1 269.1,220.9 263.1,212.2 237.4,222.4 228.8,241.5 202.3,250.8 152.2,239.9 144.4,218.4 138.7,227.4 122.6,210.3 65.8,220.2 65.4,200.0 88.3,202.6 109.9,178.0 86.2,183.1 106.5,158.3 84.0,172.4 75.6,145.7 26.4,152.8 18.6,140.7 95.6,130.0 97.7,117.3 70.4,120.2 100.2,99.2 80.9,100.7 86.0,88.7 73.2,95.2 70.8,85.9 24.2,102.8 2.1,95.2 10.2,85.6 27.4,93.2 17.5,73.3 45.3,82.6 36.6,79.4 48.6,75.0 25.3,68.1 47.9,70.5 27.1,58.1 42.2,59.8 32.1,50.3 39.3,43.9 74.8,70.3 76.5,51.8 55.9,41.7 77.0,38.7 50.4,34.8 56.9,24.5 74.8,24.7 112.1,57.4 103.2,61.9 113.7,63.7 112.7,78.0 97.3,76.0 113.1,88.3 121.0,120.4 127.0,88.3 135.7,81.7 142.2,96.2 149.3,83.6 144.6,52.3 155.4,49.3 177.4,78.9 177.5,54.8 199.1,44.0 225.4,85.1 217.3,45.7 243.1,65.4 257.0,42.7 281.9,48.3 277.8,21.6 295.8,19.4 317.9,47.9 346.1,30.6" fill="none" stroke="#1d1d1f" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+    <circle cx="43" cy="147" r="6" fill="#FF3B30" fill-opacity="0.2"/>
+    <circle cx="43" cy="147" r="3.5" fill="#FF3B30"/>
+    <circle cx="43" cy="147" r="1.5" fill="white"/>
+    <rect x="58" y="130" width="250.0" height="34" rx="6" fill="white" fill-opacity="0.92"/>
+    <text x="183.0" y="145" text-anchor="middle" font-family="-apple-system, BlinkMacSystemFont, sans-serif" font-size="14" font-weight="600" fill="#1d1d1f">Kirkjufell</text>
+    <text x="183.0" y="157" text-anchor="middle" font-family="-apple-system, BlinkMacSystemFont, sans-serif" font-size="11" font-weight="400" fill="#86868b">Iceland's most photographed mountain</text>
+  </svg>
+</div>
+<div class="title-section">
+  <h1 class="activity-name">Kirkjufell</h1>
+  <p class="activity-subtitle">An arrow-shaped mountain on the Snæfellsnes peninsula, paired with the three-tiered Kirkjufellsfoss waterfall in the foreground. Featured as the mountain beyond the Wall in Game of Thrones.</p>
+  <div class="activity-meta">
+    <div class="meta-item"><span class="icon">📍</span><span>Snæfellsnes Peninsula</span></div>
+  </div>
+</div>
+<div class="action-buttons">
+  <a href="https://www.google.com/maps/dir/?api=1&destination=Kirkjufell%20Mountain%20Iceland&travelmode=driving" class="action-btn action-btn-primary" target="_blank">
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+    Directions
+  </a>
+  <a href="https://www.instagram.com/explore/tags/kirkjufell/" class="action-btn action-btn-secondary" target="_blank"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="5"/><circle cx="17.5" cy="6.5" r="1.5" fill="currentColor" stroke="none"/></svg> Photos</a>
+</div>
+<div class="content-section">
+  <div class="content-card">
+    <h2 class="section-title">What it is</h2>
+    <div class="content-text"><p>Kirkjufell is a 1,519-ft peak on the north coast of the Snæfellsnes peninsula — a near-symmetrical arrowhead shape rising straight out of the surrounding farmland. A few hundred yards south of the mountain, the three-tiered Kirkjufellsfoss waterfall tumbles down a green ridge, and the combination of mountain + waterfall is the most reproduced landscape photo in Iceland.</p><p>Locals think the mountain is overhyped, and they may be right. But the view is genuinely world-class, and the photo combo is so recognizable that you'll start to see it as soon as you mention the Snæfellsnes peninsula.</p></div>
+    
+    <div class="quick-facts">
+      <div class="fact-item"><div class="fact-label">Height</div><div class="fact-value">1,519 ft</div></div>
+      <div class="fact-item"><div class="fact-label">Featured in</div><div class="fact-value">Game of Thrones Season 6 & 7</div></div>
+      <div class="fact-item"><div class="fact-label">Location</div><div class="fact-value">North coast of Snæfellsnes</div></div>
+      <div class="fact-item"><div class="fact-label">Best vantage</div><div class="fact-value">Kirkjufellsfoss parking area</div></div>
+    </div>
+  </div>
+  <div class="content-card">
+    <h2 class="section-title">Good to know</h2>
+    <div class="content-text"><p><strong>The classic shot.</strong> Stand in the Kirkjufellsfoss parking lot and frame the mountain above the waterfall. That's the photo. You've seen it before.</p><p><strong>Two seasons, one mountain.</strong> Summer midnight sun lights the peak; winter brings northern lights directly behind it (on clear nights, October–March).</p><p><strong>Closed to climbers in spring.</strong> The mountain is closed to climbers April–June for fulmar and kittiwake nesting.</p><p><strong>Combine the peninsula.</strong> Snæfellsnes has everything: black church at Búðir, Snæfellsjökull glacier, lava fields at Berserkjahraun, fishing villages.</p><p><strong>Go early or late.</strong> Midday the parking lot fills with tour buses. Sunrise and sunset are calmer and the light is better.</p></div>
+  </div>
+  <div class="content-card">
+    <h2 class="section-title">Icelandic Culture Note</h2>
+    <div class="content-text"><p>The mountain's name is the clue to why the original settlers noticed it in the first place.</p></div>
+    
+    <div class="culture-note">
+      <div class="culture-note-title"><span>🇮🇸</span><span>Church Mountain</span></div>
+      <div class="culture-note-text">Kirkjufell means "Church Mountain" in Icelandic — the arrowhead shape reminded settlers of a church steeple rising above the surrounding flat farmland. It's been called the most photographed mountain in Iceland, a title that locals consider slightly embarrassing — there are bigger, more dramatic mountains everywhere else on the island, but this is the one that shows up in every tourism campaign. The mountain is also an active seabird nesting site in spring and summer, with fulmars and kittiwakes on the cliffs.</div>
+    </div>
+  </div>
+  <div class="content-card">
+    <h2 class="section-title">The Story Behind It</h2>
+    <div class="content-text"><p>Kirkjufell appeared in Game of Thrones in Seasons 6 and 7 as the mountain beyond the Wall. The "Frozen Lake Battle" sequence in "Battle of the Bastards" was actually filmed in a quarry near Belfast, but the show used Kirkjufell in establishing shots and as a visual reference for the location. The cameo has permanently associated the mountain with the show in the minds of visitors.</p></div>
+    
+    <div class="story-block">
+      <div class="story-quote">"It's the mountain Game of Thrones made famous. Locals call it the overhyped church spire. Both are right."</div>
+    </div>
+    
+    <div class="content-text" style="margin-top: 12px;"><p><p>The Snæfellsnes peninsula is sometimes called "Iceland in miniature" because it has nearly every Icelandic landscape packed into a 50-mile drive: glacier, lava fields, black church, fishing villages, basalt cliffs, hot springs — and of course, Kirkjufell. If you can only spend one day outside Reykjavik, this is the loop.</p></p></div>
+  </div>
+  <div class="content-card">
+    <h2 class="section-title">Learn More</h2>
+    
+    <ul class="learn-more-list">
+      <li><a href="https://guidetoiceland.is/travel-iceland/drive/kirkjufell" target="_blank">Guide to Iceland — Kirkjufell<span class="arrow">›</span></a></li>
+      <li><a href="https://en.wikipedia.org/wiki/Kirkjufell" target="_blank">Wikipedia — Kirkjufell<span class="arrow">›</span></a></li>
+      <li><a href="https://en.wikipedia.org/wiki/Sn%C3%A6fellsnes" target="_blank">Wikipedia — Snæfellsnes<span class="arrow">›</span></a></li>
+    </ul>
+  </div>
+</div>
+<div class="bottom-spacer"></div>
+</body>
+</html>

@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>Goðafoss</title>
+<style>
+  :root {
+    --bg: #F2F2F7; --card: #FFFFFF; --text: #1C1C1E;
+    --secondary: #636366; --tertiary: #8E8E93; --separator: #D1D1D6;
+    --blue: #007AFF; --green: #34C759; --orange: #FF9500;
+    --red: #FF3B30; --teal: #00C7BE;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'SF Pro Text', 'Helvetica Neue', sans-serif;
+    background: var(--bg); color: var(--text);
+    -webkit-font-smoothing: antialiased; -webkit-text-size-adjust: 100%;
+    padding: 0 0 40px 0; min-height: 100vh; font-size: 17px; line-height: 1.5;
+  }
+  .back-nav {
+    display: inline-flex; align-items: center; gap: 4px;
+    padding: 14px 20px 0 20px; text-decoration: none; color: var(--blue);
+    font-size: 15px; font-weight: 500;
+  }
+  .back-nav svg { width: 16px; height: 16px; }
+  .map-container {
+    background: white; margin: 12px 16px 0 16px; border-radius: 16px;
+    padding: 20px 20px 16px 20px; box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+  }
+  .map-svg { width: 100%; height: auto; display: block; }
+  .title-section { padding: 20px 20px 0 20px; }
+  .activity-name { font-size: 28px; font-weight: 700; letter-spacing: -0.5px; margin-bottom: 6px; }
+  .activity-subtitle { font-size: 17px; color: var(--secondary); font-weight: 400; line-height: 1.45; }
+  .activity-meta {
+    display: flex; flex-wrap: wrap; gap: 16px; margin-top: 12px;
+    padding-top: 12px; border-top: 0.5px solid var(--separator);
+  }
+  .meta-item { display: flex; align-items: center; gap: 6px; font-size: 15px; color: var(--secondary); }
+  .meta-item .icon { font-size: 18px; }
+  .action-buttons { display: flex; gap: 10px; padding: 16px 20px 0 20px; }
+  .action-btn {
+    flex: 1; display: flex; align-items: center; justify-content: center;
+    gap: 6px; padding: 14px 16px; border-radius: 14px; text-decoration: none;
+    font-size: 15px; font-weight: 600; transition: transform 0.15s;
+  }
+  .action-btn:active { transform: scale(0.97); }
+  .action-btn-primary { background: var(--blue); color: white; }
+  .action-btn-secondary { background: var(--card); color: var(--blue); box-shadow: 0 1px 3px rgba(0,0,0,0.04); }
+  .content-section { margin: 16px 16px 0 16px; }
+  .content-card {
+    background: var(--card); border-radius: 16px; padding: 20px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+  }
+  .content-card + .content-card { margin-top: 12px; }
+  .section-title { font-size: 20px; font-weight: 700; margin-bottom: 12px; letter-spacing: -0.3px; }
+  .content-text { font-size: 17px; line-height: 1.6; color: var(--text); }
+  .content-text p + p { margin-top: 12px; }
+  .content-text a { color: var(--blue); text-decoration: none; }
+  .content-text a:active { opacity: 0.7; }
+  .culture-note {
+    background: #F5F0FF; border-left: 4px solid #7C3AED;
+    border-radius: 0 12px 12px 0; padding: 16px; margin-top: 16px;
+  }
+  .culture-note-title {
+    font-size: 15px; font-weight: 700; color: #7C3AED;
+    margin-bottom: 6px; display: flex; align-items: center; gap: 6px;
+  }
+  .culture-note-text { font-size: 16px; line-height: 1.55; color: #374151; }
+  .quick-facts { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 16px; }
+  .fact-item { background: var(--bg); border-radius: 12px; padding: 14px; }
+  .fact-label {
+    font-size: 13px; font-weight: 600; color: var(--tertiary);
+    text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 4px;
+  }
+  .fact-value { font-size: 17px; font-weight: 600; color: var(--text); }
+  .story-block { margin-top: 16px; padding-top: 16px; border-top: 0.5px solid var(--separator); }
+  .story-quote {
+    font-size: 16px; font-style: italic; line-height: 1.55; color: var(--secondary);
+    padding-left: 16px; border-left: 3px solid var(--teal); margin-bottom: 12px;
+  }
+  .learn-more-list { list-style: none; padding: 0; }
+  .learn-more-list li { border-bottom: 0.5px solid var(--separator); }
+  .learn-more-list li:last-child { border-bottom: none; }
+  .learn-more-list a {
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 14px 0; text-decoration: none; color: var(--blue);
+    font-size: 16px; font-weight: 500;
+  }
+  .learn-more-list a:active { opacity: 0.7; }
+  .learn-more-list .arrow { font-size: 18px; color: var(--tertiary); }
+  .photo-container {
+    margin: 12px 0 0 0; border-radius: 12px; overflow: hidden;
+  }
+  .photo-container img {
+    width: 100%; height: auto; display: block;
+    object-fit: cover; max-height: 240px;
+  }
+  .bottom-spacer { height: 40px; }
+</style>
+</head>
+<body>
+<a href="iceland-day6.html" class="back-nav">
+  <svg viewBox="0 0 20 20" fill="currentColor"><path d="M12.707 5.293a1 1 0 010 1.414L9.414 10l3.293 3.293a1 1 0 01-1.414 1.414l-4-4a1 1 0 010-1.414l4-4a1 1 0 011.414 0z"/></svg>
+  Day 6
+</a>
+<div class="map-container">
+  <svg class="map-svg" viewBox="0 0 400 280" xmlns="http://www.w3.org/2000/svg">
+    <path d="M 346.1,30.6 324.8,50.7 344.2,59.1 336.4,78.5 354.2,75.0 346.1,95.7 357.0,83.6 379.0,94.7 365.3,111.8 380.4,113.4 364.3,117.9 382.1,119.9 379.8,132.1 357.5,130.0 375.2,137.1 363.6,137.6 371.1,147.5 347.8,147.2 356.1,158.3 333.5,186.8 314.7,177.0 317.3,186.1 269.1,220.9 263.1,212.2 237.4,222.4 228.8,241.5 202.3,250.8 152.2,239.9 144.4,218.4 138.7,227.4 122.6,210.3 65.8,220.2 65.4,200.0 88.3,202.6 109.9,178.0 86.2,183.1 106.5,158.3 84.0,172.4 75.6,145.7 26.4,152.8 18.6,140.7 95.6,130.0 97.7,117.3 70.4,120.2 100.2,99.2 80.9,100.7 86.0,88.7 73.2,95.2 70.8,85.9 24.2,102.8 2.1,95.2 10.2,85.6 27.4,93.2 17.5,73.3 45.3,82.6 36.6,79.4 48.6,75.0 25.3,68.1 47.9,70.5 27.1,58.1 42.2,59.8 32.1,50.3 39.3,43.9 74.8,70.3 76.5,51.8 55.9,41.7 77.0,38.7 50.4,34.8 56.9,24.5 74.8,24.7 112.1,57.4 103.2,61.9 113.7,63.7 112.7,78.0 97.3,76.0 113.1,88.3 121.0,120.4 127.0,88.3 135.7,81.7 142.2,96.2 149.3,83.6 144.6,52.3 155.4,49.3 177.4,78.9 177.5,54.8 199.1,44.0 225.4,85.1 217.3,45.7 243.1,65.4 257.0,42.7 281.9,48.3 277.8,21.6 295.8,19.4 317.9,47.9 346.1,30.6" fill="none" stroke="#1d1d1f" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+    <circle cx="270" cy="55" r="6" fill="#FF3B30" fill-opacity="0.2"/>
+    <circle cx="270" cy="55" r="3.5" fill="#FF3B30"/>
+    <circle cx="270" cy="55" r="1.5" fill="white"/>
+    <rect x="112.5" y="38" width="152.5" height="34" rx="6" fill="white" fill-opacity="0.92"/>
+    <text x="188.5" y="53" text-anchor="middle" font-family="-apple-system, BlinkMacSystemFont, sans-serif" font-size="14" font-weight="600" fill="#1d1d1f">Goðafoss</text>
+    <text x="188.5" y="65" text-anchor="middle" font-family="-apple-system, BlinkMacSystemFont, sans-serif" font-size="11" font-weight="400" fill="#86868b">Waterfall of the gods</text>
+  </svg>
+</div>
+<div class="title-section">
+  <h1 class="activity-name">Goðafoss</h1>
+  <p class="activity-subtitle">A wide, horseshoe-shaped cascade on the Skjálfandafljót river — the waterfall that gave Iceland its Christianity. In the year 1000, the lawspeaker of the Alþingi rode here and threw his pagan idols into the water.</p>
+  <div class="activity-meta">
+    <div class="meta-item"><span class="icon">📍</span><span>Skjálfandafljót River, North Iceland</span></div>
+  </div>
+</div>
+<div class="action-buttons">
+  <a href="https://www.google.com/maps/dir/?api=1&destination=Go%C3%B0afoss+Iceland&travelmode=driving" class="action-btn action-btn-primary" target="_blank">
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+    Directions
+  </a>
+  <a href="https://www.instagram.com/explore/tags/godafoss/" class="action-btn action-btn-secondary" target="_blank"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="5"/><circle cx="17.5" cy="6.5" r="1.5" fill="currentColor" stroke="none"/></svg> Photos</a>
+</div>
+<div class="content-section">
+  <div class="content-card">
+    <h2 class="section-title">What it is</h2>
+    <div class="content-text">Goðafoss is a roughly 100-foot-wide, 40-foot-high waterfall on the Skjálfandafljót river in North Iceland, about 30 miles west of Akureyri. The river bends in a clean semicircle over a basalt cliff, and the water drops into a turquoise plunge pool. On a calm day, the curtain of water is glass-smooth; in spring with the snowmelt, it is a brown thundering wall. Both views are excellent. There are paved paths on both sides of the falls and a small cafe.</div>
+    
+    <div class="quick-facts">
+      <div class="fact-item"><div class="fact-label">Height</div><div class="fact-value">~39 ft</div></div>
+      <div class="fact-item"><div class="fact-label">Width</div><div class="fact-value">~98 ft</div></div>
+      <div class="fact-item"><div class="fact-label">Historical date</div><div class="fact-value">Year 1000 AD</div></div>
+      <div class="fact-item"><div class="fact-label">From Akureyri</div><div class="fact-value">~30 miles west</div></div>
+    </div>
+  </div>
+  <div class="content-card">
+    <h2 class="section-title">Good to know</h2>
+    <div class="content-text"><p><strong>There is a viewing path on both sides.</strong> The east side is the more photographed angle — you see the full horseshoe. The west side lets you stand closer to the drop and feel the spray. Walk both if you have the time; the round trip along the rim is under 20 minutes.</p><p><strong>It's free and accessible year-round.</strong> The paths are paved and lit at night. Winter visits are dramatic — the falls often freeze into a blue-white sculpture. The road in is plowed, but check road conditions (ice on Route 1 is the real risk, not the waterfall).</p><p><strong>Combine it with the other North Iceland stops.</strong> Goðafoss sits between Akureyri and Mývatn. Almost everyone heading from one to the other stops for 20 minutes. The carpark has a service station with hot dogs and coffee, which is more useful than it sounds at 9am in the rain.</p><p><strong>Don't try to climb down to the river.</strong> The rocks are slick and the current is a deathtrap. People have died at Goðafoss. Stay on the marked paths.</p></div>
+  </div>
+  <div class="content-card">
+    <h2 class="section-title">Icelandic Culture Note</h2>
+    <div class="content-text">The name means 'Waterfall of the Gods' — but not because of the Norse pantheon. It's named for the moment the old gods were thrown into it.</div>
+    
+    <div class="culture-note">
+      <div class="culture-note-title"><span>🇮🇸</span><span>The Year Iceland Became Christian</span></div>
+      <div class="culture-note-text">In the year 1000, Iceland was split. Half the country followed the old Norse gods — Óðinn, Þór, Freyr. Half had converted to Christianity, brought by Irish monks and then by missionaries from Norway. The decision of which to make official fell to Þorgeir Ljósvetningagoði, the lawspeaker of the Alþingi, the parliament that met every summer at Þingvellir. He spent a day and a night under a fur blanket, deliberating. When he emerged, he ruled Iceland would be Christian — but that anyone who wanted to worship the old gods in private could keep doing so. That compromise held. It is the foundation of Icelandic religious tolerance that still exists. After the ruling, Þorgeir reportedly rode home to his farm in Ljósavatn, picked up the statues of the Norse gods he kept at his altar, and threw them into Goðafoss. Whether he personally did it or whether the story was preserved as legend, the waterfall got its name.</div>
+    </div>
+  </div>
+  <div class="content-card">
+    <h2 class="section-title">The Story Behind It</h2>
+    <div class="content-text">The Skjálfandafljót river that feeds Goðafoss starts as meltwater on the Bárðarbunga volcano under Vatnajökull — Iceland's largest glacier, about 60 miles to the south. The river runs north through a basalt landscape for about 100 miles before dropping over this cliff. The fall itself is on a layer of hard basalt that resisted erosion while the softer rock downstream washed away, leaving the lip. The plunge pool is deeper than it looks. In winter the spray freezes into a tower of blue ice that locals climb — not that they should, but they do.</div>
+    
+    <div class="story-block">
+      <div class="story-quote">""The falls are wider than they are tall, which is unusual in Iceland — most waterfalls here are thin and vertical. Goðafoss is the opposite: a low, sweeping curtain over a semicircular cliff. The name fits. It looks like the place where you'd end an old religion and start a new one.""</div>
+    </div>
+    
+    <div class="content-text" style="margin-top: 12px;"><p>There is a smaller, lesser-known waterfall called Goðafoss on a different river in the Westfjords. That one is sometimes called 'the other Goðafoss' to avoid confusion. The North Iceland one is the one with the historical weight. It was almost dammed for hydroelectric power in the 20th century, and the public outcry that stopped it was part of the same conservation movement that protected Þingvellir.</p></div>
+  </div>
+  <div class="content-card">
+    <h2 class="section-title">Learn More</h2>
+    
+    <ul class="learn-more-list">
+      <li><a href="https://en.wikipedia.org/wiki/Go%C3%B0afoss" target="_blank">Wikipedia — Goðafoss<span class="arrow">›</span></a></li>
+      <li><a href="https://guidetoiceland.is/travel-iceland/drive/godafoss" target="_blank">Guide to Iceland — Goðafoss<span class="arrow">›</span></a></li>
+      <li><a href="https://www.nordicvisitor.com/iceland/attractions/godafoss/" target="_blank">North Iceland — Goðafoss<span class="arrow">›</span></a></li>
+    </ul>
+  </div>
+</div>
+<div class="bottom-spacer"></div>
+</body>
+</html>

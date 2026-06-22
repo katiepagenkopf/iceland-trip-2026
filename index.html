@@ -1,0 +1,609 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport"/>
+<title>🇮🇸 Iceland Trip 2026</title>
+<style>
+  :root {
+    --bg: #F2F2F7;
+    --card: #FFFFFF;
+    --text: #1C1C1E;
+    --secondary: #636366;
+    --tertiary: #8E8E93;
+    --separator: #D1D1D6;
+    --blue: #007AFF;
+    --green: #34C759;
+    --orange: #FF9500;
+    --red: #FF3B30;
+    --teal: #00C7BE;
+    --pink: #FF2D55;
+    --indigo: #5856D6;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'SF Pro Text', 'Helvetica Neue', sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    -webkit-font-smoothing: antialiased;
+    -webkit-text-size-adjust: 100%;
+    min-height: 100vh;
+    font-size: 17px;
+    line-height: 1.5;
+    padding-bottom: 40px;
+  }
+
+  /* ── Hero ── */
+  .hero {
+    background: linear-gradient(135deg, #007AFF 0%, #5856D6 50%, #00C7BE 100%);
+    color: white;
+    padding: 40px 20px 60px 20px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle at 30% 70%, rgba(255,255,255,0.08) 0%, transparent 50%);
+    pointer-events: none;
+  }
+  .hero .flag {
+    font-size: 48px;
+    margin-bottom: 8px;
+  }
+  .hero .trip-title {
+    font-size: 32px;
+    font-weight: 700;
+    letter-spacing: -0.5px;
+    margin-bottom: 4px;
+  }
+  .hero .trip-dates {
+    font-size: 17px;
+    font-weight: 400;
+    opacity: 0.9;
+    margin-bottom: 4px;
+  }
+  .hero .trip-countdown {
+    font-size: 14px;
+    font-weight: 500;
+    opacity: 0.75;
+    margin-top: 8px;
+  }
+
+  /* ── Stats Row ── */
+  .stats {
+    display: flex;
+    justify-content: center;
+    gap: 0;
+    margin: -30px 16px 0 16px;
+    background: var(--card);
+    border-radius: 16px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+    position: relative;
+    z-index: 2;
+    overflow: hidden;
+  }
+  .stat {
+    flex: 1;
+    text-align: center;
+    padding: 16px 8px;
+    border-right: 0.5px solid var(--separator);
+  }
+  .stat:last-child { border-right: none; }
+  .stat-number {
+    font-size: 24px;
+    font-weight: 700;
+    color: var(--blue);
+  }
+  .stat-label {
+    font-size: 12px;
+    font-weight: 500;
+    color: var(--tertiary);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-top: 2px;
+  }
+
+  /* ── Section ── */
+  .section {
+    margin: 24px 16px 0 16px;
+  }
+  .section-title {
+    font-size: 22px;
+    font-weight: 700;
+    color: var(--text);
+    margin-bottom: 12px;
+    letter-spacing: -0.3px;
+  }
+
+  /* ── Day Cards ── */
+  .day-card {
+    background: var(--card);
+    border-radius: 16px;
+    box-shadow: 0 1px 4px rgba(0,0,0,0.04);
+    margin-bottom: 12px;
+    overflow: hidden;
+    text-decoration: none;
+    color: var(--text);
+    display: block;
+    transition: transform 0.15s ease, box-shadow 0.15s ease;
+  }
+  .day-card:active {
+    transform: scale(0.98);
+    box-shadow: 0 1px 2px rgba(0,0,0,0.08);
+  }
+  .day-card-inner {
+    display: flex;
+    align-items: center;
+    padding: 16px;
+    gap: 14px;
+  }
+  .day-number {
+    width: 48px;
+    height: 48px;
+    border-radius: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 20px;
+    font-weight: 700;
+    color: white;
+    flex-shrink: 0;
+  }
+  .day-info {
+    flex: 1;
+    min-width: 0;
+  }
+  .day-name {
+    font-size: 17px;
+    font-weight: 600;
+    color: var(--text);
+    margin-bottom: 2px;
+  }
+  .day-date {
+    font-size: 14px;
+    color: var(--tertiary);
+  }
+  .day-highlights {
+    font-size: 14px;
+    color: var(--secondary);
+    margin-top: 4px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  .day-arrow {
+    font-size: 18px;
+    color: var(--tertiary);
+    flex-shrink: 0;
+  }
+
+  /* Day colors */
+  .day-1  { background: linear-gradient(135deg, #007AFF, #5AC8FA); }
+  .day-2  { background: linear-gradient(135deg, #34C759, #30D158); }
+  .day-3  { background: linear-gradient(135deg, #FF9500, #FF6B00); }
+  .day-4  { background: linear-gradient(135deg, #5856D6, #AF52DE); }
+  .day-5  { background: linear-gradient(135deg, #FF2D55, #FF375F); }
+  .day-6  { background: linear-gradient(135deg, #00C7BE, #007AFF); }
+  .day-7  { background: linear-gradient(135deg, #FF9F0A, #FF6B00); }
+  .day-8  { background: linear-gradient(135deg, #5E5CE6, #BF5AF2); }
+  .day-9  { background: linear-gradient(135deg, #30D158, #00C7BE); }
+  .day-10 { background: linear-gradient(135deg, #64D2FF, #007AFF); }
+
+  /* ── Quick Links ── */
+  .quick-links {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    margin-top: 12px;
+  }
+  .quick-link {
+    background: var(--card);
+    border-radius: 14px;
+    padding: 16px;
+    text-decoration: none;
+    color: var(--text);
+    box-shadow: 0 1px 4px rgba(0,0,0,0.04);
+    transition: transform 0.15s ease;
+  }
+  .quick-link:active { transform: scale(0.97); }
+  .quick-link-icon {
+    font-size: 28px;
+    margin-bottom: 6px;
+  }
+  .quick-link-title {
+    font-size: 15px;
+    font-weight: 600;
+  }
+  .quick-link-desc {
+    font-size: 12px;
+    color: var(--tertiary);
+    margin-top: 2px;
+  }
+
+  /* ── Route Map (ASCII-style) ── */
+  .route-card {
+    background: var(--card);
+    border-radius: 16px;
+    padding: 20px;
+    box-shadow: 0 1px 4px rgba(0,0,0,0.04);
+    margin-top: 12px;
+  }
+  .route-title {
+    font-size: 15px;
+    font-weight: 600;
+    color: var(--secondary);
+    margin-bottom: 12px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+  .route-stops {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+  }
+  .route-stop {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    position: relative;
+  }
+  .route-dot-line {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 16px;
+    flex-shrink: 0;
+  }
+  .route-dot {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: var(--blue);
+    flex-shrink: 0;
+    z-index: 1;
+  }
+  .route-dot.start { background: var(--green); }
+  .route-dot.end { background: var(--red); }
+  .route-line {
+    width: 2px;
+    flex: 1;
+    background: var(--separator);
+    min-height: 20px;
+  }
+  .route-stop-text {
+    padding-bottom: 16px;
+  }
+  .route-stop-name {
+    font-size: 15px;
+    font-weight: 600;
+    color: var(--text);
+  }
+  .route-stop-detail {
+    font-size: 13px;
+    color: var(--tertiary);
+  }
+  .route-stop:last-child .route-line { display: none; }
+  .route-stop:last-child .route-stop-text { padding-bottom: 0; }
+
+  /* ── Footer ── */
+  .footer {
+    text-align: center;
+    padding: 32px 16px 8px;
+    color: var(--tertiary);
+    font-size: 13px;
+  }
+  .footer a {
+    color: var(--blue);
+    text-decoration: none;
+  }
+
+  /* ── Dark Mode ── */
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #000000;
+      --card: #1C1C1E;
+      --text: #FFFFFF;
+      --secondary: #AEAEB2;
+      --tertiary: #636366;
+      --separator: #38383A;
+    }
+    .day-card { box-shadow: 0 1px 4px rgba(0,0,0,0.2); }
+    .stats { box-shadow: 0 2px 12px rgba(0,0,0,0.3); }
+    .quick-link { box-shadow: 0 1px 4px rgba(0,0,0,0.2); }
+    .route-card { box-shadow: 0 1px 4px rgba(0,0,0,0.2); }
+  }
+</style>
+</head>
+<body>
+
+<!-- Hero -->
+<div class="hero">
+  <div class="flag">🇮🇸</div>
+  <div class="trip-title">Iceland 2026</div>
+  <div class="trip-dates">July 3 – July 13</div>
+  <div class="trip-countdown" id="countdown"></div>
+</div>
+
+<!-- Stats -->
+<div class="stats">
+  <div class="stat">
+    <div class="stat-number">10</div>
+    <div class="stat-label">Days</div>
+  </div>
+  <div class="stat">
+    <div class="stat-number">1,400+</div>
+    <div class="stat-label">km</div>
+  </div>
+  <div class="stat">
+    <div class="stat-number">45</div>
+    <div class="stat-label">Places</div>
+  </div>
+  <div class="stat">
+    <div class="stat-number">🔄</div>
+    <div class="stat-label">Ring Road</div>
+  </div>
+</div>
+
+<!-- Day Cards -->
+<div class="section">
+  <div class="section-title">Your Days</div>
+
+  <a class="day-card" href="iceland-day1.html">
+    <div class="day-card-inner">
+      <div class="day-number day-1">1</div>
+      <div class="day-info">
+        <div class="day-name">Arrive Reykjavík</div>
+        <div class="day-date">Friday, July 3</div>
+        <div class="day-highlights">Hallgrímskirkja · Perlan · Hlemmur Mathöll</div>
+      </div>
+      <div class="day-arrow">›</div>
+    </div>
+  </a>
+
+  <a class="day-card" href="iceland-day2.html">
+    <div class="day-card-inner">
+      <div class="day-number day-2">2</div>
+      <div class="day-info">
+        <div class="day-name">Golden Circle</div>
+        <div class="day-date">Saturday, July 4</div>
+        <div class="day-highlights">Þingvellir · Geysir · Gullfoss · Kerið</div>
+      </div>
+      <div class="day-arrow">›</div>
+    </div>
+  </a>
+
+  <a class="day-card" href="iceland-day3.html">
+    <div class="day-card-inner">
+      <div class="day-number day-3">3</div>
+      <div class="day-info">
+        <div class="day-name">South Coast</div>
+        <div class="day-date">Sunday, July 5</div>
+        <div class="day-highlights">Seljalandsfoss · Skógafoss · Reynisfjara · Vík</div>
+      </div>
+      <div class="day-arrow">›</div>
+    </div>
+  </a>
+
+  <a class="day-card" href="iceland-day4.html">
+    <div class="day-card-inner">
+      <div class="day-number day-4">4</div>
+      <div class="day-info">
+        <div class="day-name">Glaciers & Lagoons</div>
+        <div class="day-date">Monday, July 6</div>
+        <div class="day-highlights">Skaftafell · Jökulsárlón · Diamond Beach</div>
+      </div>
+      <div class="day-arrow">›</div>
+    </div>
+  </a>
+
+  <a class="day-card" href="iceland-day5.html">
+    <div class="day-card-inner">
+      <div class="day-number day-5">5</div>
+      <div class="day-info">
+        <div class="day-name">East Fjords</div>
+        <div class="day-date">Tuesday, July 7</div>
+        <div class="day-highlights">Djúpivogur · Fáskrúðsfjörður · Vök Baths</div>
+      </div>
+      <div class="day-arrow">›</div>
+    </div>
+  </a>
+
+  <a class="day-card" href="iceland-day6.html">
+    <div class="day-card-inner">
+      <div class="day-number day-6">6</div>
+      <div class="day-info">
+        <div class="day-name">Lake Mývatn</div>
+        <div class="day-date">Wednesday, July 8</div>
+        <div class="day-highlights">Goðafoss · Mývatn Nature Baths · Húsavík</div>
+      </div>
+      <div class="day-arrow">›</div>
+    </div>
+  </a>
+
+  <a class="day-card" href="iceland-day7.html">
+    <div class="day-card-inner">
+      <div class="day-number day-7">7</div>
+      <div class="day-info">
+        <div class="day-name">North Iceland</div>
+        <div class="day-date">Thursday, July 9</div>
+        <div class="day-highlights">Akureyri · Siglufjörður · Forest Lagoon</div>
+      </div>
+      <div class="day-arrow">›</div>
+    </div>
+  </a>
+
+  <a class="day-card" href="iceland-day8.html">
+    <div class="day-card-inner">
+      <div class="day-number day-8">8</div>
+      <div class="day-info">
+        <div class="day-name">Vatnsnes & Snæfellsnes</div>
+        <div class="day-date">Friday, July 10</div>
+        <div class="day-highlights">Hvítserkur · Kirkjufell · Arnarstapi</div>
+      </div>
+      <div class="day-arrow">›</div>
+    </div>
+  </a>
+
+  <a class="day-card" href="iceland-day9.html">
+    <div class="day-card-inner">
+      <div class="day-number day-9">9</div>
+      <div class="day-info">
+        <div class="day-name">West Iceland</div>
+        <div class="day-date">Saturday, July 11</div>
+        <div class="day-highlights">Víðgelmir Lava Cave · Húsafell · Deildartunguhver</div>
+      </div>
+      <div class="day-arrow">›</div>
+    </div>
+  </a>
+
+  <a class="day-card" href="iceland-day10.html">
+    <div class="day-card-inner">
+      <div class="day-number day-10">10</div>
+      <div class="day-info">
+        <div class="day-name">Return to Reykjavík</div>
+        <div class="day-date">Sunday, July 12 – Monday, July 13</div>
+        <div class="day-highlights">Sky Lagoon · Reykjavík exploring · Departure</div>
+      </div>
+      <div class="day-arrow">›</div>
+    </div>
+  </a>
+</div>
+
+<!-- Route Overview -->
+<div class="section">
+  <div class="section-title">Route</div>
+  <div class="route-card">
+    <div class="route-title">Ring Road — Clockwise</div>
+    <div class="route-stops">
+      <div class="route-stop">
+        <div class="route-dot-line">
+          <div class="route-dot start"></div>
+          <div class="route-line"></div>
+        </div>
+        <div class="route-stop-text">
+          <div class="route-stop-name">Reykjavík</div>
+          <div class="route-stop-detail">Days 1–2 · Arrival & Golden Circle</div>
+        </div>
+      </div>
+      <div class="route-stop">
+        <div class="route-dot-line">
+          <div class="route-dot"></div>
+          <div class="route-line"></div>
+        </div>
+        <div class="route-stop-text">
+          <div class="route-stop-name">South Coast → Vík</div>
+          <div class="route-stop-detail">Day 3 · Waterfalls & black sand</div>
+        </div>
+      </div>
+      <div class="route-stop">
+        <div class="route-dot-line">
+          <div class="route-dot"></div>
+          <div class="route-line"></div>
+        </div>
+        <div class="route-stop-text">
+          <div class="route-stop-name">Glaciers → East Fjords</div>
+          <div class="route-stop-detail">Days 4–5 · Jökulsárlón & Vök Baths</div>
+        </div>
+      </div>
+      <div class="route-stop">
+        <div class="route-dot-line">
+          <div class="route-dot"></div>
+          <div class="route-line"></div>
+        </div>
+        <div class="route-stop-text">
+          <div class="route-stop-name">North → Akureyri</div>
+          <div class="route-stop-detail">Days 6–7 · Mývatn, Húsavík, Forest Lagoon</div>
+        </div>
+      </div>
+      <div class="route-stop">
+        <div class="route-dot-line">
+          <div class="route-dot"></div>
+          <div class="route-line"></div>
+        </div>
+        <div class="route-stop-text">
+          <div class="route-stop-name">West → Snæfellsnes</div>
+          <div class="route-stop-detail">Days 8–9 · Kirkjufell, lava caves</div>
+        </div>
+      </div>
+      <div class="route-stop">
+        <div class="route-dot-line">
+          <div class="route-dot end"></div>
+        </div>
+        <div class="route-stop-text">
+          <div class="route-stop-name">Reykjavík</div>
+          <div class="route-stop-detail">Day 10 · Sky Lagoon & departure</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Quick Links -->
+<div class="section">
+  <div class="section-title">Quick Reference</div>
+  <div class="quick-links">
+    <a class="quick-link" href="detail-hallgrimskirkja.html">
+      <div class="quick-link-icon">⛪</div>
+      <div class="quick-link-title">Hallgrímskirkja</div>
+      <div class="quick-link-desc">Reykjavík landmark</div>
+    </a>
+    <a class="quick-link" href="detail-thingvellir.html">
+      <div class="quick-link-icon">🏔️</div>
+      <div class="quick-link-title">Þingvellir</div>
+      <div class="quick-link-desc">UNESCO site</div>
+    </a>
+    <a class="quick-link" href="detail-jokulsarlon.html">
+      <div class="quick-link-icon">🧊</div>
+      <div class="quick-link-title">Jökulsárlón</div>
+      <div class="quick-link-desc">Glacier lagoon</div>
+    </a>
+    <a class="quick-link" href="detail-myvatn-nature-baths.html">
+      <div class="quick-link-icon">♨️</div>
+      <div class="quick-link-title">Mývatn Baths</div>
+      <div class="quick-link-desc">Geothermal soak</div>
+    </a>
+    <a class="quick-link" href="detail-kirkjufell.html">
+      <div class="quick-link-icon">📸</div>
+      <div class="quick-link-title">Kirkjufell</div>
+      <div class="quick-link-desc">Most photographed</div>
+    </a>
+    <a class="quick-link" href="detail-sky-lagoon.html">
+      <div class="quick-link-icon">🌅</div>
+      <div class="quick-link-title">Sky Lagoon</div>
+      <div class="quick-link-desc">Infinity edge spa</div>
+    </a>
+  </div>
+</div>
+
+<!-- Footer -->
+<div class="footer">
+  Built with ❤️ by Kurt for Katie<br/>
+  <span style="font-size: 11px;">11 days · 1,400+ km · Ring Road clockwise</span>
+</div>
+
+<script>
+  // Countdown
+  const tripDate = new Date('2026-07-03T06:00:00');
+  const now = new Date();
+  const diff = tripDate - now;
+  const days = Math.ceil(diff / (1000 * 60 * 60 * 24));
+  const el = document.getElementById('countdown');
+  if (days > 0) {
+    el.textContent = days + ' day' + (days === 1 ? '' : 's') + ' until departure';
+  } else if (days === 0) {
+    el.textContent = '🎉 Today is the day!';
+  } else {
+    el.textContent = 'Trip in progress — enjoy!';
+  }
+</script>
+
+</body>
+</html>

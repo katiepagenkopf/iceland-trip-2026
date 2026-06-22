@@ -1,0 +1,622 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport"/>
+<title>Iceland Trip — Day 1</title>
+<style>
+  :root {
+    --bg: #F2F2F7;
+    --card: #FFFFFF;
+    --text: #1C1C1E;
+    --secondary: #636366;
+    --tertiary: #8E8E93;
+    --separator: #D1D1D6;
+    --blue: #007AFF;
+    --green: #34C759;
+    --orange: #FF9500;
+    --red: #FF3B30;
+    --teal: #00C7BE;
+    --pink: #FF2D55;
+    --indigo: #5856D6;
+    --quote-bg: #F0F4FF;
+    --quote-border: #C7D2FE;
+    --hotel-bg: #FFF8E1;
+    --hotel-border: #FFE082;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'SF Pro Text', 'Helvetica Neue', sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    -webkit-font-smoothing: antialiased;
+    -webkit-text-size-adjust: 100%;
+    padding: 0 0 40px 0;
+    min-height: 100vh;
+    font-size: 17px;
+    line-height: 1.5;
+  }
+
+  /* ── Header ── */
+  .header {
+    background: linear-gradient(135deg, #007AFF 0%, #5856D6 100%);
+    color: white;
+    padding: 24px 20px 80px 20px;
+    text-align: center;
+    position: relative;
+  }
+  .header .trip-label {
+    font-size: 14px;
+    font-weight: 600;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    opacity: 0.9;
+    margin-bottom: 6px;
+  }
+  .header .day-title {
+    font-size: 30px;
+    font-weight: 700;
+    margin-bottom: 4px;
+    letter-spacing: -0.5px;
+  }
+  .header .day-date {
+    font-size: 17px;
+    font-weight: 400;
+    opacity: 0.9;
+  }
+  .header .day-of {
+    font-size: 14px;
+    font-weight: 500;
+    opacity: 0.75;
+    margin-bottom: 8px;
+    margin-top: 2px;
+  }
+
+  /* ── Day Dots ── */
+  .day-dots {
+    display: flex;
+    justify-content: center;
+    gap: 6px;
+    padding: 14px 20px;
+    background: var(--card);
+    margin: -52px 16px 0 16px;
+    border-radius: 16px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+    position: relative;
+    z-index: 2;
+  }
+  .day-dot {
+    width: 34px;
+    height: 34px;
+    border-radius: 50%;
+    background: var(--bg);
+    color: var(--secondary);
+    font-size: 14px;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    text-decoration: none;
+  }
+  .day-dot:visited { color: var(--secondary); }
+  .day-dot.active:visited { color: white; }
+  .day-dot.active { background: var(--blue); color: white; }
+  .day-dot:active { transform: scale(0.9); }
+
+  /* ── Section ── */
+  .section { margin: 16px 16px 0 16px; }
+  .section-label {
+    font-size: 15px;
+    font-weight: 600;
+    color: var(--secondary);
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+    padding: 0 4px 8px 4px;
+  }
+
+  /* ── Cards ── */
+  .card {
+    background: var(--card);
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+  }
+  .card + .card { margin-top: 10px; }
+
+  /* ── Weather Row ── */
+  .weather-row { display: flex; justify-content: space-between; padding: 16px; }
+  .weather-item { text-align: center; flex: 1; }
+  .weather-icon { font-size: 30px; margin-bottom: 4px; }
+  .weather-label { font-size: 13px; color: var(--secondary); font-weight: 500; }
+  .weather-value { font-size: 17px; font-weight: 600; margin-top: 2px; }
+  .weather-link {
+    display: flex; align-items: center; justify-content: center; gap: 6px;
+    padding: 12px 16px; border-top: 0.5px solid var(--separator);
+    text-decoration: none; color: var(--blue); font-size: 15px; font-weight: 600;
+  }
+  .weather-link:active { background: var(--bg); }
+
+  /* ── Driving Banner ── */
+  .driving-banner {
+    display: flex; align-items: center; gap: 12px; padding: 14px 16px; background: #F0F8FF;
+  }
+  .driving-banner .icon { font-size: 24px; flex-shrink: 0; }
+  .driving-banner .text { font-size: 16px; font-weight: 500; color: var(--blue); line-height: 1.35; }
+
+  /* ── Timeline ── */
+  .timeline { padding: 4px 0; }
+  .timeline-item {
+    display: flex; padding: 12px 16px; gap: 12px;
+    border-bottom: 0.5px solid var(--separator); align-items: flex-start;
+    text-decoration: none; color: inherit; cursor: pointer; transition: background 0.15s;
+  }
+  .timeline-item:last-child { border-bottom: none; }
+  .timeline-item:active { background: var(--bg); }
+  .timeline-item.has-link .event-title { color: var(--blue); }
+  .event-time { width: 54px; flex-shrink: 0; text-align: right; padding-top: 1px; }
+  .event-time .time { font-size: 16px; font-weight: 600; color: var(--text); }
+  .event-time .period { font-size: 13px; color: var(--secondary); font-weight: 500; }
+  .event-dot-line { display: flex; flex-direction: column; align-items: center; padding-top: 6px; flex-shrink: 0; }
+  .event-dot { width: 10px; height: 10px; border-radius: 50%; flex-shrink: 0; }
+
+  /* Dot colors — meaningful grouping */
+  .dot-travel { background: #007AFF; }    /* 🔵 Flights, transfers, walking */
+  .dot-food { background: #34C759; }      /* 🟢 Restaurants, dining */
+  .dot-activity { background: #00C7BE; }  /* 🟦 Activities & excursions */
+  .dot-logistics { background: #FF9500; } /* 🟠 Duty free, grocery, errands */
+
+  .event-details { flex: 1; min-width: 0; }
+  .event-title { font-size: 17px; font-weight: 600; margin-bottom: 2px; line-height: 1.3; }
+  .event-subtitle { font-size: 15px; color: var(--secondary); line-height: 1.4; }
+  .event-tag {
+    display: inline-flex; align-items: center; padding: 4px 10px; border-radius: 6px;
+    font-size: 13px; font-weight: 600;
+  }
+  .tag-walk { background: #E8F5E9; color: #2E7D32; }
+  .tag-call { background: #FFF3E0; color: #E65100; cursor: pointer; }
+  .tag-call:active { opacity: 0.7; }
+  .tag-link { background: #E3F2FD; color: #1565C0; }
+  .tag-directions { background: #E0F7FA; color: #00695C; }
+  .link-arrow { color: var(--tertiary); font-size: 16px; flex-shrink: 0; padding-top: 6px; }
+  .learn-more-link { font-size: 14px; font-weight: 600; color: #007AFF; text-decoration: none; margin-left: auto; }
+  .learn-more-link:active { opacity: 0.7; }
+
+  /* ── Hotel Card (featured) ── */
+  .hotel-card {
+    background: var(--hotel-bg); border: 1.5px solid var(--hotel-border);
+    border-radius: 16px; padding: 20px; box-shadow: 0 1px 4px rgba(0,0,0,0.05);
+  }
+  .hotel-card-header { display: flex; align-items: center; gap: 12px; margin-bottom: 14px; }
+  .hotel-card-header .hotel-emoji { font-size: 28px; }
+  .hotel-card-header .hotel-name { font-size: 22px; font-weight: 700; color: var(--text); }
+  .hotel-card-header .hotel-stars { font-size: 14px; color: var(--orange); margin-top: 2px; }
+  .hotel-details { display: flex; flex-direction: column; gap: 10px; }
+  .hotel-detail-row { display: flex; align-items: center; gap: 10px; font-size: 16px; line-height: 1.4; }
+  .hotel-detail-row .detail-icon { font-size: 18px; width: 24px; text-align: center; flex-shrink: 0; }
+  .hotel-detail-row a { color: var(--blue); text-decoration: none; font-weight: 500; }
+  .hotel-detail-row a:active { opacity: 0.7; }
+  .hotel-actions { display: flex; gap: 10px; margin-top: 16px; }
+  .hotel-action-btn {
+    flex: 1; display: flex; align-items: center; justify-content: center; gap: 8px;
+    padding: 12px; background: white; border: 1px solid var(--hotel-border);
+    border-radius: 12px; text-decoration: none; color: var(--blue);
+    font-size: 15px; font-weight: 600; transition: opacity 0.15s;
+  }
+  .hotel-action-btn:active { opacity: 0.7; }
+
+  /* ── Dinner Card ── */
+  .dinner-card { background: var(--card); border-radius: 16px; padding: 16px; box-shadow: 0 1px 3px rgba(0,0,0,0.04); }
+  .dinner-header { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 10px; }
+  .dinner-name { font-size: 19px; font-weight: 700; color: var(--text); }
+  .dinner-type { font-size: 15px; color: var(--secondary); margin-top: 2px; }
+  .walk-badge {
+    display: inline-flex; align-items: center; gap: 5px;
+    background: #E8F5E9; color: #2E7D32; padding: 5px 10px;
+    border-radius: 8px; font-size: 14px; font-weight: 600;
+  }
+  .dinner-details { display: flex; flex-direction: column; gap: 8px; margin-top: 12px; }
+  .dinner-detail-row { display: flex; align-items: center; gap: 10px; font-size: 16px; }
+  .dinner-detail-row .label { color: var(--secondary); width: 54px; flex-shrink: 0; font-weight: 500; }
+  .dinner-detail-row a { color: var(--blue); text-decoration: none; }
+  .dinner-detail-row a:active { opacity: 0.7; }
+  .dinner-map-link {
+    display: flex; align-items: center; justify-content: center; gap: 8px;
+    padding: 12px; background: var(--bg); border-radius: 12px; margin-top: 12px;
+    text-decoration: none; color: var(--blue); font-size: 15px; font-weight: 600;
+    transition: opacity 0.15s;
+  }
+  .dinner-map-link:active { opacity: 0.7; }
+
+  /* ── Nearby Alternatives ── */
+  .nearby-toggle {
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 14px 16px; cursor: pointer; border-bottom: 0.5px solid var(--separator);
+  }
+  .nearby-toggle:active { background: var(--bg); }
+  .nearby-toggle .left { display: flex; align-items: center; gap: 10px; }
+  .nearby-toggle .icon { font-size: 22px; }
+  .nearby-toggle .title { font-size: 17px; font-weight: 600; }
+  .nearby-toggle .count { font-size: 15px; color: var(--secondary); }
+  .nearby-toggle .chevron { font-size: 16px; color: var(--tertiary); transition: transform 0.2s; }
+  .nearby-toggle.open .chevron { transform: rotate(90deg); }
+  .nearby-list { display: none; padding: 4px 0; }
+  .nearby-list.open { display: block; }
+  .nearby-item {
+    display: flex; align-items: center; padding: 12px 16px; gap: 12px;
+    text-decoration: none; color: inherit; border-bottom: 0.5px solid var(--separator);
+  }
+  .nearby-item:last-child { border-bottom: none; }
+  .nearby-item:active { background: var(--bg); }
+  .nearby-emoji { font-size: 20px; flex-shrink: 0; }
+  .nearby-info { flex: 1; min-width: 0; }
+  .nearby-name { font-size: 16px; font-weight: 600; margin-bottom: 2px; }
+  .nearby-type { font-size: 14px; color: var(--secondary); }
+  .nearby-rating { font-size: 14px; color: var(--orange); font-weight: 600; }
+
+  /* ── Grocery Item ── */
+  .grocery-item {
+    display: flex; align-items: center; padding: 14px 16px; gap: 12px;
+    border-bottom: 0.5px solid var(--separator); cursor: pointer;
+    text-decoration: none; color: inherit;
+  }
+  .grocery-item:last-child { border-bottom: none; }
+  .grocery-item:active { background: var(--bg); }
+  .grocery-emoji { font-size: 22px; flex-shrink: 0; }
+  .grocery-info { flex: 1; }
+  .grocery-name { font-size: 17px; font-weight: 600; margin-bottom: 2px; }
+  .grocery-detail { font-size: 15px; color: var(--secondary); }
+  .grocery-map-badge {
+    display: inline-flex; align-items: center; gap: 4px; padding: 4px 10px;
+    background: #FFF3E0; color: #E65100; border-radius: 8px;
+    font-size: 13px; font-weight: 600; margin-top: 4px;
+  }
+  .grocery-link { color: var(--blue); font-size: 14px; flex-shrink: 0; }
+
+  /* ── Tips ── */
+  .tip-item { display: flex; gap: 10px; padding: 12px 16px; align-items: flex-start; }
+  .tip-icon { font-size: 16px; flex-shrink: 0; padding-top: 2px; }
+  .tip-text { font-size: 15px; color: var(--secondary); line-height: 1.45; }
+
+  /* ── Quote ── */
+  .quote-section {
+    margin: 24px 16px 0 16px; padding: 24px 20px; text-align: center;
+    background: var(--quote-bg); border: 1.5px solid var(--quote-border);
+    border-radius: 16px; box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+  }
+  .quote-mark { font-size: 36px; color: #A5B4FC; line-height: 1; margin-bottom: 4px; }
+  .quote-text {
+    font-size: 19px; font-style: italic; color: #1E293B;
+    line-height: 1.55; margin-bottom: 10px; font-weight: 500;
+  }
+  .quote-author { font-size: 15px; color: #475569; font-weight: 600; letter-spacing: 0.5px; }
+
+  /* ── Dot Legend ── */
+  .dot-legend { display: flex; flex-wrap: wrap; gap: 10px 16px; padding: 12px 16px; font-size: 13px; color: var(--secondary); }
+  .dot-legend-item { display: flex; align-items: center; gap: 6px; }
+  .dot-legend-dot { width: 8px; height: 8px; border-radius: 50%; flex-shrink: 0; }
+
+  /* ── Footer ── */
+  .footer { text-align: center; padding: 24px 16px 16px 16px; font-size: 14px; color: var(--secondary); }
+
+  .day-dots a {
+    text-decoration: none;
+    color: inherit;
+  }
+  .day-dots a:visited { color: inherit; }
+
+</style>
+</head>
+<body>
+<!-- Header -->
+<div class="header">
+<div class="trip-label">🇮🇸 Iceland Trip</div>
+<div class="day-title">Arrive Reykjavik</div>
+<div class="day-date">Friday, July 3</div>
+<div class="day-of">Day 1 of 10</div>
+</div>
+<!-- Day Dots -->
+<div class="day-dots">
+<a class="day-dot active" href="iceland-day1.html" aria-current="page">1</a>
+<a class="day-dot" href="iceland-day2.html">2</a>
+<a class="day-dot" href="iceland-day3.html">3</a>
+<a class="day-dot" href="iceland-day4.html">4</a>
+<a class="day-dot" href="iceland-day5.html">5</a>
+<a class="day-dot" href="iceland-day6.html">6</a>
+<a class="day-dot" href="iceland-day7.html">7</a>
+<a class="day-dot" href="iceland-day8.html">8</a>
+<a class="day-dot" href="iceland-day9.html">9</a>
+<a class="day-dot" href="iceland-day10.html">10</a>
+</div>
+<!-- Weather -->
+<div class="section">
+<div class="section-label">Weather</div>
+<div class="card">
+<div class="weather-row">
+<div class="weather-item">
+<div class="weather-icon">🌤️</div>
+<div class="weather-value">54°F</div>
+<div class="weather-label">High</div>
+</div>
+<div class="weather-item">
+<div class="weather-icon">☁️</div>
+<div class="weather-value">46°F</div>
+<div class="weather-label">Low</div>
+</div>
+<div class="weather-item">
+<div class="weather-icon">🌧️</div>
+<div class="weather-value">20%</div>
+<div class="weather-label">Rain</div>
+</div>
+<div class="weather-item">
+<div class="weather-icon">☀️</div>
+<div class="weather-value">3:02a</div>
+<div class="weather-label">Sunrise</div>
+</div>
+<div class="weather-item">
+<div class="weather-icon">🌙</div>
+<div class="weather-value">12:04a</div>
+<div class="weather-label">Sunset</div>
+</div>
+</div>
+<a class="weather-link" href="https://www.yr.no/en/forecast/daily-table/2-6690953/Iceland/Capital%20Region/Reykjav%C3%ADk?i=1" target="_blank">
+      Full forecast →
+    </a>
+</div>
+</div>
+<!-- Road Status -->
+<div class="section">
+<div class="card">
+<div class="driving-banner">
+<div class="icon">✈️</div>
+<div class="text">No driving today — airport transfer only</div>
+</div>
+</div>
+</div>
+<!-- Hotel Frón — FEATURED CARD -->
+<div class="section">
+<div class="section-label">Your Hotel</div>
+<div class="hotel-card">
+<div class="hotel-card-header">
+<span class="hotel-emoji">🏨</span>
+<div>
+<div class="hotel-name">Hótel Frón</div>
+<div class="hotel-stars">Laugavegur 22A, 101 Reykjavík</div>
+</div>
+</div>
+<div class="hotel-details">
+<div class="hotel-detail-row">
+<span class="detail-icon">📞</span>
+<a href="tel:+3545114666">+354 511 4666</a>
+</div>
+<div class="hotel-detail-row">
+<span class="detail-icon">🌐</span>
+<a href="https://www.hotelfron.is/" target="_blank">hotelfron.is</a>
+</div>
+<div class="hotel-detail-row">
+<span class="detail-icon">🥐</span>
+<span>Free breakfast included</span>
+</div>
+<div class="hotel-detail-row">
+<span class="detail-icon">🧳</span>
+<span>Early check-in or luggage storage available</span>
+</div>
+</div>
+<div class="hotel-actions">
+<a class="hotel-action-btn" href="https://www.hotelfron.is/" target="_blank">
+        🌐 Hotel Website
+      </a>
+</div>
+</div>
+</div>
+<!-- Schedule -->
+<div class="section">
+<div class="section-label">Schedule</div>
+<div class="card timeline">
+<div class="timeline-item">
+<div class="event-time"><div class="time">8:55</div><div class="period">AM</div></div>
+<div class="event-dot-line"><div class="event-dot dot-travel"></div></div>
+<div class="event-details">
+<div class="event-title">Arrive KEF Airport</div>
+<div class="event-subtitle">Flight FI618 lands — collect bags, customs</div>
+<a href="https://map.kefairport.com/" target="_blank" style="font-size: 14px; font-weight: 600; color: #007AFF; text-decoration: none;">🗺️ Terminal map →</a>
+</div>
+</div>
+<div class="timeline-item">
+<div class="event-time"><div class="time">9:00</div><div class="period">AM</div></div>
+<div class="event-dot-line"><div class="event-dot dot-logistics"></div></div>
+<div class="event-details">
+<div class="event-title">Duty Free</div>
+<div class="event-subtitle">Buy alcohol here — cheapest in Iceland · Budget 10 min</div>
+</div>
+</div>
+<a class="timeline-item has-link" href="tel:+3548920888">
+<div class="event-time"><div class="time">10:00</div><div class="period">AM</div></div>
+<div class="event-dot-line"><div class="event-dot dot-travel"></div></div>
+<div class="event-details">
+<div class="event-title">RPC Transfer → Hotel Frón</div>
+<div class="event-subtitle">~45 min to Reykjavik · +354 892 0888</div>
+<span class="event-tag tag-call">📞 Tap to call</span>
+</div>
+<div class="link-arrow">›</div>
+</a>
+<a class="timeline-item has-link" href="https://www.hotelfron.is/" target="_blank">
+<div class="event-time"><div class="time">11:00</div><div class="period">AM</div></div>
+<div class="event-dot-line"><div class="event-dot dot-logistics"></div></div>
+<div class="event-details">
+<div class="event-title">Drop Bags &amp; Breakfast</div>
+<div class="event-subtitle">Hotel Frón — early check-in if available, or store luggage. Free breakfast at hotel.</div>
+<span class="event-tag tag-link">🌐 hotelfron.is</span>
+</div>
+<div class="link-arrow">›</div>
+</a>
+<div class="timeline-item has-link">
+<div class="event-time"><div class="time">11:30</div><div class="period">AM</div></div>
+<div class="event-dot-line"><div class="event-dot dot-activity"></div></div>
+<div class="event-details">
+<div class="event-title">Explore Reykjavik</div>
+<div class="event-subtitle">Walk Laugavegur, <a href="detail-hallgrimskirkja.html" style="color: #007AFF; text-decoration: underline;">Hallgrímskirkja</a>, Harpa, waterfront, <a href="detail-perlan.html" style="color: #007AFF; text-decoration: underline;">Perlan</a></div>
+<a class="learn-more-link" href="detail-reykjavik.html" target="_blank">Learn more →</a>
+</div>
+</div>
+<div class="timeline-item has-link">
+<div class="event-time"><div class="time">2:30</div><div class="period">PM (14:30)</div></div>
+<div class="event-dot-line"><div class="event-dot dot-activity"></div></div>
+<div class="event-details">
+<div class="event-title">Sky Lagoon</div>
+<div class="event-subtitle">Pure Lite pass · ~15 min by taxi · Vesturvör 44-48, Kópavogur</div>
+<div style="display:flex; align-items:center; gap:8px; margin-top:6px;"><span class="event-tag tag-directions">📍 Directions</span><a class="learn-more-link" href="detail-sky-lagoon.html" target="_blank">Learn more →</a></div>
+</div>
+<div class="link-arrow">›</div>
+</div>
+<a class="timeline-item has-link" href="https://www.google.com/maps/dir/?api=1&amp;origin=Hotel+Fr%C3%B3n,+Laugavegur+22a,+Reykjavik&amp;destination=Grillmarka%C3%B0urinn,+Austurstr%C3%A6ti+22,+Reykjavik&amp;travelmode=walking" target="_blank">
+<div class="event-time"><div class="time">7:54</div><div class="period">PM (19:54)</div></div>
+<div class="event-dot-line"><div class="event-dot dot-travel"></div></div>
+<div class="event-details">
+<div class="event-title">Walk to Dinner</div>
+<div class="event-subtitle">6 min walk from Hotel Frón · Reservation at 8:00pm (20:00)</div>
+<span class="event-tag tag-walk">🚶 Get directions</span>
+</div>
+<div class="link-arrow">›</div>
+</a>
+<a class="timeline-item has-link" href="https://grillmarkadurinn.is/en" target="_blank">
+<div class="event-time"><div class="time">8:00</div><div class="period">PM (20:00)</div></div>
+<div class="event-dot-line"><div class="event-dot dot-food"></div></div>
+<div class="event-details">
+<div class="event-title">Dinner: Grillmarkaðurinn</div>
+<div class="event-subtitle">Dineout #8943063 · Austurstræti 22, 101 Reykjavík</div>
+<span class="event-tag tag-link">🌐 grillmarkadurinn.is</span>
+</div>
+<div class="link-arrow">›</div>
+</a>
+</div>
+<!-- Dot Legend -->
+<div class="card" style="margin-top: 10px;">
+<div class="dot-legend">
+<div class="dot-legend-item"><div class="dot-legend-dot dot-travel"></div>Travel</div>
+<div class="dot-legend-item"><div class="dot-legend-dot dot-food"></div>Food</div>
+<div class="dot-legend-item"><div class="dot-legend-dot dot-activity"></div>Activity</div>
+<div class="dot-legend-item"><div class="dot-legend-dot dot-logistics"></div>Logistics</div>
+</div>
+</div>
+</div>
+<!-- Dinner Details -->
+<div class="section">
+<div class="section-label">Dinner Details</div>
+<div class="dinner-card">
+<div class="dinner-header">
+<div>
+<div class="dinner-name">Grillmarkaðurinn</div>
+<div class="dinner-type">Icelandic · Grill · Farm-to-Table</div>
+</div>
+<div class="walk-badge">🚶 6 min walk</div>
+</div>
+<div class="dinner-details">
+<div class="dinner-detail-row"><span class="label">Time</span><span>8:00pm (20:00)</span></div>
+<div class="dinner-detail-row"><span class="label">Type</span><span>Reservation · Dineout #8943063</span></div>
+<div class="dinner-detail-row"><span class="label">Phone</span><a href="tel:+3545717777">+354 571 7777</a></div>
+<div class="dinner-detail-row"><span class="label">Web</span><a href="https://grillmarkadurinn.is/en" target="_blank">grillmarkadurinn.is</a></div>
+</div>
+<a class="dinner-map-link" href="https://www.google.com/maps/dir/?api=1&amp;origin=Hotel+Fr%C3%B3n,+Laugavegur+22a,+Reykjavik&amp;destination=Grillmarka%C3%B0urinn,+Austurstr%C3%A6ti+22,+Reykjavik&amp;travelmode=walking" target="_blank">
+      📍 Get walking directions from Hotel Frón
+    </a>
+</div>
+</div>
+<!-- Nearby Alternatives -->
+<div class="section">
+<div class="section-label">Nearby Alternatives</div>
+<div class="card">
+<div class="nearby-toggle" onclick="toggleNearby(this)">
+<div class="left">
+<span class="icon">🍽️</span>
+<span class="title">Other Reykjavik Restaurants</span>
+<span class="count">6 nearby</span>
+</div>
+<span class="chevron">›</span>
+</div>
+<div class="nearby-list">
+<a class="nearby-item" href="https://www.dillrestaurant.is/" target="_blank">
+<span class="nearby-emoji">🍽️</span>
+<div class="nearby-info"><div class="nearby-name">Dill Restaurant</div><div class="nearby-type">New Nordic · Fine Dining</div></div>
+<div class="nearby-links"><span class="nearby-rating">⭐ 4.5</span></div>
+</a>
+<a class="nearby-item" href="https://www.matarkjallarinn.is/" target="_blank">
+<span class="nearby-emoji">🍷</span>
+<div class="nearby-info"><div class="nearby-name">Matarkjallarinn</div><div class="nearby-type">Icelandic · Wine Bar</div></div>
+<div class="nearby-links"><span class="nearby-rating">⭐ 4.8</span></div>
+</a>
+<a class="nearby-item" href="https://fiskmarkadurinn.is/" target="_blank">
+<span class="nearby-emoji">🐟</span>
+<div class="nearby-info"><div class="nearby-name">Fiskmarkaðurinn</div><div class="nearby-type">Seafood · Icelandic</div></div>
+<div class="nearby-links"><span class="nearby-rating">⭐ 4.6</span></div>
+</a>
+<a class="nearby-item" href="https://www.apotekrestaurant.is/" target="_blank">
+<span class="nearby-emoji">🍸</span>
+<div class="nearby-info"><div class="nearby-name">Apotek Kitchen + Bar</div><div class="nearby-type">Modern · Cocktails</div></div>
+<div class="nearby-links"><span class="nearby-rating">⭐ 4.6</span></div>
+</a>
+<a class="nearby-item" href="https://kolrestaurant.is/" target="_blank">
+<span class="nearby-emoji">🔥</span>
+<div class="nearby-info"><div class="nearby-name">Kol Restaurant</div><div class="nearby-type">Icelandic · Grill</div></div>
+<div class="nearby-links"><span class="nearby-rating">⭐ 4.5</span></div>
+</a>
+<a class="nearby-item" href="https://maps.google.com/?q=Hlemmur+Math%C3%B6ll+Laugavegur+107+Reykjavik" target="_blank">
+<span class="nearby-emoji">🏬</span>
+<div class="nearby-info"><div class="nearby-name">Hlemmur Mathöll</div><div class="nearby-type">Food Hall · Multiple Vendors</div></div>
+<div class="nearby-links"><span class="nearby-rating">⭐ 4.3</span></div>
+</a>
+</div>
+</div>
+</div>
+<!-- Grocery -->
+<div class="section">
+<div class="section-label">Grocery Stores</div>
+<div class="card">
+<a class="grocery-item" href="https://www.google.com/maps/dir/?api=1&amp;origin=Hotel+Fr%C3%B3n,+Laugavegur+22a,+Reykjavik&amp;destination=B%C3%B3nus+Laugavegur+59,+Reykjavik&amp;travelmode=walking" target="_blank">
+<span class="grocery-emoji">🛒</span>
+<div class="grocery-info">
+<div class="grocery-name">Bónus</div>
+<div class="grocery-detail">Laugavegur 59 · Daily 10:00–23:00 · Cheapest in town</div>
+<div class="grocery-map-badge">📍 From hotel · 5 min walk</div>
+</div>
+<span class="grocery-link">›</span>
+</a>
+<a class="grocery-item" href="https://www.google.com/maps/dir/?api=1&amp;origin=Hotel+Fr%C3%B3n,+Laugavegur+22a,+Reykjavik&amp;destination=Kr%C3%B3nan+Hallveigarst%C3%ADgur+1,+Reykjavik&amp;travelmode=walking" target="_blank">
+<span class="grocery-emoji">🛒</span>
+<div class="grocery-info">
+<div class="grocery-name">Krónan</div>
+<div class="grocery-detail">Hallveigarstígur 1 · Daily 08:00–21:00 · 1 block off Laugavegur</div>
+<div class="grocery-map-badge">📍 From hotel · 4 min walk</div>
+</div>
+<span class="grocery-link">›</span>
+</a>
+</div>
+</div>
+<!-- Tips -->
+<div class="section">
+<div class="section-label">Tips</div>
+<div class="card">
+<div class="tip-item"><span class="tip-icon">🍸</span><span class="tip-text">Buy alcohol at KEF Duty Free — it's 2-3× cheaper than in town</span></div>
+<div class="tip-item"><span class="tip-icon">🛒</span><span class="tip-text">Stock up on breakfast supplies at Bónus — saves money and time each morning</span></div>
+<div class="tip-item"><span class="tip-icon">☀️</span><span class="tip-text">Nearly 24 hours of daylight — bring a sleep mask!</span></div>
+<div class="tip-item"><span class="tip-icon">📞</span><span class="tip-text">Call Minilik in Flúðir to reserve dinner for tomorrow — phone only, no online booking: +354 846 9798</span></div>
+</div>
+</div>
+<!-- Quote -->
+<div class="quote-section">
+<div class="quote-mark">"</div>
+<div class="quote-text">The world is a book, and those who do not travel read only one page.</div>
+<div class="quote-author">— Saint Augustine</div>
+</div>
+<div class="footer">🇮🇸 Built with love for the Iceland crew</div><script>
+  function toggleNearby(el) {
+    el.classList.toggle('open');
+    el.nextElementSibling.classList.toggle('open');
+  }
+</script>
+</body>
+</html>

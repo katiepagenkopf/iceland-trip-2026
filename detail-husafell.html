@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>Húsafell Canyon Baths</title>
+<style>
+  :root {
+    --bg: #F2F2F7; --card: #FFFFFF; --text: #1C1C1E; --secondary: #636366;
+    --tertiary: #8E8E93; --separator: #D1D1D6; --blue: #007AFF;
+    --green: #34C759; --orange: #FF9500; --red: #FF3B30; --teal: #00C7BE;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'SF Pro Text', 'Helvetica Neue', sans-serif;
+    background: var(--bg); color: var(--text);
+    -webkit-font-smoothing: antialiased; -webkit-text-size-adjust: 100%;
+    padding: 0 0 40px 0; min-height: 100vh; font-size: 17px; line-height: 1.5;
+  }
+  .back-nav { display: inline-flex; align-items: center; gap: 4px; padding: 14px 20px 0 20px; text-decoration: none; color: var(--blue); font-size: 15px; font-weight: 500; }
+  .back-nav svg { width: 16px; height: 16px; }
+  .map-container { background: white; margin: 12px 16px 0 16px; border-radius: 16px; padding: 20px 20px 16px 20px; box-shadow: 0 1px 3px rgba(0,0,0,0.04); }
+  .map-svg { width: 100%; height: auto; display: block; }
+  .title-section { padding: 20px 20px 0 20px; }
+  .activity-name { font-size: 28px; font-weight: 700; letter-spacing: -0.5px; margin-bottom: 6px; }
+  .activity-subtitle { font-size: 17px; color: var(--secondary); font-weight: 400; line-height: 1.45; }
+  .activity-meta { display: flex; flex-wrap: wrap; gap: 16px; margin-top: 12px; padding-top: 12px; border-top: 0.5px solid var(--separator); }
+  .meta-item { display: flex; align-items: center; gap: 6px; font-size: 15px; color: var(--secondary); }
+  .meta-item .icon { font-size: 18px; }
+  .action-buttons { display: flex; gap: 10px; padding: 16px 20px 0 20px; }
+  .action-btn { flex: 1; display: flex; align-items: center; justify-content: center; gap: 6px; padding: 14px 16px; border-radius: 14px; text-decoration: none; font-size: 15px; font-weight: 600; transition: transform 0.15s; }
+  .action-btn:active { transform: scale(0.97); }
+  .action-btn-primary { background: var(--blue); color: white; }
+  .action-btn-secondary { background: var(--card); color: var(--blue); box-shadow: 0 1px 3px rgba(0,0,0,0.04); }
+  .content-section { margin: 16px 16px 0 16px; }
+  .content-card { background: var(--card); border-radius: 16px; padding: 20px; box-shadow: 0 1px 3px rgba(0,0,0,0.04); }
+  .content-card + .content-card { margin-top: 12px; }
+  .section-title { font-size: 20px; font-weight: 700; margin-bottom: 12px; letter-spacing: -0.3px; }
+  .content-text { font-size: 17px; line-height: 1.6; color: var(--text); }
+  .content-text p + p { margin-top: 12px; }
+  .content-text a { color: var(--blue); text-decoration: none; }
+  .content-text a:active { opacity: 0.7; }
+  .culture-note { background: #F5F0FF; border-left: 4px solid #7C3AED; border-radius: 0 12px 12px 0; padding: 16px; margin-top: 16px; }
+  .culture-note-title { font-size: 15px; font-weight: 700; color: #7C3AED; margin-bottom: 6px; display: flex; align-items: center; gap: 6px; }
+  .culture-note-text { font-size: 16px; line-height: 1.55; color: #374151; }
+  .quick-facts { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 16px; }
+  .fact-item { background: var(--bg); border-radius: 12px; padding: 14px; }
+  .fact-label { font-size: 13px; font-weight: 600; color: var(--tertiary); text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 4px; }
+  .fact-value { font-size: 17px; font-weight: 600; color: var(--text); }
+  .story-block { margin-top: 16px; padding-top: 16px; border-top: 0.5px solid var(--separator); }
+  .story-quote { font-size: 16px; font-style: italic; line-height: 1.55; color: var(--secondary); padding-left: 16px; border-left: 3px solid var(--teal); margin-bottom: 12px; }
+  .learn-more-list { list-style: none; padding: 0; }
+  .learn-more-list li { border-bottom: 0.5px solid var(--separator); }
+  .learn-more-list li:last-child { border-bottom: none; }
+  .learn-more-list a { display: flex; align-items: center; justify-content: space-between; padding: 14px 0; text-decoration: none; color: var(--blue); font-size: 16px; font-weight: 500; }
+  .learn-more-list a:active { opacity: 0.7; }
+  .learn-more-list .arrow { font-size: 18px; color: var(--tertiary); }
+  .bottom-spacer { height: 40px; }
+</style>
+</head>
+<body>
+
+<a href="iceland-day9.html" class="back-nav">
+  <svg viewBox="0 0 20 20" fill="currentColor"><path d="M12.707 5.293a1 1 0 010 1.414L9.414 10l3.293 3.293a1 1 0 01-1.414 1.414l-4-4a1 1 0 010-1.414l4-4a1 1 0 011.414 0z"/></svg>
+  Day 9
+</a>
+
+<div class="map-container">
+  <svg class="map-svg" viewBox="0 0 400 280" xmlns="http://www.w3.org/2000/svg">
+    <path d="M 346.1,30.6 324.8,50.7 344.2,59.1 336.4,78.5 354.2,75.0 346.1,95.7 357.0,83.6 379.0,94.7 365.3,111.8 380.4,113.4 364.3,117.9 382.1,119.9 379.8,132.1 357.5,130.0 375.2,137.1 363.6,137.6 371.1,147.5 347.8,147.2 356.1,158.3 333.5,186.8 314.7,177.0 317.3,186.1 269.1,220.9 263.1,212.2 237.4,222.4 228.8,241.5 202.3,250.8 152.2,239.9 144.4,218.4 138.7,227.4 122.6,210.3 65.8,220.2 65.4,200.0 88.3,202.6 109.9,178.0 86.2,183.1 106.5,158.3 84.0,172.4 75.6,145.7 26.4,152.8 18.6,140.7 95.6,130.0 97.7,117.3 70.4,120.2 100.2,99.2 80.9,100.7 86.0,88.7 73.2,95.2 70.8,85.9 24.2,102.8 2.1,95.2 10.2,85.6 27.4,93.2 17.5,73.3 45.3,82.6 36.6,79.4 48.6,75.0 25.3,68.1 47.9,70.5 27.1,58.1 42.2,59.8 32.1,50.3 39.3,43.9 74.8,70.3 76.5,51.8 55.9,41.7 77.0,38.7 50.4,34.8 56.9,24.5 74.8,24.7 112.1,57.4 103.2,61.9 113.7,63.7 112.7,78.0 97.3,76.0 113.1,88.3 121.0,120.4 127.0,88.3 135.7,81.7 142.2,96.2 149.3,83.6 144.6,52.3 155.4,49.3 177.4,78.9 177.5,54.8 199.1,44.0 225.4,85.1 217.3,45.7 243.1,65.4 257.0,42.7 281.9,48.3 277.8,21.6 295.8,19.4 317.9,47.9 346.1,30.6" fill="none" stroke="#1d1d1f" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+    <circle cx="65" cy="165" r="6" fill="#34C759" fill-opacity="0.2"/>
+    <circle cx="65" cy="165" r="3.5" fill="#34C759"/>
+    <circle cx="65" cy="165" r="1.5" fill="white"/>
+    <rect x="80" y="148" width="120" height="34" rx="6" fill="white" fill-opacity="0.92"/>
+    <text x="140.0" y="163" text-anchor="middle" font-family="-apple-system, BlinkMacSystemFont, sans-serif" font-size="14" font-weight="600" fill="#1d1d1f">Húsafell</text>
+    <text x="140.0" y="175" text-anchor="middle" font-family="-apple-system, BlinkMacSystemFont, sans-serif" font-size="11" font-weight="400" fill="#86868b">Canyon Baths</text>
+  </svg>
+</div>
+
+<div class="title-section">
+  <h1 class="activity-name">Húsafell Canyon Baths</h1>
+  <p class="activity-subtitle">A series of geothermal hot pots built into the rock walls of a basalt canyon in the Icelandic highlands. Cooler, wilder, and quieter than the famous Blue Lagoon — mossy cliffs above you, hot mineral water around you, and a river running through the canyon floor.</p>
+  <div class="activity-meta">
+    <div class="meta-item">
+      <span class="icon">📍</span>
+      <span>Húsafell, Borgarfjörður, West Iceland</span>
+    </div>
+  </div>
+</div>
+
+<div class="action-buttons">
+  <a href="https://www.google.com/maps/dir/?api=1&destination=Husafell%20Canyon%20Baths%20Iceland&travelmode=driving" class="action-btn action-btn-primary" target="_blank">
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+    Directions
+  </a>
+  <a href="https://www.instagram.com/explore/tags/husafell/" class="action-btn action-btn-secondary" target="_blank"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="5"/><circle cx="17.5" cy="6.5" r="1.5" fill="currentColor" stroke="none"/></svg> Photos</a>
+</div>
+
+<div class="content-section">
+  <div class="content-card">
+    <h2 class="section-title">What it is</h2>
+    <div class="content-text">
+      <p>Húsafell is a small farm and recreation area in the Borgarfjörður region of western Iceland, sitting at the edge of the Hallmundarhraun lava field. It's a year-round base for highland activities — hiking, ice cave tours in winter, lava cave visits in summer — and home to the Canyon Baths, which is the real reason most people stop here.</p>
+      <p>The Canyon Baths are a series of three geothermal pools built into the rock walls of a basalt canyon. The water comes from a natural hot spring a few kilometers up the hill, piped down and channeled into stone-and-concrete basins. The hottest pool runs about 44°C (111°F), the coolest about 38°C (100°F). Above you, mossy canyon walls; below, the river that the hot water eventually feeds.</p>
+    </div>
+    <div class="quick-facts">
+      <div class="fact-item">
+        <div class="fact-label">Pools</div>
+        <div class="fact-value">3 connected</div>
+      </div>
+      <div class="fact-item">
+        <div class="fact-label">Temp range</div>
+        <div class="fact-value">38–44°C</div>
+      </div>
+      <div class="fact-item">
+        <div class="fact-label">Setting</div>
+        <div class="fact-value">Basalt canyon</div>
+      </div>
+      <div class="fact-item">
+        <div class="fact-label">Vibe</div>
+        <div class="fact-value">Remote, quiet</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="content-card">
+    <h2 class="section-title">Getting There</h2>
+    <div class="content-text">
+      <p><strong>From Reykjavík:</strong> Take Route 1 north to Borgarnes, then Route 50 toward Húsafell. Allow about 2 hours.</p>
+      <p><strong>From Snæfellsnes peninsula:</strong> Drive back across the mountain pass to Borgarnes, then Route 50. Allow about 2 hours from Arnarstapi.</p>
+      <p><strong>From Víðgelmir lava cave:</strong> It's about 15 minutes down the road — the two are designed to be combined. The cave at 12:00, lunch in Húsafell, Canyon Baths at 14:30, then drive on.</p>
+      <p><strong>Parking:</strong> Right at the canyon entrance. Short walk down a boardwalk to the pools.</p>
+    </div>
+  </div>
+
+  <div class="content-card">
+    <h2 class="section-title">Good to know</h2>
+    <div class="content-text">
+      <p><strong>Bring your own towel and swimsuit.</strong> There are changing rooms on site, but no rentals. There is a small shop selling swimsuits if you forget, but selection is limited.</p>
+      <p><strong>Showers before entering.</strong> Standard Icelandic hot pot etiquette — naked shower with soap, no swimsuit into the shower, swimsuit on before the pool.</p>
+      <p><strong>Time slot is generous.</strong> The 1-hour slot is plenty for a relaxed soak with a drink from the bar. You won't feel rushed.</p>
+      <p><strong>Mobile signal is weak.</strong> Húsafell is in a valley. Don't rely on streaming or video calls from the pool. Take it as a feature, not a bug.</p>
+      <p><strong>Not for winter solo visits.</strong> The Canyon Baths run year-round, but the drive to Húsafell in winter conditions can be challenging. In summer the gravel access road is fine for any rental car.</p>
+    </div>
+  </div>
+
+  <div class="content-card">
+    <h2 class="section-title">Icelandic Culture Note</h2>
+    <div class="content-text">
+      <p>Húsafell is one of the oldest settled farms in Iceland, mentioned in the 12th-century <em>Book of Settlements</em> (Landnámabók). The name literally means "house of the mountain" — <em>hús</em> (house) + <em>afell</em> (fell, mountain slope). The area was important enough that in the early 20th century, Iceland's first artist colony was founded here, and the farm hosted many of the country's painters and writers.</p>
+    </div>
+    <div class="culture-note">
+      <div class="culture-note-title">
+        <span>🇮🇸</span>
+        <span>The Stones That Should Not Be Moved</span>
+      </div>
+      <div class="culture-note-text">
+        The boulders in the canyon around the baths are, in some cases, exactly where they were 1,000 years ago — placed by hand as boundary markers between medieval Icelandic chieftains' lands. Iceland has laws protecting many of these historical stones. The Canyon Baths were deliberately built around them rather than moved. So while you're soaking, you're also soaking inside a medieval legal boundary.
+      </div>
+    </div>
+  </div>
+
+  <div class="content-card">
+    <h2 class="section-title">Learn More</h2>
+    <ul class="learn-more-list">
+      <li>
+        <a href="https://husafell.is/en/the-canyon-baths" target="_blank">
+          Húsafell — Canyon Baths Official
+          <span class="arrow">›</span>
+        </a>
+      </li>
+      <li>
+        <a href="https://en.wikipedia.org/wiki/H%C3%BAsafell" target="_blank">
+          Wikipedia — Húsafell
+          <span class="arrow">›</span>
+        </a>
+      </li>
+      <li>
+        <a href="https://guidetoiceland.is/travel-iceland/drive/husafell" target="_blank">
+          Guide to Iceland — Húsafell
+          <span class="arrow">›</span>
+        </a>
+      </li>
+    </ul>
+  </div>
+</div>
+
+<div class="bottom-spacer"></div>
+
+</body>
+</html>

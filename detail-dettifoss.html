@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>Dettifoss</title>
+<style>
+  :root {
+    --bg: #F2F2F7; --card: #FFFFFF; --text: #1C1C1E;
+    --secondary: #636366; --tertiary: #8E8E93; --separator: #D1D1D6;
+    --blue: #007AFF; --green: #34C759; --orange: #FF9500;
+    --red: #FF3B30; --teal: #00C7BE;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'SF Pro Text', 'Helvetica Neue', sans-serif;
+    background: var(--bg); color: var(--text);
+    -webkit-font-smoothing: antialiased; -webkit-text-size-adjust: 100%;
+    padding: 0 0 40px 0; min-height: 100vh; font-size: 17px; line-height: 1.5;
+  }
+  .back-nav {
+    display: inline-flex; align-items: center; gap: 4px;
+    padding: 14px 20px 0 20px; text-decoration: none; color: var(--blue);
+    font-size: 15px; font-weight: 500;
+  }
+  .back-nav svg { width: 16px; height: 16px; }
+  .map-container {
+    background: white; margin: 12px 16px 0 16px; border-radius: 16px;
+    padding: 20px 20px 16px 20px; box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+  }
+  .map-svg { width: 100%; height: auto; display: block; }
+  .title-section { padding: 20px 20px 0 20px; }
+  .activity-name { font-size: 28px; font-weight: 700; letter-spacing: -0.5px; margin-bottom: 6px; }
+  .activity-subtitle { font-size: 17px; color: var(--secondary); font-weight: 400; line-height: 1.45; }
+  .activity-meta {
+    display: flex; flex-wrap: wrap; gap: 16px; margin-top: 12px;
+    padding-top: 12px; border-top: 0.5px solid var(--separator);
+  }
+  .meta-item { display: flex; align-items: center; gap: 6px; font-size: 15px; color: var(--secondary); }
+  .meta-item .icon { font-size: 18px; }
+  .action-buttons { display: flex; gap: 10px; padding: 16px 20px 0 20px; }
+  .action-btn {
+    flex: 1; display: flex; align-items: center; justify-content: center;
+    gap: 6px; padding: 14px 16px; border-radius: 14px; text-decoration: none;
+    font-size: 15px; font-weight: 600; transition: transform 0.15s;
+  }
+  .action-btn:active { transform: scale(0.97); }
+  .action-btn-primary { background: var(--blue); color: white; }
+  .action-btn-secondary { background: var(--card); color: var(--blue); box-shadow: 0 1px 3px rgba(0,0,0,0.04); }
+  .content-section { margin: 16px 16px 0 16px; }
+  .content-card {
+    background: var(--card); border-radius: 16px; padding: 20px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+  }
+  .content-card + .content-card { margin-top: 12px; }
+  .section-title { font-size: 20px; font-weight: 700; margin-bottom: 12px; letter-spacing: -0.3px; }
+  .content-text { font-size: 17px; line-height: 1.6; color: var(--text); }
+  .content-text p + p { margin-top: 12px; }
+  .content-text a { color: var(--blue); text-decoration: none; }
+  .content-text a:active { opacity: 0.7; }
+  .culture-note {
+    background: #F5F0FF; border-left: 4px solid #7C3AED;
+    border-radius: 0 12px 12px 0; padding: 16px; margin-top: 16px;
+  }
+  .culture-note-title {
+    font-size: 15px; font-weight: 700; color: #7C3AED;
+    margin-bottom: 6px; display: flex; align-items: center; gap: 6px;
+  }
+  .culture-note-text { font-size: 16px; line-height: 1.55; color: #374151; }
+  .quick-facts { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 16px; }
+  .fact-item { background: var(--bg); border-radius: 12px; padding: 14px; }
+  .fact-label {
+    font-size: 13px; font-weight: 600; color: var(--tertiary);
+    text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 4px;
+  }
+  .fact-value { font-size: 17px; font-weight: 600; color: var(--text); }
+  .story-block { margin-top: 16px; padding-top: 16px; border-top: 0.5px solid var(--separator); }
+  .story-quote {
+    font-size: 16px; font-style: italic; line-height: 1.55; color: var(--secondary);
+    padding-left: 16px; border-left: 3px solid var(--teal); margin-bottom: 12px;
+  }
+  .learn-more-list { list-style: none; padding: 0; }
+  .learn-more-list li { border-bottom: 0.5px solid var(--separator); }
+  .learn-more-list li:last-child { border-bottom: none; }
+  .learn-more-list a {
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 14px 0; text-decoration: none; color: var(--blue);
+    font-size: 16px; font-weight: 500;
+  }
+  .learn-more-list a:active { opacity: 0.7; }
+  .learn-more-list .arrow { font-size: 18px; color: var(--tertiary); }
+  .photo-container {
+    margin: 12px 0 0 0; border-radius: 12px; overflow: hidden;
+  }
+  .photo-container img {
+    width: 100%; height: auto; display: block;
+    object-fit: cover; max-height: 240px;
+  }
+  .bottom-spacer { height: 40px; }
+</style>
+</head>
+<body>
+<a href="iceland-day5.html" class="back-nav">
+  <svg viewBox="0 0 20 20" fill="currentColor"><path d="M12.707 5.293a1 1 0 010 1.414L9.414 10l3.293 3.293a1 1 0 01-1.414 1.414l-4-4a1 1 0 010-1.414l4-4a1 1 0 011.414 0z"/></svg>
+  Day 5
+</a>
+<div class="map-container">
+  <svg class="map-svg" viewBox="0 0 400 280" xmlns="http://www.w3.org/2000/svg">
+    <path d="M 346.1,30.6 324.8,50.7 344.2,59.1 336.4,78.5 354.2,75.0 346.1,95.7 357.0,83.6 379.0,94.7 365.3,111.8 380.4,113.4 364.3,117.9 382.1,119.9 379.8,132.1 357.5,130.0 375.2,137.1 363.6,137.6 371.1,147.5 347.8,147.2 356.1,158.3 333.5,186.8 314.7,177.0 317.3,186.1 269.1,220.9 263.1,212.2 237.4,222.4 228.8,241.5 202.3,250.8 152.2,239.9 144.4,218.4 138.7,227.4 122.6,210.3 65.8,220.2 65.4,200.0 88.3,202.6 109.9,178.0 86.2,183.1 106.5,158.3 84.0,172.4 75.6,145.7 26.4,152.8 18.6,140.7 95.6,130.0 97.7,117.3 70.4,120.2 100.2,99.2 80.9,100.7 86.0,88.7 73.2,95.2 70.8,85.9 24.2,102.8 2.1,95.2 10.2,85.6 27.4,93.2 17.5,73.3 45.3,82.6 36.6,79.4 48.6,75.0 25.3,68.1 47.9,70.5 27.1,58.1 42.2,59.8 32.1,50.3 39.3,43.9 74.8,70.3 76.5,51.8 55.9,41.7 77.0,38.7 50.4,34.8 56.9,24.5 74.8,24.7 112.1,57.4 103.2,61.9 113.7,63.7 112.7,78.0 97.3,76.0 113.1,88.3 121.0,120.4 127.0,88.3 135.7,81.7 142.2,96.2 149.3,83.6 144.6,52.3 155.4,49.3 177.4,78.9 177.5,54.8 199.1,44.0 225.4,85.1 217.3,45.7 243.1,65.4 257.0,42.7 281.9,48.3 277.8,21.6 295.8,19.4 317.9,47.9 346.1,30.6" fill="none" stroke="#1d1d1f" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+    <circle cx="290" cy="60" r="6" fill="#FF3B30" fill-opacity="0.2"/>
+    <circle cx="290" cy="60" r="3.5" fill="#FF3B30"/>
+    <circle cx="290" cy="60" r="1.5" fill="white"/>
+    <rect x="61.0" y="43" width="224.0" height="34" rx="6" fill="white" fill-opacity="0.92"/>
+    <text x="173.0" y="58" text-anchor="middle" font-family="-apple-system, BlinkMacSystemFont, sans-serif" font-size="14" font-weight="600" fill="#1d1d1f">Dettifoss</text>
+    <text x="173.0" y="70" text-anchor="middle" font-family="-apple-system, BlinkMacSystemFont, sans-serif" font-size="11" font-weight="400" fill="#86868b">Europe's most powerful waterfall</text>
+  </svg>
+</div>
+<div class="title-section">
+  <h1 class="activity-name">Dettifoss</h1>
+  <p class="activity-subtitle">A 330-foot-wide, 150-foot-high curtain of muddy glacial water pouring into a basalt canyon in northeast Iceland — the most powerful waterfall in Europe by volume. You can hear it from more than a mile away.</p>
+  <div class="activity-meta">
+    <div class="meta-item"><span class="icon">📍</span><span>Vatnajökull National Park, North</span></div>
+  </div>
+</div>
+<div class="action-buttons">
+  <a href="https://www.google.com/maps/dir/?api=1&destination=Dettifoss+Iceland&travelmode=driving" class="action-btn action-btn-primary" target="_blank">
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+    Directions
+  </a>
+  <a href="https://www.instagram.com/explore/tags/dettifoss/" class="action-btn action-btn-secondary" target="_blank"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="5"/><circle cx="17.5" cy="6.5" r="1.5" fill="currentColor" stroke="none"/></svg> Photos</a>
+</div>
+<div class="content-section">
+  <div class="content-card">
+    <h2 class="section-title">What it is</h2>
+    <div class="content-text">Dettifoss is in the Jökulsárgljúfur canyon in the northeast of Vatnajökull National Park, on the Jökulsá á Fjöllum river — the same river that feeds the better-known Jökulsá á Fjöllum canyon and the Ásbyrgi horseshoe bend further north. The waterfall is roughly 330 feet wide and 150 feet high. The water is gray-brown glacial melt, loaded with silt, and it falls in a single uninterrupted curtain. The volume averages about 6,800 cubic feet per second; in spring flood it can run to over 21,000 cfs. The spray rises 150+ feet. The thunder is constant. The viewing platforms are on both sides of the canyon — the east side is paved, the west side is rougher but closer.</div>
+    
+    <div class="quick-facts">
+      <div class="fact-item"><div class="fact-label">Height</div><div class="fact-value">~150 ft</div></div>
+      <div class="fact-item"><div class="fact-label">Width</div><div class="fact-value">~330 ft</div></div>
+      <div class="fact-item"><div class="fact-label">Flow rate</div><div class="fact-value">~6,800 cfs (avg) · 21,000+ cfs (spring flood)</div></div>
+      <div class="fact-item"><div class="fact-label">Film appearance</div><div class="fact-value">Prometheus (2012) — opening scene</div></div>
+    </div>
+  </div>
+  <div class="content-card">
+    <h2 class="section-title">Good to know</h2>
+    <div class="content-text"><p><strong>The east and west sides are different experiences.</strong> Road 862 (west) is gravel, narrower, and ends at a closer view of the falls — the spray is intense, you will get wet. Road 864 (east) is paved and the viewpoint is a bit farther back but more accessible in any vehicle. Most people do the east side. If you have a regular car, do the east side.</p><p><strong>It's not just Dettifoss.</strong> The same canyon holds two other waterfalls upstream: Selfoss (a wide, stepped cascade about 1 mile walk) and Hafragilsfoss (taller, narrower). Plan for at least 90 minutes if you want to see all three.</p><p><strong>The roads close in winter.</strong> Both 862 and 864 are closed when there's snow — usually October through May. The waterfall is accessible in winter only by snowmobile or guided super-jeep tour.</p><p><strong>Wear something waterproof.</strong> The spray soaks the platform. There's a rope along the path to the closest viewpoint and a small overhang for taking photos, but the wind direction matters. Sometimes you're dry. Often you're not.</p></div>
+  </div>
+  <div class="content-card">
+    <h2 class="section-title">Icelandic Culture Note</h2>
+    <div class="content-text">Dettifoss sits inside Jökulsárgljúfur, a canyon that wasn't carved by an ordinary river — it was carved by a flood.</div>
+    
+    <div class="culture-note">
+      <div class="culture-note-title"><span>🇮🇸</span><span>The Canyon That Floods Carved</span></div>
+      <div class="culture-note-text">The river feeding Dettifoss drains from the Vatnajökull ice cap, the largest glacier in Europe. Every few thousand years, when a subglacial eruption happens under the ice, the meltwater has nowhere to go except catastrophically — bursting out from under the glacier as a flood that can reach 800,000 cubic feet per second, with boulders the size of houses riding the wave. Geologists call these jökulhlaups. The last major one in this canyon happened about 3,000 years ago. The canyon is the work of those floods, not the river. The river is just a trickle compared to what cut the rock. The same flood system carved the horseshoe-shaped Ásbyrgi canyon to the north, where you can stand on a flat valley floor and look up at 300-foot walls and realize: this used to be a river channel, briefly, holding more water than the Amazon.</div>
+    </div>
+  </div>
+  <div class="content-card">
+    <h2 class="section-title">The Story Behind It</h2>
+    <div class="content-text">Dettifoss is the largest waterfall in Europe by water volume, and the sediment load is what gives it the brown color. The river picks up volcanic silt from underneath Vatnajökull — the glacier acts as a giant file, grinding basalt into flour. That flour is what colors the water. The same silt is what makes Iceland's coastal waters murky and what is slowly filling in the canyon downstream. In 10,000 years, if nothing changes, Dettifoss will be a series of rapids. In 50,000 years, it will be a flat-bottomed valley. The waterfall is temporary. The canyon is younger than the human species.</div>
+    
+    <div class="story-block">
+      <div class="story-quote">""Stand at the railing for thirty seconds and you'll understand why the opening of Prometheus was filmed here. The waterfall doesn't look like a force of nature. It looks like an opinion. Iceland has very strong opinions about gravity.""</div>
+    </div>
+    
+    <div class="content-text" style="margin-top: 12px;"><p>The opening scene of Ridley Scott's Prometheus (2012) shows an Engineer drinking from a waterfall as part of a creation ritual. The waterfall is Dettifoss. The other Iceland locations in that film — the black sand and the volcanic landscape — are from elsewhere on the island, but Dettifoss is the centerpiece.</p></div>
+  </div>
+  <div class="content-card">
+    <h2 class="section-title">Learn More</h2>
+    
+    <ul class="learn-more-list">
+      <li><a href="https://en.wikipedia.org/wiki/Dettifoss" target="_blank">Wikipedia — Dettifoss<span class="arrow">›</span></a></li>
+      <li><a href="https://www.vatnajokulsthjodgardur.is/en/areas/jokulsargljufur" target="_blank">Vatnajökull National Park — Dettifoss<span class="arrow">›</span></a></li>
+      <li><a href="https://guidetoiceland.is/travel-iceland/drive/dettifoss" target="_blank">Guide to Iceland — Dettifoss<span class="arrow">›</span></a></li>
+    </ul>
+  </div>
+</div>
+<div class="bottom-spacer"></div>
+</body>
+</html>

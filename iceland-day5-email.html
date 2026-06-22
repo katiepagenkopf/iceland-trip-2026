@@ -1,0 +1,599 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Iceland Trip — Day 5</title>
+<style>
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Helvetica Neue', Arial, sans-serif;
+    background: #EFEFEF;
+    color: #1C1C1E;
+    margin: 0;
+    padding: 0;
+    -webkit-font-smoothing: antialiased;
+    font-size: 17px;
+    line-height: 1.5;
+  }
+  .email-wrapper {
+    max-width: 600px;
+    margin: 0 auto;
+    background: #EFEFEF;
+  }
+
+  /* ── Header ── */
+  .header {
+    background: linear-gradient(135deg, #007AFF 0%, #5856D6 100%);
+    color: white;
+    padding: 28px 24px 24px 24px;
+    text-align: center;
+  }
+  .trip-label {
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    opacity: 0.9;
+    margin-bottom: 8px;
+  }
+  .day-title {
+    font-size: 26px;
+    font-weight: 700;
+    margin-bottom: 6px;
+    letter-spacing: -0.5px;
+    line-height: 1.3;
+  }
+  .day-date {
+    font-size: 18px;
+    font-weight: 400;
+    opacity: 0.9;
+  }
+  .day-of {
+    font-size: 14px;
+    font-weight: 500;
+    opacity: 0.75;
+    margin-top: 4px;
+  }
+  /* ── Day Navigation ── */
+  .day-nav {
+    text-align: center;
+    padding: 14px 10px; background: white; margin: 0 16px;
+    border-radius: 12px; box-shadow: 0 1px 3px rgba(0,0,0,0.06);
+    font-size: 0; letter-spacing: 0;
+    margin-top: -24px; position: relative; z-index: 2;
+  }
+  .day-nav a {
+    display: inline-block;
+    width: 28px; height: 28px; border-radius: 50%;
+    background: #F2F2F7; color: #636366; font-size: 12px;
+    font-weight: 600; text-decoration: none; line-height: 28px;
+    text-align: center; vertical-align: middle;
+    margin: 0 2px;
+  }
+  .day-nav a.active { background: #007AFF; color: white; }
+  .day-nav a:active { opacity: 0.7; }
+
+  /* ── Cards ── */
+  .card {
+    background: #FFFFFF;
+    margin: 12px 16px;
+    padding: 16px;
+    border-radius: 4px;
+    border: 1px solid #E5E5EA;
+  }
+  .section-label {
+    font-size: 12px;
+    font-weight: 700;
+    color: #8E8E93;
+    text-transform: uppercase;
+    letter-spacing: 1.2px;
+    margin-bottom: 12px;
+    padding-bottom: 8px;
+    border-bottom: 2px solid #E5E5EA;
+  }
+
+  /* ── Weather ── */
+  .weather-summary {
+    font-size: 17px;
+    padding: 4px 0 8px 0;
+    line-height: 1.8;
+  }
+  .weather-summary strong {
+    font-weight: 700;
+  }
+  .weather-divider {
+    color: #D1D1D6;
+    margin: 0 8px;
+  }
+  .weather-secondary {
+    font-size: 15px;
+    color: #636366;
+  }
+  .weather-link {
+    display: block;
+    text-align: center;
+    padding: 14px 0 0 0;
+    margin-top: 10px;
+    border-top: 1px solid #E5E5EA;
+    text-decoration: none;
+    color: #007AFF;
+    font-size: 15px;
+    font-weight: 600;
+  }
+
+  /* ── Driving Banner ── */
+  .driving-banner {
+    background: #F0F8FF;
+    padding: 14px 16px;
+    border-radius: 4px;
+    border: 1px solid #B3D9FF;
+    font-size: 16px;
+    font-weight: 600;
+    color: #007AFF;
+    text-align: center;
+    margin: 12px 16px;
+  }
+
+  /* ── Alert Card (grocery timing) ── */
+  .alert-card {
+    background: #FFF8E1;
+    margin: 12px 16px;
+    padding: 16px;
+    border-radius: 4px;
+    border: 1.5px solid #FFE082;
+  }
+  .alert-label {
+    font-size: 12px;
+    font-weight: 700;
+    color: #F57F17;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 8px;
+  }
+  .alert-title {
+    font-size: 18px;
+    font-weight: 700;
+    color: #1C1C1E;
+    margin-bottom: 6px;
+  }
+  .alert-body {
+    font-size: 15px;
+    color: #636366;
+    line-height: 1.5;
+  }
+  .alert-body strong {
+    color: #1C1C1E;
+  }
+
+  /* ── Hotel Card ── */
+  .hotel-card {
+    background: #FFF8E1;
+    margin: 12px 16px;
+    padding: 20px;
+    border-radius: 4px;
+    border: 1.5px solid #FFE082;
+  }
+  .hotel-name {
+    font-size: 24px;
+    font-weight: 700;
+    color: #1C1C1E;
+    margin-bottom: 4px;
+  }
+  .hotel-address {
+    font-size: 14px;
+    color: #636366;
+    margin-bottom: 14px;
+  }
+  .hotel-detail {
+    font-size: 16px;
+    padding: 6px 0;
+    color: #1C1C1E;
+    border-bottom: 1px solid #FFE082;
+  }
+  .hotel-detail:last-child { border-bottom: none; }
+  .hotel-detail a {
+    color: #007AFF;
+    text-decoration: none;
+    font-weight: 600;
+  }
+  .hotel-actions {
+    display: flex;
+    gap: 10px;
+    margin-top: 16px;
+  }
+  .hotel-btn {
+    flex: 1;
+    display: block;
+    text-align: center;
+    padding: 12px;
+    background: #FFFFFF;
+    border: 1.5px solid #FFE082;
+    border-radius: 8px;
+    text-decoration: none;
+    color: #007AFF;
+    font-size: 15px;
+    font-weight: 700;
+  }
+
+  /* ── Schedule ── */
+  .schedule-item {
+    padding: 14px 0;
+    border-bottom: 1px solid #E5E5EA;
+  }
+  .schedule-item:last-child { border-bottom: none; }
+  .schedule-time {
+    font-size: 13px;
+    font-weight: 700;
+    color: #8E8E93;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-bottom: 2px;
+  }
+  .schedule-title {
+    font-size: 18px;
+    font-weight: 700;
+    margin-bottom: 3px;
+  }
+  .schedule-title a {
+    text-decoration: none;
+  }
+  .schedule-subtitle {
+    font-size: 15px;
+    color: #636366;
+    line-height: 1.4;
+  }
+  .schedule-tag {
+    display: inline-block;
+    padding: 4px 12px;
+    border-radius: 6px;
+    font-size: 13px;
+    font-weight: 700;
+    margin-top: 6px;
+    margin-right: 6px;
+    text-decoration: none;
+  }
+
+  /* Category colors */
+  .cat-travel .schedule-title { color: #007AFF; }
+  .cat-food .schedule-title { color: #34C759; }
+  .cat-activity .schedule-title { color: #00C7BE; }
+  .cat-logistics .schedule-title { color: #FF9500; }
+
+  .tag-walk { background: #E8F5E9; color: #2E7D32; }
+  .tag-call { background: #FFF3E0; color: #E65100; }
+  .tag-link { background: #E3F2FD; color: #1565C0; }
+  .tag-directions { background: #E0F7FA; color: #00695C; }
+  .tag-walkin { background: #F2F2F7; color: #636366; }
+
+  /* ── Category Legend ── */
+  .legend {
+    padding: 12px 0 4px 0;
+    border-top: 1px solid #E5E5EA;
+    margin-top: 8px;
+    font-size: 13px;
+    color: #8E8E93;
+    line-height: 2;
+  }
+  .legend span {
+    margin-right: 14px;
+    white-space: nowrap;
+  }
+  .legend-travel { color: #007AFF; font-weight: 700; }
+  .legend-food { color: #34C759; font-weight: 700; }
+  .legend-activity { color: #00C7BE; font-weight: 700; }
+  .legend-logistics { color: #FF9500; font-weight: 700; }
+
+  /* ── Dinner Details ── */
+  .dinner-name {
+    font-size: 22px;
+    font-weight: 700;
+    color: #1C1C1E;
+  }
+  .dinner-type {
+    font-size: 14px;
+    color: #636366;
+    margin-top: 2px;
+    margin-bottom: 12px;
+  }
+  .dinner-badge {
+    display: inline-block;
+    padding: 6px 14px;
+    background: #E8F5E9;
+    color: #2E7D32;
+    border-radius: 8px;
+    font-size: 14px;
+    font-weight: 700;
+    margin-bottom: 14px;
+  }
+  .dinner-detail {
+    font-size: 16px;
+    padding: 8px 0;
+    border-bottom: 1px solid #F2F2F7;
+    color: #1C1C1E;
+  }
+  .dinner-detail:last-child { border-bottom: none; }
+  .dinner-detail .label {
+    color: #8E8E93;
+    font-weight: 600;
+    display: inline-block;
+    width: 60px;
+  }
+  .dinner-detail a {
+    color: #007AFF;
+    text-decoration: none;
+  }
+  .dinner-directions {
+    display: block;
+    text-align: center;
+    padding: 14px;
+    margin-top: 14px;
+    background: #F2F2F7;
+    border-radius: 8px;
+    text-decoration: none;
+    color: #007AFF;
+    font-size: 16px;
+    font-weight: 700;
+  }
+
+  /* ── Grocery ── */
+  .grocery-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 14px 0;
+    border-bottom: 1px solid #E5E5EA;
+    text-decoration: none;
+    color: inherit;
+  }
+  .grocery-item:last-child { border-bottom: none; }
+  .grocery-emoji { font-size: 24px; }
+  .grocery-name { font-size: 17px; font-weight: 700; color: #1C1C1E; }
+  .grocery-detail { font-size: 14px; color: #636366; }
+  .grocery-badge {
+    display: inline-block;
+    padding: 4px 10px;
+    background: #FFF3E0;
+    color: #E65100;
+    border-radius: 6px;
+    font-size: 12px;
+    font-weight: 700;
+    margin-top: 4px;
+  }
+
+  /* ── Tips ── */
+  .tip-item {
+    padding: 10px 0;
+    font-size: 15px;
+    color: #636366;
+    border-bottom: 1px solid #F2F2F7;
+    line-height: 1.4;
+  }
+  .tip-item:last-child { border-bottom: none; }
+
+  /* ── Quote ── */
+  .quote-card {
+    background: #F0F4FF;
+    margin: 16px 16px 12px 16px;
+    padding: 24px 20px;
+    text-align: center;
+    border-radius: 4px;
+    border: 1.5px solid #C7D2FE;
+  }
+  .quote-mark {
+    font-size: 40px;
+    color: #A5B4FC;
+    line-height: 1;
+    margin-bottom: 8px;
+  }
+  .quote-text {
+    font-size: 20px;
+    font-style: italic;
+    color: #1E293B;
+    line-height: 1.5;
+    margin-bottom: 10px;
+    font-weight: 600;
+  }
+  .quote-author {
+    font-size: 15px;
+    color: #475569;
+    font-weight: 700;
+  }
+
+  .footer {
+    text-align: center;
+    padding: 20px 16px 24px 16px;
+    font-size: 14px;
+    color: #8E8E93;
+  }
+</style>
+</head>
+<body>
+<div class="email-wrapper">
+
+<!-- Header -->
+<div class="header">
+  <div class="trip-label">🇮🇸 Iceland Trip</div>
+  <div class="day-title">East Fjords to Mývatn · Vök Baths · <span style="white-space:nowrap">Eldey at Hotel</span></div>
+  <div class="day-date">Tuesday, July 7</div>
+  <div class="day-of">Day 5 of 10</div>
+</div>
+<!-- Day Navigation -->
+<div class="day-nav">
+<a href="iceland-day1-email.html">1</a>
+<a href="iceland-day2-email.html">2</a>
+<a href="iceland-day3-email.html">3</a>
+<a href="iceland-day4-email.html">4</a>
+<a href="iceland-day5-email.html" class="active">5</a>
+<a href="iceland-day6-email.html">6</a>
+<a href="iceland-day7-email.html">7</a>
+<a href="iceland-day8-email.html">8</a>
+<a href="iceland-day9-email.html">9</a>
+<a href="iceland-day10-email.html">10</a>
+</div>
+
+
+<!-- Weather -->
+<div class="card">
+  <div class="section-label">Weather</div>
+  <div class="weather-summary" style="text-align: center;">
+    <strong>56°F</strong> High <span class="weather-divider">|</span> <strong>46°F</strong> Low
+    <br>
+    <strong>25%</strong> Rain · <span class="weather-secondary">🌤️ Pleasant driving weather</span>
+  </div>
+  <a class="weather-link" href="https://www.yr.no/en/forecast/daily-table/2-3410732/Iceland/Northeastern%20Region/M%C3%BDvatn?i=1" target="_blank">
+    Full forecast →
+  </a>
+</div>
+
+<!-- Driving Banner -->
+<div class="driving-banner">
+  🚗 ~6h in the car today · Höfn to Mývatn via East Fjords
+</div>
+
+<!-- ALERT: Grocery timing -->
+<div class="alert-card">
+  <div class="alert-label">⚠️ Grocery Alert</div>
+  <div class="alert-title">Stock up at lunch in Egilsstaðir</div>
+  <div class="alert-body">
+    You'll arrive at Hótel Laxá at ~7:00pm (19:00). <strong>Krambúðin closes at 7:00pm (19:00) (weekdays)</strong> — you'll likely miss it.
+    <br><br>
+    Stock up in <strong>Egilsstaðir</strong> during lunch:
+    <br>🐷 <strong>Bónus</strong> — Miðvangur 13 · 10:00–20:00
+    <br>🛒 <strong>Nettó</strong> — Kaupvangur 6 · 8:00–20:00
+  </div>
+</div>
+
+<!-- Schedule -->
+<div class="card">
+  <div class="section-label">Schedule</div>
+
+  <div class="schedule-item cat-travel">
+    <div class="schedule-time">9:00</div>
+    <div class="schedule-title">Leave Hoffell</div>
+    <div class="schedule-subtitle">Drive east fjords + Route 1 north</div>
+    <a class="schedule-tag tag-directions" href="https://www.google.com/maps/dir/?api=1&destination=East+Fjords+Iceland&travelmode=driving" target="_blank">📍 Get directions</a>
+  </div>
+
+  <div class="schedule-item cat-activity">
+    <div class="schedule-time">10:30</div>
+    <div class="schedule-title">Djúpivogur</div>
+    <div class="schedule-subtitle">Charming harbour · Eggs of Merry Bay art installation</div>
+    <a class="schedule-tag tag-link" href="detail-djupivogur.html" target="_blank">ℹ️ Learn more</a>
+    <a class="schedule-tag tag-directions" href="https://www.google.com/maps/dir/?api=1&destination=Dj%C3%BApivogur&travelmode=driving" target="_blank">📍 Get directions</a>
+  </div>
+
+  <div class="schedule-item cat-activity">
+    <div class="schedule-time">12:00 PM (12:00)</div>
+    <div class="schedule-title">Fáskrúðsfjörður</div>
+    <div class="schedule-subtitle">French heritage village · Museum</div>
+    <a class="schedule-tag tag-link" href="detail-faskrudsfjordur.html" target="_blank">ℹ️ Learn more</a>
+    <a class="schedule-tag tag-directions" href="https://www.google.com/maps/dir/?api=1&destination=F%C3%A1skr%C3%BA%C3%B0sfj%C3%B6r%C3%B0ur&travelmode=driving" target="_blank">📍 Get directions</a>
+  </div>
+
+  <div class="schedule-item cat-logistics">
+    <div class="schedule-time">1:30 PM (13:30)</div>
+    <div class="schedule-title">Egilsstaðir</div>
+    <div class="schedule-subtitle">Lunch stop · Lagarfljót lake · Stock up at Bónus or Nettó</div>
+    <a class="schedule-tag tag-directions" href="https://www.google.com/maps/dir/?api=1&destination=Egilssta%C3%B0ir&travelmode=driving" target="_blank">📍 Get directions</a>
+  </div>
+
+  <div class="schedule-item cat-activity">
+    <div class="schedule-time">2:00 PM (14:00)</div>
+    <div class="schedule-title">Vök Baths</div>
+    <div class="schedule-subtitle">Geothermal floating pools on Lake Urriðavatn · Bring swimsuit</div>
+    <a class="schedule-tag tag-call" href="tel:+354****9500">📞 Tap to call</a>
+    <a class="schedule-tag tag-directions" href="https://www.google.com/maps/dir/?api=1&destination=V%C3%B6k+Baths&travelmode=driving" target="_blank">📍 Get directions</a>
+    <a class="schedule-tag tag-link" href="detail-vok-baths.html" target="_blank">ℹ️ Learn more</a>
+  </div>
+
+  <div class="schedule-item cat-travel">
+    <div class="schedule-time">4:30 PM (16:30)</div>
+    <div class="schedule-title">Drive to Mývatn via Möðrudalur</div>
+    <div class="schedule-subtitle">Lunar landscape</div>
+    <a class="schedule-tag tag-directions" href="https://www.google.com/maps/dir/?api=1&destination=M%C3%BDvatn&travelmode=driving" target="_blank">📍 Get directions</a>
+  </div>
+
+  <div class="schedule-item cat-food">
+    <div class="schedule-time">7:00 PM (19:00)</div>
+    <div class="schedule-title">Arrive Hótel Laxá</div>
+    <div class="schedule-subtitle">Dinner at Eldey Restaurant (on-site) · Walk-in</div>
+    <a class="schedule-tag tag-link" href="detail-hotel-laxa.html" target="_blank">ℹ️ Learn more</a>
+    <a class="schedule-tag tag-walkin">🚶 Walk-in</a>
+    <a class="schedule-tag tag-directions" href="https://www.google.com/maps/dir/?api=1&destination=H%C3%B3tel+Lax%C3%A1+M%C3%BDvatn&travelmode=driving" target="_blank">📍 Get directions</a>
+  </div>
+
+  <!-- Legend -->
+  <div class="legend">
+    <span><span class="legend-travel">■</span> Travel</span>
+    <span><span class="legend-food">■</span> Food</span>
+    <span><span class="legend-activity">■</span> Activity</span>
+    <span><span class="legend-logistics">■</span> Logistics</span>
+  </div>
+</div>
+
+<!-- Dinner Details -->
+<div class="card">
+  <div class="section-label">Dinner Details</div>
+  <div class="dinner-name">Eldey Restaurant</div>
+  <div class="dinner-type">On-site at Hótel Laxá · Walk-in</div>
+  <div class="dinner-badge">🚶 Just walk downstairs</div>
+  <div class="dinner-detail"><span class="label">Time</span> Arrive ~7:00pm (19:00)</div>
+  <div class="dinner-detail"><span class="label">Type</span> Walk-in · No reservation needed</div>
+  <div class="dinner-detail"><span class="label">Note</span> Just walk downstairs from your room</div>
+  <div class="dinner-detail"><span class="label">Web</span> <a href="https://hotellaxa.is" target="_blank">hotellaxa.is</a></div>
+  <a class="dinner-directions" href="https://www.google.com/maps/dir/?api=1&destination=H%C3%B3tel+Lax%C3%A1+M%C3%BDvatn&travelmode=driving" target="_blank">
+    📍 Get directions to Hótel Laxá
+  </a>
+</div>
+
+<!-- Grocery -->
+<div class="card">
+  <div class="section-label">Grocery</div>
+  <a class="grocery-item" href="https://www.google.com/maps/dir/?api=1&origin=H%C3%B3tel+Lax%C3%A1&destination=Kramb%C3%BA%C3%B0in+Reykjahl%C3%AD%C3%B0&travelmode=driving" target="_blank">
+    <span class="grocery-emoji">🛒</span>
+    <div>
+      <div class="grocery-name">Krambúðin</div>
+      <div class="grocery-detail">Reykjahlíð · Closes 7:00pm (19:00) weekdays · Mon-Fri 09:00–19:00, Sat-Sun 10:00–18:00</div>
+      <div class="grocery-badge">📍 From guesthouse · 12 min drive · ~6 mi</div>
+    </div>
+  </a>
+  <div style="padding: 12px 0 0 0; font-size: 14px; color: #636366; line-height: 1.5;">
+    Also <strong>Bónus</strong> and <strong>Nettó</strong> in Egilsstaðir (stock up at lunch).
+  </div>
+</div>
+
+<!-- Hotel -->
+<div class="hotel-card">
+  <div style="font-size: 28px; margin-bottom: 8px;">🏨</div>
+  <div class="hotel-name">Hótel Laxá</div>
+  <div class="hotel-address">Olnbogaás · Mývatn</div>
+  <div class="hotel-detail">📞 <a href="tel:+354****1900">+354 464 1900</a></div>
+  <div class="hotel-detail">🍽️ Eldey Restaurant on-site</div>
+  <div class="hotel-detail">🛁 Near Vök Baths & Mývatn nature baths</div>
+  <div class="hotel-actions">
+    <a class="hotel-btn" href="https://hotellaxa.is" target="_blank">🌐 Hotel Website</a>
+    <a class="hotel-btn" href="https://www.google.com/maps/dir/?api=1&destination=H%C3%B3tel+Lax%C3%A1+M%C3%BDvatn&travelmode=driving" target="_blank">📍 Map</a>
+  </div>
+</div>
+
+<!-- Tips -->
+<div class="card">
+  <div class="section-label">Tips</div>
+  <div class="tip-item">🚗 Long driving day. Vök Baths is the reward.</div>
+  <div class="tip-item">💦 Optional: Dettifoss waterfall detour (adds ~1.5 hrs). One of Europe's most powerful.</div>
+  <div class="tip-item">🛒 Nothing near Hotel Laxá. Closest grocery 6 mi away — stock up in Egilsstaðir at lunch.</div>
+  <div class="tip-item">🍽️ Eldey Restaurant: on-site, no reservation — just walk downstairs.</div>
+</div>
+
+<!-- Quote -->
+<div class="quote-card">
+  <div class="quote-mark">"</div>
+  <div class="quote-text">The journey is the destination.</div>
+  <div class="quote-author">— Dan Eldon</div>
+</div>
+
+<div class="footer">🇮🇸 Built with love for the Iceland crew</div>
+
+</div>
+</body>
+</html>

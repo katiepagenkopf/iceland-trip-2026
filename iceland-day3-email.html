@@ -1,0 +1,660 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Iceland Trip — Day 3</title>
+<style>
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Helvetica Neue', Arial, sans-serif;
+    background: #EFEFEF;
+    color: #1C1C1E;
+    margin: 0;
+    padding: 0;
+    -webkit-font-smoothing: antialiased;
+    font-size: 17px;
+    line-height: 1.5;
+  }
+  .email-wrapper {
+    max-width: 600px;
+    margin: 0 auto;
+    background: #EFEFEF;
+  }
+
+  /* ── Header ── */
+  .header {
+    background: linear-gradient(135deg, #007AFF 0%, #5856D6 100%);
+    color: white;
+    padding: 28px 24px 24px 24px;
+    text-align: center;
+  }
+  .trip-label {
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    opacity: 0.9;
+    margin-bottom: 8px;
+  }
+  .day-title {
+    font-size: 32px;
+    font-weight: 700;
+    margin-bottom: 6px;
+    letter-spacing: -0.5px;
+  }
+  .day-date {
+    font-size: 18px;
+    font-weight: 400;
+    opacity: 0.9;
+  }
+  .day-of {
+    font-size: 14px;
+    font-weight: 500;
+    opacity: 0.75;
+    margin-top: 4px;
+  }
+  /* ── Day Navigation ── */
+  .day-nav {
+    text-align: center;
+    padding: 14px 10px; background: white; margin: 0 16px;
+    border-radius: 12px; box-shadow: 0 1px 3px rgba(0,0,0,0.06);
+    font-size: 0; letter-spacing: 0;
+    margin-top: -24px; position: relative; z-index: 2;
+  }
+  .day-nav a {
+    display: inline-block;
+    width: 28px; height: 28px; border-radius: 50%;
+    background: #F2F2F7; color: #636366; font-size: 12px;
+    font-weight: 600; text-decoration: none; line-height: 28px;
+    text-align: center; vertical-align: middle;
+    margin: 0 2px;
+  }
+  .day-nav a.active { background: #007AFF; color: white; }
+  .day-nav a:active { opacity: 0.7; }
+
+  /* ── Cards ── */
+  .card {
+    background: #FFFFFF;
+    margin: 12px 16px;
+    padding: 16px;
+    border-radius: 4px;
+    border: 1px solid #E5E5EA;
+  }
+  .section-label {
+    font-size: 12px;
+    font-weight: 700;
+    color: #8E8E93;
+    text-transform: uppercase;
+    letter-spacing: 1.2px;
+    margin-bottom: 12px;
+    padding-bottom: 8px;
+    border-bottom: 2px solid #E5E5EA;
+  }
+
+  /* ── Alerts (email version: borders, no box-shadow) ── */
+  .alert-card {
+    padding: 14px;
+    border-radius: 6px;
+    margin-bottom: 10px;
+    font-size: 15px;
+    line-height: 1.5;
+  }
+  .alert-card:last-child { margin-bottom: 0; }
+  .alert-grocery {
+    background: #FFF8E1;
+    border: 1.5px solid #FFE082;
+    color: #5D4037;
+  }
+  .alert-grocery strong { color: #E65100; font-weight: 700; }
+  .alert-safety {
+    background: #FFEBEE;
+    border: 1.5px solid #EF9A9A;
+    color: #C62828;
+  }
+  .alert-safety strong { color: #C62828; font-weight: 700; }
+  .alert-icon {
+    font-size: 18px;
+    margin-right: 6px;
+    vertical-align: middle;
+  }
+
+  /* ── Weather (clean text, no emoji row) ── */
+  .weather-summary {
+    font-size: 17px;
+    padding: 4px 0 8px 0;
+    line-height: 1.8;
+  }
+  .weather-summary strong {
+    font-weight: 700;
+  }
+  .weather-divider {
+    color: #D1D1D6;
+    margin: 0 8px;
+  }
+  .weather-secondary {
+    font-size: 15px;
+    color: #636366;
+  }
+  .weather-link {
+    display: block;
+    text-align: center;
+    padding: 14px 0 0 0;
+    margin-top: 10px;
+    border-top: 1px solid #E5E5EA;
+    text-decoration: none;
+    color: #007AFF;
+    font-size: 15px;
+    font-weight: 600;
+  }
+
+  /* ── Driving Banner ── */
+  .driving-banner {
+    background: #F0F8FF;
+    padding: 14px 16px;
+    border-radius: 4px;
+    border: 1px solid #B3D9FF;
+    font-size: 16px;
+    font-weight: 600;
+    color: #007AFF;
+    text-align: center;
+    margin: 12px 16px;
+  }
+
+  /* ── Hotel Card ── */
+  .hotel-card {
+    background: #FFF8E1;
+    margin: 12px 16px;
+    padding: 20px;
+    border-radius: 4px;
+    border: 1.5px solid #FFE082;
+  }
+  .hotel-name {
+    font-size: 24px;
+    font-weight: 700;
+    color: #1C1C1E;
+    margin-bottom: 4px;
+  }
+  .hotel-address {
+    font-size: 14px;
+    color: #636366;
+    margin-bottom: 14px;
+  }
+  .hotel-detail {
+    font-size: 16px;
+    padding: 6px 0;
+    color: #1C1C1E;
+    border-bottom: 1px solid #FFE082;
+  }
+  .hotel-detail:last-child { border-bottom: none; }
+  .hotel-detail a {
+    color: #007AFF;
+    text-decoration: none;
+    font-weight: 600;
+  }
+  .hotel-actions {
+    display: flex;
+    gap: 10px;
+    margin-top: 16px;
+  }
+  .hotel-btn {
+    flex: 1;
+    display: block;
+    text-align: center;
+    padding: 12px;
+    background: #FFFFFF;
+    border: 1.5px solid #FFE082;
+    border-radius: 8px;
+    text-decoration: none;
+    color: #007AFF;
+    font-size: 15px;
+    font-weight: 700;
+  }
+
+  /* ── Schedule — NO dots, colored headings instead ── */
+  .schedule-item {
+    padding: 14px 0;
+    border-bottom: 1px solid #E5E5EA;
+  }
+  .schedule-item:last-child { border-bottom: none; }
+  .schedule-time {
+    font-size: 13px;
+    font-weight: 700;
+    color: #8E8E93;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-bottom: 2px;
+  }
+  .schedule-title {
+    font-size: 18px;
+    font-weight: 700;
+    margin-bottom: 3px;
+  }
+  .schedule-title a {
+    text-decoration: none;
+  }
+  .schedule-subtitle {
+    font-size: 15px;
+    color: #636366;
+    line-height: 1.4;
+  }
+  .schedule-tag {
+    display: inline-block;
+    padding: 4px 12px;
+    border-radius: 6px;
+    font-size: 13px;
+    font-weight: 700;
+    margin-top: 6px;
+    text-decoration: none;
+  }
+
+  /* Category colors */
+  .cat-travel .schedule-title { color: #007AFF; }
+  .cat-food .schedule-title { color: #34C759; }
+  .cat-activity .schedule-title { color: #00C7BE; }
+  .cat-logistics .schedule-title { color: #FF9500; }
+
+  .tag-walk { background: #E8F5E9; color: #2E7D32; }
+  .tag-call { background: #FFF3E0; color: #E65100; }
+  .tag-link { background: #E3F2FD; color: #1565C0; }
+  .tag-directions { background: #E0F7FA; color: #00695C; }
+
+  /* ── Category Legend ── */
+  .legend {
+    padding: 12px 0 4px 0;
+    border-top: 1px solid #E5E5EA;
+    margin-top: 8px;
+    font-size: 13px;
+    color: #8E8E93;
+    line-height: 2;
+  }
+  .legend span {
+    margin-right: 14px;
+    white-space: nowrap;
+  }
+  .legend-travel { color: #007AFF; font-weight: 700; }
+  .legend-food { color: #34C759; font-weight: 700; }
+  .legend-activity { color: #00C7BE; font-weight: 700; }
+  .legend-logistics { color: #FF9500; font-weight: 700; }
+
+  /* ── Dinner Details ── */
+  .dinner-name {
+    font-size: 22px;
+    font-weight: 700;
+    color: #1C1C1E;
+  }
+  .dinner-type {
+    font-size: 14px;
+    color: #636366;
+    margin-top: 2px;
+    margin-bottom: 12px;
+  }
+  .dinner-badge {
+    display: inline-block;
+    padding: 6px 14px;
+    background: #E8F5E9;
+    color: #2E7D32;
+    border-radius: 8px;
+    font-size: 14px;
+    font-weight: 700;
+    margin-bottom: 14px;
+  }
+  .dinner-detail {
+    font-size: 16px;
+    padding: 8px 0;
+    border-bottom: 1px solid #F2F2F7;
+    color: #1C1C1E;
+  }
+  .dinner-detail:last-child { border-bottom: none; }
+  .dinner-detail .label {
+    color: #8E8E93;
+    font-weight: 600;
+    display: inline-block;
+    width: 60px;
+  }
+  .dinner-detail a {
+    color: #007AFF;
+    text-decoration: none;
+  }
+  .dinner-directions {
+    display: block;
+    text-align: center;
+    padding: 14px;
+    margin-top: 14px;
+    background: #F2F2F7;
+    border-radius: 8px;
+    text-decoration: none;
+    color: #007AFF;
+    font-size: 16px;
+    font-weight: 700;
+  }
+
+  /* ── Backup Card ── */
+  .backup-card {
+    background: #FFF8E1;
+    margin: 12px 16px;
+    padding: 16px;
+    border-radius: 4px;
+    border: 1.5px solid #FFE082;
+  }
+  .backup-label {
+    font-size: 12px;
+    font-weight: 700;
+    color: #F57F17;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 8px;
+  }
+  .backup-name {
+    font-size: 19px;
+    font-weight: 700;
+    color: #1C1C1E;
+    margin-bottom: 4px;
+  }
+  .backup-detail {
+    font-size: 15px;
+    color: #636366;
+    line-height: 1.5;
+  }
+  .backup-detail a {
+    color: #007AFF;
+    text-decoration: none;
+  }
+  .backup-strategy {
+    margin-top: 12px;
+    padding: 10px 12px;
+    background: rgba(255,224,130,0.3);
+    border-radius: 8px;
+    font-size: 14px;
+    color: #795548;
+    line-height: 1.45;
+  }
+
+  /* ── Grocery ── */
+  .grocery-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 14px 0;
+    border-bottom: 1px solid #E5E5EA;
+    text-decoration: none;
+    color: inherit;
+  }
+  .grocery-item:last-child { border-bottom: none; }
+  .grocery-emoji { font-size: 24px; }
+  .grocery-name { font-size: 17px; font-weight: 700; color: #1C1C1E; }
+  .grocery-detail { font-size: 14px; color: #636366; }
+  .grocery-badge {
+    display: inline-block;
+    padding: 4px 10px;
+    background: #FFF3E0;
+    color: #E65100;
+    border-radius: 6px;
+    font-size: 12px;
+    font-weight: 700;
+    margin-top: 4px;
+  }
+  .grocery-badge-danger {
+    background: #FFEBEE;
+    color: #C62828;
+  }
+
+  /* ── Tips ── */
+  .tip-item {
+    padding: 10px 0;
+    font-size: 15px;
+    color: #636366;
+    border-bottom: 1px solid #F2F2F7;
+    line-height: 1.4;
+  }
+  .tip-item:last-child { border-bottom: none; }
+
+  /* ── Quote ── */
+  .quote-card {
+    background: #F0F4FF;
+    margin: 16px 16px 12px 16px;
+    padding: 24px 20px;
+    text-align: center;
+    border-radius: 4px;
+    border: 1.5px solid #C7D2FE;
+  }
+  .quote-mark {
+    font-size: 40px;
+    color: #A5B4FC;
+    line-height: 1;
+    margin-bottom: 8px;
+  }
+  .quote-text {
+    font-size: 20px;
+    font-style: italic;
+    color: #1E293B;
+    line-height: 1.5;
+    margin-bottom: 10px;
+    font-weight: 600;
+  }
+  .quote-author {
+    font-size: 15px;
+    color: #475569;
+    font-weight: 700;
+  }
+
+  .footer {
+    text-align: center;
+    padding: 20px 16px 24px 16px;
+    font-size: 14px;
+    color: #8E8E93;
+  }
+</style>
+</head>
+<body>
+<div class="email-wrapper">
+
+<!-- Header -->
+<div class="header">
+  <div class="trip-label">🇮🇸 Iceland Trip</div>
+  <div class="day-title">South Coast Waterfalls</div>
+  <div class="day-date">Sunday, July 5</div>
+  <div class="day-of">Day 3 of 10</div>
+</div>
+<!-- Day Navigation -->
+<div class="day-nav">
+<a href="iceland-day1-email.html">1</a>
+<a href="iceland-day2-email.html">2</a>
+<a href="iceland-day3-email.html" class="active">3</a>
+<a href="iceland-day4-email.html">4</a>
+<a href="iceland-day5-email.html">5</a>
+<a href="iceland-day6-email.html">6</a>
+<a href="iceland-day7-email.html">7</a>
+<a href="iceland-day8-email.html">8</a>
+<a href="iceland-day9-email.html">9</a>
+<a href="iceland-day10-email.html">10</a>
+</div>
+
+
+<!-- Alerts -->
+<div class="card">
+  <div class="section-label">⚠️ Alerts</div>
+  <div class="alert-card alert-grocery">
+    <span class="alert-icon">🛒</span>
+    <strong>Gvendarkjör closes at 2:00pm (14:00) Sunday.</strong> You'll arrive after 7:00pm (19:00). Stock up at <strong>Krambúðin in Flúðir</strong> before you leave (opens 9:00, right by the guesthouse).
+  </div>
+  <div class="alert-card alert-safety">
+    <span class="alert-icon">🌊</span>
+    <strong>Reynisfjara:</strong> Stay well back from the waterline. Sneaker waves are real and have killed tourists. The black sand looks solid but can pull you in.
+  </div>
+</div>
+
+<!-- Weather -->
+<div class="card">
+  <div class="section-label">Weather</div>
+  <div class="weather-summary" style="text-align: center;">
+    <strong>55°F</strong> High <span class="weather-divider">|</span> <strong>44°F</strong> Low
+    <br>
+    <strong>35%</strong> Rain · <span class="weather-secondary">☁️ Mostly cloudy · Light winds along the coast</span>
+  </div>
+  <a class="weather-link" href="https://www.yr.no/en/forecast/daily-table/2-3413897/Iceland/Southern%20Region/V%C3%ADk?i=1" target="_blank">
+    Full forecast →
+  </a>
+</div>
+
+<!-- Driving Banner -->
+<div class="driving-banner">
+  🚗 ~3h in the car today · Vík and the south coast
+</div>
+
+<!-- Hotel -->
+<div class="hotel-card">
+  <div style="font-size: 28px; margin-bottom: 8px;">🏨</div>
+  <div class="hotel-name">Magma Hótel</div>
+  <div class="hotel-address">Tunga, 881 Kirkjubæjarklaustur</div>
+  <div class="hotel-detail">📞 <a href="tel:+3544200800">+354 420 0800</a></div>
+  <div class="hotel-detail">📍 ~1 hr drive from Vík after dinner</div>
+  <div class="hotel-actions">
+    <a class="hotel-btn" href="https://www.google.com/maps/dir/?api=1&origin=Vik&destination=Magma+Hotel,+Kirkjub%C3%A6jarklaustur&travelmode=driving" target="_blank">📍 Map from Vík</a>
+  </div>
+</div>
+
+<!-- Schedule -->
+<div class="card">
+  <div class="section-label">Schedule</div>
+
+  <div class="schedule-item cat-travel">
+    <div class="schedule-time">9:00</div>
+    <div class="schedule-title">Leave Flúðir</div>
+    <div class="schedule-subtitle">Head south on Route 1 · ~1.5h to Seljalandsfoss</div>
+  </div>
+
+  <div class="schedule-item cat-activity">
+    <div class="schedule-time">10:30</div>
+    <div class="schedule-title"><a href="https://www.google.com/maps/dir/?api=1&destination=Seljalandsfoss&travelmode=driving" target="_blank" style="color: #00C7BE;">Seljalandsfoss</a></div>
+    <div class="schedule-subtitle">Walk behind the waterfall · Bring waterproof layers!</div>
+    <a class="schedule-tag tag-directions" href="https://www.google.com/maps/dir/?api=1&destination=Seljalandsfoss&travelmode=driving" target="_blank">📍 Get directions</a>
+    <a class="schedule-tag tag-link" href="detail-seljalandsfoss.html" target="_blank">ℹ️ Learn more</a>
+  </div>
+
+  <div class="schedule-item cat-activity">
+    <div class="schedule-time">11:00</div>
+    <div class="schedule-title"><a href="https://www.google.com/maps/dir/?api=1&destination=Glj%C3%BAfrab%C3%BAi+Waterfall&travelmode=driving" target="_blank" style="color: #00C7BE;">Gljúfrabúi</a></div>
+    <div class="schedule-subtitle">Hidden waterfall in a cave · 5 min walk from Seljalandsfoss · Walk through the canyon entrance</div>
+    <a class="schedule-tag tag-directions" href="https://www.google.com/maps/dir/?api=1&destination=Glj%C3%BAfrab%C3%BAi+Waterfall&travelmode=driving" target="_blank">📍 Get directions</a>
+    <a class="schedule-tag tag-link" href="detail-gljufrabui.html" target="_blank">ℹ️ Learn more</a>
+  </div>
+
+  <div class="schedule-item cat-activity">
+    <div class="schedule-time">12:30 PM (12:30)</div>
+    <div class="schedule-title"><a href="https://www.google.com/maps/dir/?api=1&destination=Sk%C3%B3gafoss&travelmode=driving" target="_blank" style="color: #00C7BE;">Skógafoss</a></div>
+    <div class="schedule-subtitle">60m waterfall · Climb the stairs for the aerial view · ~30 min stop</div>
+    <a class="schedule-tag tag-directions" href="https://www.google.com/maps/dir/?api=1&destination=Sk%C3%B3gafoss&travelmode=driving" target="_blank">📍 Get directions</a>
+    <a class="schedule-tag tag-link" href="detail-skogafoss.html" target="_blank">ℹ️ Learn more</a>
+  </div>
+
+  <div class="schedule-item cat-activity">
+    <div class="schedule-time">2:00 PM (14:00)</div>
+    <div class="schedule-title"><a href="https://www.google.com/maps/dir/?api=1&destination=Reynisfjara+Black+Sand+Beach&travelmode=driving" target="_blank" style="color: #00C7BE;">Reynisfjara Black Sand Beach</a></div>
+    <div class="schedule-subtitle">Basalt columns · Sea stacks · Stay back from the water!</div>
+    <a class="schedule-tag tag-directions" href="https://www.google.com/maps/dir/?api=1&destination=Reynisfjara+Black+Sand+Beach&travelmode=driving" target="_blank">📍 Get directions</a>
+    <a class="schedule-tag tag-link" href="detail-reynisfjara.html" target="_blank">ℹ️ Learn more</a>
+  </div>
+
+  <div class="schedule-item cat-logistics">
+    <div class="schedule-time">4:00 PM (16:00)</div>
+    <div class="schedule-title"><a href="https://www.google.com/maps/dir/?api=1&destination=V%C3%ADk+Iceland&travelmode=driving" target="_blank" style="color: #FF9500;">Arrive Vík</a></div>
+    <div class="schedule-subtitle">Explore town · Shop · Rest before dinner</div>
+    <a class="schedule-tag tag-link" href="detail-vik.html" target="_blank">ℹ️ Learn more</a>
+    <a class="schedule-tag tag-directions" href="https://www.google.com/maps/dir/?api=1&destination=V%C3%ADk+Iceland&travelmode=driving" target="_blank">📍 Get directions</a>
+  </div>
+
+  <div class="schedule-item cat-food">
+    <div class="schedule-time">6:00 PM (18:00)</div>
+    <div class="schedule-title"><a href="https://www.google.com/maps/dir/?api=1&destination=Kjarr+Restaurant+V%C3%ADk&travelmode=driving" target="_blank" style="color: #34C759;">Dinner: Kjarr</a></div>
+    <div class="schedule-subtitle">Walk-in, first come first served · 4.9★</div>
+    <a class="schedule-tag tag-directions" href="https://www.google.com/maps/dir/?api=1&destination=Kjarr+Restaurant+V%C3%ADk&travelmode=driving" target="_blank">📍 Get directions</a>
+  </div>
+
+  <div class="schedule-item cat-travel">
+    <div class="schedule-time">7:30 PM (19:30)</div>
+    <div class="schedule-title"><a href="https://www.google.com/maps/dir/?api=1&destination=Magma+Hotel+Kirkjub%C3%A6jarklaustur&travelmode=driving" target="_blank" style="color: #007AFF;">Drive to Magma Hotel</a></div>
+    <div class="schedule-subtitle">Vík → Kirkjubæjarklaustur · ~1 hour on Route 1 · 68 miles</div>
+    <a class="schedule-tag tag-directions" href="https://www.google.com/maps/dir/?api=1&destination=Magma+Hotel+Kirkjub%C3%A6jarklaustur&travelmode=driving" target="_blank">📍 Get directions</a>
+  </div>
+
+  <!-- Legend -->
+  <div class="legend">
+    <span><span class="legend-travel">■</span> Travel</span>
+    <span><span class="legend-food">■</span> Food</span>
+    <span><span class="legend-activity">■</span> Activity</span>
+    <span><span class="legend-logistics">■</span> Logistics</span>
+  </div>
+</div>
+
+<!-- Dinner Details -->
+<div class="card">
+  <div class="section-label">Dinner Details</div>
+  <div class="dinner-name">Kjarr</div>
+  <div class="dinner-type">Vík · Walk-in · 4.9★</div>
+  <div class="dinner-badge">⭐ 4.9 · Arrive by 6:00pm (18:00)</div>
+  <div class="dinner-detail"><span class="label">Time</span> 6:00pm (18:00) — arrive early</div>
+  <div class="dinner-detail"><span class="label">Type</span> Walk-in, first come first served</div>
+  <div class="dinner-detail"><span class="label">Notes</span> Walk-in, 4.9★. Arrive by 6:00pm (18:00). </div>
+  <div class="dinner-detail"><span class="label">Phone</span> <a href="tel:+3545461400">+354 546 1400</a></div>
+  <div class="dinner-detail"><span class="label">Web</span> <a href="https://kjarrrestaurant.is/" target="_blank">kjarrrestaurant.is</a></div>
+  <a class="dinner-directions" href="https://www.google.com/maps/dir/?api=1&destination=Kjarr+Restaurant+V%C3%ADk&travelmode=driving" target="_blank">
+    📍 Get directions to Kjarr
+  </a>
+</div>
+
+<!-- Dinner Backup -->
+<div class="backup-card">
+  <div class="backup-label">🔄 Backup · If Kjarr is packed</div>
+  <div class="backup-name">Klaustur Restaurant</div>
+  <div class="backup-detail">
+    Near Magma Hotel in Kirkjubæjarklaustur · ~1 hr drive from Vík · 68 miles<br>
+    <strong>7:30pm (19:30)</strong> · Dineout #8943297 · <a href="tel:+3544874900">+354 487 4900</a><br>
+    <a href="https://klausturrestaurant.is/" target="_blank">klausturrestaurant.is</a>
+  </div>
+  <div class="backup-strategy">
+    <strong>Strategy:</strong> Backup if Kjarr is packed. Drive straight to Klaustur, near the hotel.
+  </div>
+</div>
+
+<!-- Grocery -->
+<div class="card">
+  <div class="section-label">Grocery Stores</div>
+  <a class="grocery-item" href="https://www.google.com/maps/dir/?api=1&destination=Gvendarkj%C3%B6r,+Kirkjub%C3%A6jarklaustur&travelmode=driving" target="_blank">
+    <span class="grocery-emoji">⚠️</span>
+    <div>
+      <div class="grocery-name">Gvendarkjör</div>
+      <div class="grocery-detail">205, 880 Kirkjubæjarklaustur · Sun 10:00-14:00</div>
+      <div class="grocery-badge grocery-badge-danger">Closes 2:00pm (14:00) Sunday! You'll arrive too late.</div>
+    </div>
+  </a>
+  <a class="grocery-item" href="https://www.google.com/maps/dir/?api=1&destination=Skaft%C3%A1rsk%C3%A1li&travelmode=driving" target="_blank">
+    <span class="grocery-emoji">⛽</span>
+    <div>
+      <div class="grocery-name">Skaftárskáli (gas station)</div>
+      <div class="grocery-detail">Fallback grocery · 09:00–22:00</div>
+      <div class="grocery-badge">Fallback grocery</div>
+    </div>
+  </a>
+</div>
+
+<!-- Tips -->
+<div class="card">
+  <div class="section-label">Tips</div>
+  <div class="tip-item">💧 Bring a waterproof jacket for Seljalandsfoss — you walk behind the waterfall and WILL get soaked</div>
+  <div class="tip-item">🛒 Grocery closes 2:00pm (14:00) Sunday! Stock up in Flúðir before leaving</div>
+  <div class="tip-item">⏰ Kjarr is small and popular — arrive by 6:00pm (18:00). If packed, head to Klaustur instead</div>
+  <div class="tip-item">🌙 Nearly 24hr daylight — great visibility even driving at 9:00pm (21:00)</div>
+</div>
+
+<!-- Quote -->
+<div class="quote-card">
+  <div class="quote-mark">"</div>
+  <div class="quote-text">Life begins at the end of your comfort zone.</div>
+  <div class="quote-author">— Neale Donald Walsch</div>
+</div>
+
+<div class="footer">🇮🇸 Built with love for the Iceland crew</div>
+
+</div>
+</body>
+</html>

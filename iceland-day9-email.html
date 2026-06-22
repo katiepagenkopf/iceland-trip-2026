@@ -1,0 +1,620 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Iceland Trip — Day 9</title>
+<style>
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Helvetica Neue', Arial, sans-serif;
+    background: #EFEFEF;
+    color: #1C1C1E;
+    margin: 0;
+    padding: 0;
+    -webkit-font-smoothing: antialiased;
+    font-size: 17px;
+    line-height: 1.5;
+  }
+  .email-wrapper {
+    max-width: 600px;
+    margin: 0 auto;
+    background: #EFEFEF;
+  }
+
+  /* ── Header ── */
+  .header {
+    background: linear-gradient(135deg, #007AFF 0%, #5856D6 100%);
+    color: white;
+    padding: 28px 24px 24px 24px;
+    text-align: center;
+  }
+  .trip-label {
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    opacity: 0.9;
+    margin-bottom: 8px;
+  }
+  .day-title {
+    font-size: 26px;
+    font-weight: 700;
+    margin-bottom: 6px;
+    letter-spacing: -0.5px;
+    line-height: 1.25;
+  }
+  .day-date {
+    font-size: 18px;
+    font-weight: 400;
+    opacity: 0.9;
+  }
+  .day-of {
+    font-size: 14px;
+    font-weight: 500;
+    opacity: 0.75;
+    margin-top: 4px;
+  }
+  /* ── Day Navigation ── */
+  .day-nav {
+    text-align: center;
+    padding: 14px 10px; background: white; margin: 0 16px;
+    border-radius: 12px; box-shadow: 0 1px 3px rgba(0,0,0,0.06);
+    font-size: 0; letter-spacing: 0;
+    margin-top: -24px; position: relative; z-index: 2;
+  }
+  .day-nav a {
+    display: inline-block;
+    width: 28px; height: 28px; border-radius: 50%;
+    background: #F2F2F7; color: #636366; font-size: 12px;
+    font-weight: 600; text-decoration: none; line-height: 28px;
+    text-align: center; vertical-align: middle;
+    margin: 0 2px;
+  }
+  .day-nav a.active { background: #007AFF; color: white; }
+  .day-nav a:active { opacity: 0.7; }
+
+  /* ── Cards ── */
+  .card {
+    background: #FFFFFF;
+    margin: 12px 16px;
+    padding: 16px;
+    border-radius: 4px;
+    border: 1px solid #E5E5EA;
+  }
+  .section-label {
+    font-size: 12px;
+    font-weight: 700;
+    color: #8E8E93;
+    text-transform: uppercase;
+    letter-spacing: 1.2px;
+    margin-bottom: 12px;
+    padding-bottom: 8px;
+    border-bottom: 2px solid #E5E5EA;
+  }
+
+  /* ── Weather ── */
+  .weather-summary {
+    font-size: 17px;
+    padding: 4px 0 8px 0;
+    line-height: 1.8;
+  }
+  .weather-summary strong {
+    font-weight: 700;
+  }
+  .weather-divider {
+    color: #D1D1D6;
+    margin: 0 8px;
+  }
+  .weather-secondary {
+    font-size: 15px;
+    color: #636366;
+  }
+  .weather-link {
+    display: block;
+    text-align: center;
+    padding: 14px 0 0 0;
+    margin-top: 10px;
+    border-top: 1px solid #E5E5EA;
+    text-decoration: none;
+    color: #007AFF;
+    font-size: 15px;
+    font-weight: 600;
+  }
+
+  /* ── Driving Banner ── */
+  .driving-banner {
+    background: #F0F8FF;
+    padding: 14px 16px;
+    border-radius: 4px;
+    border: 1px solid #B3D9FF;
+    font-size: 16px;
+    font-weight: 600;
+    color: #007AFF;
+    text-align: center;
+    margin: 12px 16px;
+  }
+
+  /* ── Hotel Card ── */
+  .hotel-card {
+    background: #FFF8E1;
+    margin: 12px 16px;
+    padding: 20px;
+    border-radius: 4px;
+    border: 1.5px solid #FFE082;
+  }
+  .hotel-name {
+    font-size: 24px;
+    font-weight: 700;
+    color: #1C1C1E;
+    margin-bottom: 4px;
+  }
+  .hotel-address {
+    font-size: 14px;
+    color: #636366;
+    margin-bottom: 14px;
+  }
+  .hotel-detail {
+    font-size: 16px;
+    padding: 6px 0;
+    color: #1C1C1E;
+    border-bottom: 1px solid #FFE082;
+  }
+  .hotel-detail:last-child { border-bottom: none; }
+  .hotel-detail a {
+    color: #007AFF;
+    text-decoration: none;
+    font-weight: 600;
+  }
+  .hotel-actions {
+    display: flex;
+    gap: 10px;
+    margin-top: 16px;
+  }
+  .hotel-btn {
+    flex: 1;
+    display: block;
+    text-align: center;
+    padding: 12px;
+    background: #FFFFFF;
+    border: 1.5px solid #FFE082;
+    border-radius: 8px;
+    text-decoration: none;
+    color: #007AFF;
+    font-size: 15px;
+    font-weight: 700;
+  }
+
+  /* ── Schedule ── */
+  .schedule-item {
+    padding: 14px 0;
+    border-bottom: 1px solid #E5E5EA;
+  }
+  .schedule-item:last-child { border-bottom: none; }
+  .schedule-time {
+    font-size: 13px;
+    font-weight: 700;
+    color: #8E8E93;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-bottom: 2px;
+  }
+  .schedule-title {
+    font-size: 18px;
+    font-weight: 700;
+    margin-bottom: 3px;
+  }
+  .schedule-title a {
+    text-decoration: none;
+  }
+  .schedule-subtitle {
+    font-size: 15px;
+    color: #636366;
+    line-height: 1.4;
+  }
+  .schedule-tag {
+    display: inline-block;
+    padding: 4px 12px;
+    border-radius: 6px;
+    font-size: 13px;
+    font-weight: 700;
+    margin-top: 6px;
+    margin-right: 6px;
+    text-decoration: none;
+  }
+
+  /* Category colors */
+  .cat-travel .schedule-title { color: #007AFF; }
+  .cat-food .schedule-title { color: #34C759; }
+  .cat-activity .schedule-title { color: #00C7BE; }
+  .cat-logistics .schedule-title { color: #FF9500; }
+
+  .tag-walk { background: #E8F5E9; color: #2E7D32; }
+  .tag-call { background: #FFF3E0; color: #E65100; }
+  .tag-link { background: #E3F2FD; color: #1565C0; }
+  .tag-directions { background: #E0F7FA; color: #00695C; }
+  .tag-walkin { background: #F2F2F7; color: #636366; }
+
+  /* ── Category Legend ── */
+  .legend {
+    padding: 12px 0 4px 0;
+    border-top: 1px solid #E5E5EA;
+    margin-top: 8px;
+    font-size: 13px;
+    color: #8E8E93;
+    line-height: 2;
+  }
+  .legend span {
+    margin-right: 14px;
+    white-space: nowrap;
+  }
+  .legend-travel { color: #007AFF; font-weight: 700; }
+  .legend-food { color: #34C759; font-weight: 700; }
+  .legend-activity { color: #00C7BE; font-weight: 700; }
+  .legend-logistics { color: #FF9500; font-weight: 700; }
+
+  /* ── Excursion Card (similar to dinner card) ── */
+  .excursion-card {
+    background: #FFFFFF;
+    margin: 12px 16px;
+    padding: 16px;
+    border-radius: 4px;
+    border: 1px solid #E5E5EA;
+  }
+  .excursion-name {
+    font-size: 22px;
+    font-weight: 700;
+    color: #1C1C1E;
+  }
+  .excursion-type {
+    font-size: 14px;
+    color: #636366;
+    margin-top: 2px;
+    margin-bottom: 12px;
+  }
+  .excursion-badge {
+    display: inline-block;
+    padding: 6px 14px;
+    background: #E0F7FA;
+    color: #00695C;
+    border-radius: 8px;
+    font-size: 14px;
+    font-weight: 700;
+    margin-bottom: 14px;
+  }
+  .excursion-detail {
+    font-size: 16px;
+    padding: 8px 0;
+    border-bottom: 1px solid #F2F2F7;
+    color: #1C1C1E;
+  }
+  .excursion-detail:last-child { border-bottom: none; }
+  .excursion-detail .label {
+    color: #8E8E93;
+    font-weight: 600;
+    display: inline-block;
+    width: 80px;
+  }
+  .excursion-detail a {
+    color: #007AFF;
+    text-decoration: none;
+  }
+
+  /* ── Dinner Details ── */
+  .dinner-name {
+    font-size: 22px;
+    font-weight: 700;
+    color: #1C1C1E;
+  }
+  .dinner-type {
+    font-size: 14px;
+    color: #636366;
+    margin-top: 2px;
+    margin-bottom: 12px;
+  }
+  .dinner-badge {
+    display: inline-block;
+    padding: 6px 14px;
+    background: #E8F5E9;
+    color: #2E7D32;
+    border-radius: 8px;
+    font-size: 14px;
+    font-weight: 700;
+    margin-bottom: 14px;
+  }
+  .dinner-detail {
+    font-size: 16px;
+    padding: 8px 0;
+    border-bottom: 1px solid #F2F2F7;
+    color: #1C1C1E;
+  }
+  .dinner-detail:last-child { border-bottom: none; }
+  .dinner-detail .label {
+    color: #8E8E93;
+    font-weight: 600;
+    display: inline-block;
+    width: 80px;
+  }
+  .dinner-detail a {
+    color: #007AFF;
+    text-decoration: none;
+  }
+  .dinner-directions {
+    display: block;
+    text-align: center;
+    padding: 14px;
+    margin-top: 14px;
+    background: #F2F2F7;
+    border-radius: 8px;
+    text-decoration: none;
+    color: #007AFF;
+    font-size: 16px;
+    font-weight: 700;
+  }
+
+  /* ── Grocery ── */
+  .grocery-item {
+    padding: 12px 0;
+    border-bottom: 1px solid #E5E5EA;
+    font-size: 15px;
+    color: #1C1C1E;
+    line-height: 1.5;
+  }
+  .grocery-item:last-child { border-bottom: none; }
+  .grocery-item strong {
+    font-weight: 700;
+  }
+  .grocery-meta {
+    color: #636366;
+    font-size: 14px;
+  }
+  .grocery-badge {
+    display: inline-block;
+    padding: 3px 10px;
+    background: #FFF3E0;
+    color: #E65100;
+    border-radius: 6px;
+    font-size: 12px;
+    font-weight: 700;
+    margin-left: 6px;
+    white-space: nowrap;
+  }
+
+  /* ── Tips ── */
+  .tip-item {
+    padding: 10px 0;
+    font-size: 15px;
+    color: #636366;
+    border-bottom: 1px solid #F2F2F7;
+    line-height: 1.4;
+  }
+  .tip-item:last-child { border-bottom: none; }
+
+  /* ── Quote ── */
+  .quote-card {
+    background: #F0F4FF;
+    margin: 16px 16px 12px 16px;
+    padding: 24px 20px;
+    text-align: center;
+    border-radius: 4px;
+    border: 1.5px solid #C7D2FE;
+  }
+  .quote-mark {
+    font-size: 40px;
+    color: #A5B4FC;
+    line-height: 1;
+    margin-bottom: 8px;
+  }
+  .quote-text {
+    font-size: 20px;
+    font-style: italic;
+    color: #1E293B;
+    line-height: 1.5;
+    margin-bottom: 10px;
+    font-weight: 600;
+  }
+  .quote-author {
+    font-size: 15px;
+    color: #475569;
+    font-weight: 700;
+  }
+
+  .footer {
+    text-align: center;
+    padding: 20px 16px 24px 16px;
+    font-size: 14px;
+    color: #8E8E93;
+  }
+</style>
+</head>
+<body>
+<div class="email-wrapper">
+
+<!-- Header -->
+<div class="header">
+  <div class="trip-label">🇮🇸 Iceland Trip</div>
+  <div class="day-title">Snæfellsnes · Lava Cave · Canyon Baths · <span style="white-space:nowrap">Farewell Dinner</span></div>
+  <div class="day-date">Saturday, July 11</div>
+  <div class="day-of">Day 9 of 10</div>
+</div>
+<!-- Day Navigation -->
+<div class="day-nav">
+<a href="iceland-day1-email.html">1</a>
+<a href="iceland-day2-email.html">2</a>
+<a href="iceland-day3-email.html">3</a>
+<a href="iceland-day4-email.html">4</a>
+<a href="iceland-day5-email.html">5</a>
+<a href="iceland-day6-email.html">6</a>
+<a href="iceland-day7-email.html">7</a>
+<a href="iceland-day8-email.html">8</a>
+<a href="iceland-day9-email.html" class="active">9</a>
+<a href="iceland-day10-email.html">10</a>
+</div>
+
+
+<!-- Weather -->
+<div class="card">
+  <div class="section-label">Weather</div>
+  <div class="weather-summary" style="text-align: center;">
+    <strong>56°F</strong> High <span class="weather-divider">|</span> <strong>47°F</strong> Low
+    <br>
+    <strong>30%</strong> Rain · <span class="weather-secondary">Mild, light layer weather</span>
+  </div>
+  <a class="weather-link" href="https://www.yr.no/en/forecast/daily-table/2-3413897/Iceland/Southern%20Region/V%C3%ADk?i=1" target="_blank">
+    Full forecast →
+  </a>
+</div>
+
+<!-- Driving Banner -->
+<div class="driving-banner">
+  🚗 ~2h in the car today · Arnarstapi to Reykjavík (via Húsafell)
+</div>
+
+<!-- Hotel -->
+<div class="hotel-card">
+  <div style="font-size: 28px; margin-bottom: 8px;">🏨</div>
+  <div class="hotel-name">Hótel Frón</div>
+  <div class="hotel-address">Back in the city for the farewell</div>
+  <div class="hotel-detail">📞 <a href="tel:+354****4666">+354 511 4666</a></div>
+  <div class="hotel-detail">📍 Laugavegur 22A, 101 Reykjavík</div>
+  <div class="hotel-actions">
+    <a class="hotel-btn" href="https://www.google.com/maps/dir/?api=1&destination=H%C3%B3tel+Fr%C3%B3n+Laugavegur&travelmode=driving" target="_blank">📍 Directions to Hótel Frón</a>
+  </div>
+</div>
+
+<!-- Schedule -->
+<div class="card">
+  <div class="section-label">Schedule</div>
+
+  <div class="schedule-item cat-activity">
+    <div class="schedule-time">9:00</div>
+    <div class="schedule-title">Morning walk at Arnarstapi</div>
+    <div class="schedule-subtitle">Basalt cliffs · Coastal path to Hellnar · ~45 min each way</div>
+    <a class="schedule-tag tag-link" href="detail-arnarstapi.html" target="_blank">ℹ️ Learn more</a>
+  </div>
+
+  <div class="schedule-item cat-travel">
+    <div class="schedule-time">10:00</div>
+    <div class="schedule-title">Leave Arnarstapi</div>
+    <div class="schedule-subtitle">Drive to Víðgelmir lava cave · ~2 hrs</div>
+    <a class="schedule-tag tag-directions" href="https://www.google.com/maps/dir/?api=1&origin=Arnarstapi&destination=V%C3%AD%C3%B0gelmir+lava+cave&travelmode=driving" target="_blank">📍 Get directions</a>
+  </div>
+
+  <div class="schedule-item cat-activity">
+    <div class="schedule-time">12:00 PM (12:00)</div>
+    <div class="schedule-title"><a href="https://www.google.com/maps/dir/?api=1&origin=H%C3%BAsafell&destination=V%C3%AD%C3%B0gelmir+lava+cave&travelmode=driving" target="_blank" style="color: #00C7BE;">Víðgelmir Lava Cave Tour</a></div>
+    <div class="schedule-subtitle">The Cave · Largest lava tube in Iceland · Helmet + headlamp provided</div>
+    <a class="schedule-tag tag-link" href="detail-vidgelmir.html" target="_blank">ℹ️ Learn more</a>
+    <a class="schedule-tag tag-directions" href="https://www.google.com/maps/dir/?api=1&origin=H%C3%BAsafell&destination=V%C3%AD%C3%B0gelmir+lava+cave&travelmode=driving" target="_blank">📍 Get directions</a>
+  </div>
+
+  <div class="schedule-item cat-activity">
+    <div class="schedule-time">2:30 PM (14:30)</div>
+    <div class="schedule-title"><a href="https://www.google.com/maps/dir/?api=1&origin=V%C3%AD%C3%B0gelmir+lava+cave&destination=H%C3%BAsafell+Canyon+Baths&travelmode=driving" target="_blank" style="color: #00C7BE;">Húsafell Canyon Baths</a></div>
+    <div class="schedule-subtitle">Geothermal pools in a highland canyon · 1 hr soak · Bring your swimsuit & towel</div>
+    <a class="schedule-tag tag-link" href="detail-husafell.html" target="_blank">ℹ️ Learn more</a>
+    <a class="schedule-tag tag-directions" href="https://www.google.com/maps/dir/?api=1&origin=V%C3%AD%C3%B0gelmir+lava+cave&destination=H%C3%BAsafell+Canyon+Baths&travelmode=driving" target="_blank">📍 Get directions</a>
+  </div>
+
+  <div class="schedule-item cat-travel">
+    <div class="schedule-time">4:00 PM (16:00)</div>
+    <div class="schedule-title">Drive to Reykjavík</div>
+    <div class="schedule-subtitle">~2 hrs via Route 1 · Final leg back to the city</div>
+    <a class="schedule-tag tag-directions" href="https://www.google.com/maps/dir/?api=1&origin=H%C3%BAsafell+Canyon+Baths&destination=H%C3%B3tel+Fr%C3%B3n+Reykjav%C3%ADk&travelmode=driving" target="_blank">📍 Get directions</a>
+  </div>
+
+  <div class="schedule-item cat-logistics">
+    <div class="schedule-time">6:00 PM (18:00)</div>
+    <div class="schedule-title">Arrive Hótel Frón</div>
+    <div class="schedule-subtitle">Check in · Shower · Rest before dinner</div>
+  </div>
+
+  <div class="schedule-item cat-travel">
+    <div class="schedule-time">7:26 PM (19:26)</div>
+    <div class="schedule-title">Walk to Messinn</div>
+    <div class="schedule-subtitle">~4 min walk from the hotel</div>
+    <a class="schedule-tag tag-directions" href="https://www.google.com/maps/dir/?api=1&origin=H%C3%B3tel+Fr%C3%B3n&destination=Messinn&travelmode=walking" target="_blank">📍 Get directions</a>
+  </div>
+
+  <div class="schedule-item cat-food">
+    <div class="schedule-time">7:30 PM (19:30)</div>
+    <div class="schedule-title"><a href="https://www.google.com/maps/dir/?api=1&origin=H%C3%B3tel+Fr%C3%B3n&destination=Messinn+Reykjav%C3%ADk&travelmode=walking" target="_blank" style="color: #34C759;">Farewell dinner at Messinn</a></div>
+    <div class="schedule-subtitle">Last-chance lobster in Iceland · Say goodbye to the crew</div>
+    <a class="schedule-tag tag-directions" href="https://www.google.com/maps/dir/?api=1&origin=H%C3%B3tel+Fr%C3%B3n&destination=Messinn+Reykjav%C3%ADk&travelmode=walking" target="_blank">📍 Get directions</a>
+  </div>
+
+  <!-- Legend -->
+  <div class="legend">
+    <span><span class="legend-travel">■</span> Travel</span>
+    <span><span class="legend-food">■</span> Food</span>
+    <span><span class="legend-activity">■</span> Activity</span>
+    <span><span class="legend-logistics">■</span> Logistics</span>
+  </div>
+</div>
+
+<!-- Excursion 1 -->
+<div class="excursion-card">
+  <div class="excursion-name">Víðgelmir Lava Cave Tour</div>
+  <div class="excursion-type">The Cave · Largest lava tube in Iceland · Helmet + headlamp provided</div>
+  <div class="excursion-badge">⏰ 12:00pm (12:00)</div>
+  <div class="excursion-detail"><span class="label">Time</span> 12:00pm (12:00)</div>
+  <div class="excursion-detail"><span class="label">Operator</span> The Cave</div>
+  <div class="excursion-detail"><span class="label">Phone</span> <a href="tel:+354****3600">+354 783 3600</a></div>
+</div>
+
+<!-- Excursion 2 -->
+<div class="excursion-card">
+  <div class="excursion-name">Húsafell Canyon Baths</div>
+  <div class="excursion-type">Geothermal pools in a highland canyon · 1 hr soak</div>
+  <div class="excursion-badge">⏰ 2:30pm (14:30)</div>
+  <div class="excursion-detail"><span class="label">Time</span> 2:30pm (14:30)</div>
+  <div class="excursion-detail"><span class="label">Type</span> Geothermal pools in a highland canyon</div>
+  <div class="excursion-detail"><span class="label">Phone</span> <a href="tel:+354****1551">+354 435 1551</a></div>
+</div>
+
+<!-- Dinner Details -->
+<div class="card">
+  <div class="section-label">Dinner Details</div>
+  <div class="dinner-name">Messinn</div>
+  <div class="dinner-type">Reykjavík · Farewell dinner</div>
+  <div class="dinner-badge">🍽️ Reserved · Dineout #8943892</div>
+  <div class="dinner-detail"><span class="label">Time</span> 7:30pm (19:30)</div>
+  <div class="dinner-detail"><span class="label">Type</span> Reserved · Dineout #8943892</div>
+  <div class="dinner-detail"><span class="label">Phone</span> <a href="tel:+354****0095">+354 546 0095</a></div>
+  <div class="dinner-detail"><span class="label">Web</span> <a href="https://messinn.com/" target="_blank">messinn.com</a></div>
+  <a class="dinner-directions" href="https://www.google.com/maps/dir/?api=1&origin=H%C3%B3tel+Fr%C3%B3n&destination=Messinn&travelmode=walking" target="_blank">
+    📍 Walking directions from hotel (~4 min)
+  </a>
+</div>
+
+<!-- Grocery -->
+<div class="card">
+  <div class="section-label">Grocery</div>
+  <div class="grocery-item">
+    <strong>Bónus</strong> <span class="grocery-meta">— Laugavegur 59 · 10:00–23:00</span>
+    <span class="grocery-badge">📍 From hotel · 4 min walk</span>
+  </div>
+  <div class="grocery-item">
+    <strong>Krónan</strong> <span class="grocery-meta">— Hallveigarstígur 1 · 08:00–21:00</span>
+    <span class="grocery-badge">📍 From hotel · 5 min walk</span>
+  </div>
+</div>
+
+<!-- Tips -->
+<div class="card">
+  <div class="section-label">Tips</div>
+  <div class="tip-item">⏰ <strong>Tight day:</strong> lava cave + canyon baths + 2hr drive to Reykjavik. 7:30pm (19:30) dinner gives buffer.</div>
+  <div class="tip-item">🦞 <strong>Messinn:</strong> farewell dinner, last-chance lobster in Iceland.</div>
+</div>
+
+<!-- Quote -->
+<div class="quote-card">
+  <div class="quote-mark">&ldquo;</div>
+  <div class="quote-text">We travel not to escape life, but for life not to escape us.</div>
+  <div class="quote-author">— Anonymous</div>
+</div>
+
+<div class="footer">🇮🇸 Built with love for the Iceland crew</div>
+
+</div>
+</body>
+</html>
