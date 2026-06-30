@@ -1,5 +1,4 @@
 <!DOCTYPE html>
-
 <html lang="en">
 <head>
 <meta charset="utf-8"/>
@@ -24,10 +23,6 @@
     --quote-border: #C7D2FE;
     --hotel-bg: #FFF8E1;
     --hotel-border: #FFE082;
-    --action-bg: #FFF3E0;
-    --action-border: #FFB74D;
-    --safety-bg: #FFEBEE;
-    --safety-border: #EF9A9A;
   }
 
   * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -61,7 +56,7 @@
     margin-bottom: 6px;
   }
   .header .day-title {
-    font-size: 28px;
+    font-size: 30px;
     font-weight: 700;
     margin-bottom: 4px;
     letter-spacing: -0.5px;
@@ -122,11 +117,6 @@
     letter-spacing: 0.8px;
     padding: 0 4px 8px 4px;
   }
-  .label-transport { color: #007AFF; }
-  .label-food { color: #34C759; }
-  .label-activity { color: #00C7BE; }
-  .label-logistics { color: #FF9500; }
-  .label-safety { color: #FF3B30; }
 
   /* ── Cards ── */
   .card {
@@ -157,32 +147,6 @@
   .driving-banner .icon { font-size: 24px; flex-shrink: 0; }
   .driving-banner .text { font-size: 16px; font-weight: 500; color: var(--blue); line-height: 1.35; }
 
-  /* ── Alerts ── */
-  .alert-section-icon {
-    display: inline-flex; align-items: center; justify-content: center;
-    width: 20px; height: 20px; border-radius: 50%;
-    background: #FF3B30; color: white;
-    font-size: 13px; font-weight: 700;
-    margin-right: 2px; vertical-align: middle;
-  }
-  .alert-card {
-    display: flex; align-items: flex-start; gap: 12px;
-    padding: 14px 16px; border-radius: 14px;
-  }
-  .alert-card + .alert-card { margin-top: 10px; }
-  .alert-card-icon { font-size: 20px; flex-shrink: 0; margin-top: 1px; }
-  .alert-card .alert-text { font-size: 15px; line-height: 1.45; overflow-wrap: break-word; word-wrap: break-word; }
-  .alert-card .alert-text strong { font-weight: 600; }
-  .alert-grocery {
-    background: #FFF8E1; border: 1.5px solid #FFE082;
-  }
-  .alert-grocery .alert-text { color: #5D4037; }
-  .alert-grocery .alert-text strong { color: #E65100; }
-  .alert-safety {
-    background: var(--safety-bg); border: 1.5px solid var(--safety-border);
-  }
-  .alert-safety .alert-text { color: #C62828; }
-
   /* ── Timeline ── */
   .timeline { padding: 4px 0; }
   .timeline-item {
@@ -198,10 +162,13 @@
   .event-time .period { font-size: 13px; color: var(--secondary); font-weight: 500; }
   .event-dot-line { display: flex; flex-direction: column; align-items: center; padding-top: 6px; flex-shrink: 0; }
   .event-dot { width: 10px; height: 10px; border-radius: 50%; flex-shrink: 0; }
+
+  /* Dot colors */
   .dot-travel { background: #007AFF; }
   .dot-food { background: #34C759; }
   .dot-activity { background: #00C7BE; }
   .dot-logistics { background: #FF9500; }
+
   .event-details { flex: 1; min-width: 0; }
   .event-title { font-size: 17px; font-weight: 600; margin-bottom: 2px; line-height: 1.3; }
   .event-subtitle { font-size: 15px; color: var(--secondary); line-height: 1.4; }
@@ -213,9 +180,8 @@
   .tag-call { background: #FFF3E0; color: #E65100; cursor: pointer; }
   .tag-call:active { opacity: 0.7; }
   .tag-link { background: #E3F2FD; color: #1565C0; }
-  .tag-walkin { background: #F2F2F7; color: #636366; white-space: nowrap; }
-  .tag-safety { background: #FFEBEE; color: #C62828; }
-  .tag-directions { background: #E0F7FA; color: #00695C; }
+  .tag-directions { background: #E0F7FA; color: #00695C; cursor: pointer; }
+  .tag-directions:active { opacity: 0.7; }
   .link-arrow { color: var(--tertiary); font-size: 16px; flex-shrink: 0; padding-top: 6px; }
   .learn-more-link { font-size: 14px; font-weight: 600; color: #007AFF; text-decoration: none; margin-left: auto; }
   .learn-more-link:active { opacity: 0.7; }
@@ -234,54 +200,6 @@
   .hotel-detail-row .detail-icon { font-size: 18px; width: 24px; text-align: center; flex-shrink: 0; }
   .hotel-detail-row a { color: var(--blue); text-decoration: none; font-weight: 500; }
   .hotel-detail-row a:active { opacity: 0.7; }
-  .hotel-actions { display: flex; gap: 10px; margin-top: 16px; }
-  .hotel-action-btn {
-    flex: 1; display: flex; align-items: center; justify-content: center; gap: 8px;
-    padding: 12px; background: white; border: 1px solid var(--hotel-border);
-    border-radius: 12px; text-decoration: none; color: var(--blue);
-    font-size: 15px; font-weight: 600; transition: opacity 0.15s;
-  }
-  .hotel-action-btn:active { opacity: 0.7; }
-
-  
-  
-  
-  
-  
-  
-  .badge-walkin { background: #F2F2F7; color: #636366; white-space: nowrap; }
-  .badge-rating { background: #FFF8E1; color: #F57F17; }
-  
-  
-  .meal-detail-row .label { color: var(--secondary); width: 70px; flex-shrink: 0; font-weight: 500; }
-  .meal-detail-row a { color: var(--blue); text-decoration: none; }
-  .meal-detail-row a:active { opacity: 0.7; }
-
-  /* ── Backup Card ── */
-  .backup-card {
-    background: #FFF8E1;
-    border: 1.5px solid #FFE082;
-    border-radius: 16px;
-    padding: 16px;
-  }
-  .backup-header {
-    display: flex; align-items: center; gap: 8px; margin-bottom: 8px;
-  }
-  .backup-icon { font-size: 18px; }
-  .backup-label { font-size: 14px; font-weight: 600; color: #F57F17; text-transform: uppercase; letter-spacing: 0.5px; }
-  .backup-name { font-size: 17px; font-weight: 700; color: var(--text); margin-bottom: 4px; }
-  .backup-detail { font-size: 15px; color: var(--secondary); line-height: 1.4; }
-  .backup-detail a { color: var(--blue); text-decoration: none; }
-  .backup-detail a:active { opacity: 0.7; }
-  .backup-strategy {
-    margin-top: 10px;
-    padding: 10px 12px;
-    background: rgba(255,224,130,0.3);
-    border-radius: 10px;
-    font-size: 14px;
-    color: #795548;
-    line-height: 1.4;
-  }
 
   /* ── Grocery Item ── */
   .grocery-item {
@@ -333,29 +251,19 @@
     color: inherit;
   }
   .day-dots a:visited { color: inherit; }
-
 </style>
 </head>
 <body>
 <!-- Header -->
 <div class="header">
 <div class="trip-label">🇮🇸 Iceland Trip</div>
-<div class="day-title">Glacier Kayak · Jökulsárlón · Diamond Beach · <span style="white-space:nowrap">Lobster in Höfn</span></div>
+<div class="day-title">Glacier Day</div>
 <div class="day-date">Monday, July 6</div>
 <div class="day-of">Day 4 of 10</div>
 </div>
 <!-- Day Dots -->
 <div class="day-dots">
-<a class="day-dot" href="iceland-day1.html">1</a>
-<a class="day-dot" href="iceland-day2.html">2</a>
-<a class="day-dot" href="iceland-day3.html">3</a>
-<a class="day-dot active" href="iceland-day4.html" aria-current="page">4</a>
-<a class="day-dot" href="iceland-day5.html">5</a>
-<a class="day-dot" href="iceland-day6.html">6</a>
-<a class="day-dot" href="iceland-day7.html">7</a>
-<a class="day-dot" href="iceland-day8.html">8</a>
-<a class="day-dot" href="iceland-day9.html">9</a>
-<a class="day-dot" href="iceland-day10.html">10</a>
+<a class="day-dot" href="iceland-day1.html">1</a><a class="day-dot" href="iceland-day2.html">2</a><a class="day-dot" href="iceland-day3.html">3</a><a class="day-dot active" href="iceland-day4.html" aria-current="page">4</a><a class="day-dot" href="iceland-day5.html">5</a><a class="day-dot" href="iceland-day6.html">6</a><a class="day-dot" href="iceland-day7.html">7</a><a class="day-dot" href="iceland-day8.html">8</a><a class="day-dot" href="iceland-day9.html">9</a><a class="day-dot" href="iceland-day10.html">10</a>
 </div>
 <!-- Weather -->
 <div class="section">
@@ -369,21 +277,31 @@
 </div>
 <div class="weather-item">
 <div class="weather-icon">☁️</div>
-<div class="weather-value">45°F</div>
+<div class="weather-value">43°F</div>
 <div class="weather-label">Low</div>
 </div>
 <div class="weather-item">
 <div class="weather-icon">🌧️</div>
-<div class="weather-value">40%</div>
+<div class="weather-value">35%</div>
 <div class="weather-label">Rain</div>
 </div>
+<div class="weather-item">
+<div class="weather-icon">☀️</div>
+<div class="weather-value">2:59a</div>
+<div class="weather-label">Sunrise</div>
 </div>
-<a class="weather-link" href="https://www.yr.no/en/forecast/daily-table/2-3424623/Iceland/Eastern%20Region/H%C3%B6fn?i=1" target="_blank">
+<div class="weather-item">
+<div class="weather-icon">🌙</div>
+<div class="weather-value">12:10a</div>
+<div class="weather-label">Sunset</div>
+</div>
+</div>
+<a class="weather-link" href="https://www.yr.no/en/forecast/daily-table/2-3413893/Iceland/Southern%20Region/H%C3%B6fn?i=1" target="_blank">
       🌤️ Full forecast →
     </a>
 </div>
 </div>
-<!-- Driving Banner -->
+<!-- Drive Banner -->
 <div class="section">
 <div class="card">
 <div class="driving-banner">
@@ -392,29 +310,48 @@
 </div>
 </div>
 </div>
+<!-- Hotel -->
+<div class="section">
+<div class="section-label">Your Hotel</div>
+<div class="hotel-card">
+<div class="hotel-card-header">
+<span class="hotel-emoji">🏨</span>
+<div>
+<div class="hotel-name">Glacier World - Hoffell</div>
+<div class="hotel-stars">Miðfell, 781 Höfn (turn off road 1 to road 984)</div>
+</div>
+</div>
+<div class="hotel-details">
+<div class="hotel-detail-row">
+<span class="detail-icon">📞</span>
+<a href="tel:+3544781514">+354 478 1514</a>
+</div>
+
+
+</div>
+</div>
+</div>
 <!-- Schedule -->
 <div class="section">
 <div class="section-label">Schedule</div>
 <div class="card timeline">
-<a class="timeline-item has-link" href="https://www.google.com/maps/dir/?api=1&amp;origin=Kirkjub%C3%A6jarklaustur&amp;destination=Skaftafell+Vatnaj%C3%B6kull+National+Park&amp;travelmode=driving" target="_blank">
-<div class="event-time"><div class="time">9:00</div><div class="period">AM</div></div>
+<div class="timeline-item">
+<div class="event-time"><div class="time">9:00</div><div class="period">AM (09:00)</div></div>
 <div class="event-dot-line"><div class="event-dot dot-travel"></div></div>
 <div class="event-details">
-<div class="event-title">Leave Kirkjubæjarklaustur</div>
+<div class="event-title" style="color: var(--blue);">Leave Kirkjubæjarklaustur</div>
 <div class="event-subtitle">Drive east on Route 1 · ~1.5h to Skaftafell</div>
-<div style="display:flex; align-items:center; gap:8px; margin-top:6px;"><span class="event-tag tag-directions">📍 Directions</span></div>
 </div>
-<div class="link-arrow">›</div>
-</a>
+</div>
 <div class="timeline-item has-link">
-<div class="event-time"><div class="time">10:30</div><div class="period">AM</div></div>
+<div class="event-time"><div class="time">10:30</div><div class="period">AM (10:30)</div></div>
 <div class="event-dot-line"><div class="event-dot dot-activity"></div></div>
 <div class="event-details">
 <div class="event-title">Skaftafell</div>
 <div class="event-subtitle">Optional hike to Svartifoss waterfall</div>
-<div style="display:flex; align-items:center; gap:8px; margin-top:6px;"><span class="event-tag tag-directions">📍 Directions</span><a class="learn-more-link" href="detail-skaftafell.html" target="_blank">Learn more →</a></div>
+<div style="display:flex; align-items:center; gap:8px; margin-top:6px; flex-wrap:wrap;"><span class="event-tag tag-directions" onclick="window.open('https://www.google.com/maps/dir/?api=1&destination=Skaftafell&travelmode=driving', '_blank')">📍 Directions</span><a class="learn-more-link" href="detail-svartifoss.html" target="_blank">Learn more →</a></div>
 </div>
-<div class="link-arrow">›</div>
+
 </div>
 <div class="timeline-item has-link">
 <div class="event-time"><div class="time">12:00</div><div class="period">PM (12:00)</div></div>
@@ -422,9 +359,9 @@
 <div class="event-details">
 <div class="event-title">Jökulsárlón glacier lagoon</div>
 <div class="event-subtitle">Watch icebergs · Crystal-blue ice floats past</div>
-<div style="display:flex; align-items:center; gap:8px; margin-top:6px;"><span class="event-tag tag-directions">📍 Directions</span><a class="learn-more-link" href="detail-jokulsarlon.html" target="_blank">Learn more →</a></div>
+<div style="display:flex; align-items:center; gap:8px; margin-top:6px; flex-wrap:wrap;"><span class="event-tag tag-directions" onclick="window.open('https://www.google.com/maps/dir/?api=1&destination=Jokulsarlon&travelmode=driving', '_blank')">📍 Directions</span><a class="learn-more-link" href="detail-jokulsarlon.html" target="_blank">Learn more →</a></div>
 </div>
-<div class="link-arrow">›</div>
+
 </div>
 <div class="timeline-item has-link">
 <div class="event-time"><div class="time">12:45</div><div class="period">PM (12:45)</div></div>
@@ -432,54 +369,51 @@
 <div class="event-details">
 <div class="event-title">Diamond Beach</div>
 <div class="event-subtitle">Crystal-clear ice on black sand</div>
-<div style="display:flex; align-items:center; gap:8px; margin-top:6px;"><span class="event-tag tag-directions">📍 Directions</span><a class="learn-more-link" href="detail-diamond-beach.html" target="_blank">Learn more →</a></div>
+<div style="display:flex; align-items:center; gap:8px; margin-top:6px; flex-wrap:wrap;"><a class="learn-more-link" href="detail-diamond-beach.html" target="_blank">Learn more →</a></div>
 </div>
-<div class="link-arrow">›</div>
+
 </div>
-<div class="timeline-item has-link">
+<div class="timeline-item">
 <div class="event-time"><div class="time">2:00</div><div class="period">PM (14:00)</div></div>
 <div class="event-dot-line"><div class="event-dot dot-activity"></div></div>
 <div class="event-details">
 <div class="event-title">Vatnajökull Glacier Kayak</div>
 <div class="event-subtitle">~3.5 hrs · All gear provided</div>
-<a class="event-tag tag-call" href="tel:+3546610900">📞 +354 661 0900</a>
-<div style="display:flex; align-items:center; gap:8px; margin-top:6px;"><span class="event-tag tag-directions">📍 Directions</span><a class="learn-more-link" href="detail-glacier-kayak.html" target="_blank">Learn more →</a></div>
-</div>
-<div class="link-arrow">›</div>
+
 </div>
 
-<a class="timeline-item has-link" href="https://www.google.com/maps/dir/?api=1&amp;destination=H%C3%B6fn+Iceland&amp;travelmode=driving" target="_blank">
+</div>
+<div class="timeline-item">
 <div class="event-time"><div class="time">5:00</div><div class="period">PM (17:00)</div></div>
 <div class="event-dot-line"><div class="event-dot dot-travel"></div></div>
 <div class="event-details">
 <div class="event-title">Drive to Höfn</div>
 <div class="event-subtitle">Arrive ~5:30pm (17:30)</div>
-<div style="display:flex; align-items:center; gap:8px; margin-top:6px;"><span class="event-tag tag-directions">📍 Directions</span></div>
+
 </div>
-<div class="link-arrow">›</div>
-</a>
-<a class="timeline-item has-link" href="https://www.google.com/maps/dir/?api=1&amp;destination=Pakkh%C3%BAs+H%C3%B6fn&amp;travelmode=driving" target="_blank">
+
+</div>
+<div class="timeline-item has-link">
 <div class="event-time"><div class="time">6:00</div><div class="period">PM (18:00)</div></div>
 <div class="event-dot-line"><div class="event-dot dot-food"></div></div>
 <div class="event-details">
 <div class="event-title">Dinner: Pakkhús</div>
 <div class="event-subtitle">Famous for lobster · Worth a 15-20 min wait</div>
-<div style="display:flex; align-items:center; gap:8px; margin-top:6px; flex-wrap:wrap;"><span class="event-tag tag-walkin">🚶 Walk-in</span><span class="event-tag tag-directions">📍 Directions</span></div>
+<div style="display:flex; align-items:center; gap:8px; margin-top:6px; flex-wrap:wrap;"><span class="event-tag tag-link" onclick="window.open('https://pakkhus.is/', '_blank')">🌐 pakkhus.is</span><a class="event-tag tag-call" href="tel:+3544832280">📞 Tap to call</a></div>
 </div>
-<div class="link-arrow">›</div>
-</a>
-<a class="timeline-item has-link" href="https://www.google.com/maps/dir/?api=1&amp;origin=H%C3%B6fn&amp;destination=Glacier+World+Hoffell&amp;travelmode=driving" target="_blank">
+
+</div>
+<div class="timeline-item">
 <div class="event-time"><div class="time">8:00</div><div class="period">PM (20:00)</div></div>
 <div class="event-dot-line"><div class="event-dot dot-travel"></div></div>
 <div class="event-details">
 <div class="event-title">Drive to Glacier World at Hoffell</div>
 <div class="event-subtitle">~10 mi from Höfn · Turn off Route 1 to road 984</div>
-<div style="display:flex; align-items:center; gap:8px; margin-top:6px;"><span class="event-tag tag-directions">📍 Directions</span><a class="learn-more-link" href="detail-glacier-world.html" target="_blank">Learn more →</a></div>
+
 </div>
-<div class="link-arrow">›</div>
-</a>
+
 </div>
-<!-- Legend -->
+<!-- Dot Legend -->
 <div class="card" style="margin-top: 10px;">
 <div class="dot-legend">
 <div class="dot-legend-item"><div class="dot-legend-dot dot-travel"></div>Travel</div>
@@ -489,53 +423,20 @@
 </div>
 </div>
 </div>
-
-</div>
-</div>
-
 </div>
 <!-- Grocery -->
 <div class="section">
-<div class="section-label label-logistics">Grocery</div>
+<div class="section-label">Grocery Stores</div>
 <div class="card">
-<a class="grocery-item" href="https://www.google.com/maps/dir/?api=1&amp;origin=H%C3%B6fn&amp;destination=Nett%C3%B3+H%C3%B6fn&amp;travelmode=driving" target="_blank">
+<a class="grocery-item" href="#" onclick="return false;">
 <span class="grocery-emoji">🛒</span>
 <div class="grocery-info">
 <div class="grocery-name">Nettó</div>
 <div class="grocery-detail">Miðbær, Litlabrú, Höfn · Mon-Fri 08:00-19:00, Sat-Sun 09:00-19:00</div>
-<div class="grocery-map-badge">📍 In Höfn · 5 min drive from dinner</div>
+
 </div>
 <span class="grocery-link">›</span>
 </a>
-</div>
-</div>
-<!-- Where You're Staying -->
-<div class="section">
-<div class="section-label">Where You're Staying</div>
-<div class="hotel-card">
-<div class="hotel-card-header">
-<span class="hotel-emoji">🏨</span>
-<div>
-<div class="hotel-name">Glacier World</div>
-<div class="hotel-stars">Hoffell · 10 mi east of Höfn</div>
-</div>
-</div>
-<div class="hotel-details">
-<div class="hotel-detail-row">
-<span class="detail-icon">📞</span>
-<a href="tel:+3544781514">+354 478 1514</a>
-</div>
-<div class="hotel-detail-row">
-<span class="detail-icon">📍</span>
-<span>Hoffell, Miðfell, 781 Höfn í Hornafirði</span>
-</div>
-<div class="hotel-detail-row">
-<span class="detail-icon">🛣️</span>
-<span>Turn off Route 1 to road 984</span>
-</div>
-</div>
-<div class="hotel-actions">
-</div>
 </div>
 </div>
 <!-- Tips -->
@@ -551,8 +452,9 @@
 <!-- Quote -->
 <div class="quote-section">
 <div class="quote-mark">"</div>
-<div class="quote-text">Somewhere, something incredible is waiting to be known.</div>
-<div class="quote-author">— Carl Sagan</div>
+<div class="quote-text">If you don't know where you're going, any path will get you there.</div>
+<div class="quote-author">— Barbara Brown Taylor</div>
 </div>
-<div class="footer">🇮🇸 Built with love for the Iceland crew</div></body>
+<div class="footer">🇮🇸 Built with love for the Iceland crew</div>
+</body>
 </html>

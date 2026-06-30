@@ -1,5 +1,4 @@
 <!DOCTYPE html>
-
 <html lang="en">
 <head>
 <meta charset="utf-8"/>
@@ -24,10 +23,6 @@
     --quote-border: #C7D2FE;
     --hotel-bg: #FFF8E1;
     --hotel-border: #FFE082;
-    --action-bg: #FFF3E0;
-    --action-border: #FFB74D;
-    --safety-bg: #FFEBEE;
-    --safety-border: #EF9A9A;
   }
 
   * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -61,7 +56,7 @@
     margin-bottom: 6px;
   }
   .header .day-title {
-    font-size: 28px;
+    font-size: 30px;
     font-weight: 700;
     margin-bottom: 4px;
     letter-spacing: -0.5px;
@@ -122,11 +117,6 @@
     letter-spacing: 0.8px;
     padding: 0 4px 8px 4px;
   }
-  .label-transport { color: #007AFF; }
-  .label-food { color: #34C759; }
-  .label-activity { color: #00C7BE; }
-  .label-logistics { color: #FF9500; }
-  .label-safety { color: #FF3B30; }
 
   /* ── Cards ── */
   .card {
@@ -157,32 +147,6 @@
   .driving-banner .icon { font-size: 24px; flex-shrink: 0; }
   .driving-banner .text { font-size: 16px; font-weight: 500; color: var(--blue); line-height: 1.35; }
 
-  /* ── Alerts ── */
-  .alert-section-icon {
-    display: inline-flex; align-items: center; justify-content: center;
-    width: 20px; height: 20px; border-radius: 50%;
-    background: #FF3B30; color: white;
-    font-size: 13px; font-weight: 700;
-    margin-right: 2px; vertical-align: middle;
-  }
-  .alert-card {
-    display: flex; align-items: flex-start; gap: 12px;
-    padding: 14px 16px; border-radius: 14px;
-  }
-  .alert-card + .alert-card { margin-top: 10px; }
-  .alert-card-icon { font-size: 20px; flex-shrink: 0; margin-top: 1px; }
-  .alert-card .alert-text { font-size: 15px; line-height: 1.45; overflow-wrap: break-word; word-wrap: break-word; }
-  .alert-card .alert-text strong { font-weight: 600; }
-  .alert-grocery {
-    background: #FFF8E1; border: 1.5px solid #FFE082;
-  }
-  .alert-grocery .alert-text { color: #5D4037; }
-  .alert-grocery .alert-text strong { color: #E65100; }
-  .alert-safety {
-    background: var(--safety-bg); border: 1.5px solid var(--safety-border);
-  }
-  .alert-safety .alert-text { color: #C62828; }
-
   /* ── Timeline ── */
   .timeline { padding: 4px 0; }
   .timeline-item {
@@ -198,10 +162,13 @@
   .event-time .period { font-size: 13px; color: var(--secondary); font-weight: 500; }
   .event-dot-line { display: flex; flex-direction: column; align-items: center; padding-top: 6px; flex-shrink: 0; }
   .event-dot { width: 10px; height: 10px; border-radius: 50%; flex-shrink: 0; }
+
+  /* Dot colors */
   .dot-travel { background: #007AFF; }
   .dot-food { background: #34C759; }
   .dot-activity { background: #00C7BE; }
   .dot-logistics { background: #FF9500; }
+
   .event-details { flex: 1; min-width: 0; }
   .event-title { font-size: 17px; font-weight: 600; margin-bottom: 2px; line-height: 1.3; }
   .event-subtitle { font-size: 15px; color: var(--secondary); line-height: 1.4; }
@@ -213,9 +180,8 @@
   .tag-call { background: #FFF3E0; color: #E65100; cursor: pointer; }
   .tag-call:active { opacity: 0.7; }
   .tag-link { background: #E3F2FD; color: #1565C0; }
-  .tag-walkin { background: #F2F2F7; color: #636366; white-space: nowrap; }
-  .tag-safety { background: #FFEBEE; color: #C62828; }
-  .tag-directions { background: #E0F7FA; color: #00695C; }
+  .tag-directions { background: #E0F7FA; color: #00695C; cursor: pointer; }
+  .tag-directions:active { opacity: 0.7; }
   .link-arrow { color: var(--tertiary); font-size: 16px; flex-shrink: 0; padding-top: 6px; }
   .learn-more-link { font-size: 14px; font-weight: 600; color: #007AFF; text-decoration: none; margin-left: auto; }
   .learn-more-link:active { opacity: 0.7; }
@@ -234,54 +200,6 @@
   .hotel-detail-row .detail-icon { font-size: 18px; width: 24px; text-align: center; flex-shrink: 0; }
   .hotel-detail-row a { color: var(--blue); text-decoration: none; font-weight: 500; }
   .hotel-detail-row a:active { opacity: 0.7; }
-  .hotel-actions { display: flex; gap: 10px; margin-top: 16px; }
-  .hotel-action-btn {
-    flex: 1; display: flex; align-items: center; justify-content: center; gap: 8px;
-    padding: 12px; background: white; border: 1px solid var(--hotel-border);
-    border-radius: 12px; text-decoration: none; color: var(--blue);
-    font-size: 15px; font-weight: 600; transition: opacity 0.15s;
-  }
-  .hotel-action-btn:active { opacity: 0.7; }
-
-  
-  
-  
-  
-  
-  
-  .badge-walkin { background: #F2F2F7; color: #636366; white-space: nowrap; }
-  .badge-rating { background: #FFF8E1; color: #F57F17; }
-  
-  
-  .meal-detail-row .label { color: var(--secondary); width: 70px; flex-shrink: 0; font-weight: 500; }
-  .meal-detail-row a { color: var(--blue); text-decoration: none; }
-  .meal-detail-row a:active { opacity: 0.7; }
-
-  /* ── Backup Card ── */
-  .backup-card {
-    background: #FFF8E1;
-    border: 1.5px solid #FFE082;
-    border-radius: 16px;
-    padding: 16px;
-  }
-  .backup-header {
-    display: flex; align-items: center; gap: 8px; margin-bottom: 8px;
-  }
-  .backup-icon { font-size: 18px; }
-  .backup-label { font-size: 14px; font-weight: 600; color: #F57F17; text-transform: uppercase; letter-spacing: 0.5px; }
-  .backup-name { font-size: 17px; font-weight: 700; color: var(--text); margin-bottom: 4px; }
-  .backup-detail { font-size: 15px; color: var(--secondary); line-height: 1.4; }
-  .backup-detail a { color: var(--blue); text-decoration: none; }
-  .backup-detail a:active { opacity: 0.7; }
-  .backup-strategy {
-    margin-top: 10px;
-    padding: 10px 12px;
-    background: rgba(255,224,130,0.3);
-    border-radius: 10px;
-    font-size: 14px;
-    color: #795548;
-    line-height: 1.4;
-  }
 
   /* ── Grocery Item ── */
   .grocery-item {
@@ -333,37 +251,20 @@
     color: inherit;
   }
   .day-dots a:visited { color: inherit; }
-
 </style>
 </head>
 <body>
 <!-- Header -->
 <div class="header">
 <div class="trip-label">🇮🇸 Iceland Trip</div>
-<div class="day-title">Húsavík Whale Watching · Ásbyrgi · <span style="white-space:nowrap">Stock Up in Akureyri</span></div>
+<div class="day-title">Húsavík & Whale Watching</div>
 <div class="day-date">Wednesday, July 8</div>
 <div class="day-of">Day 6 of 10</div>
 </div>
 <!-- Day Dots -->
 <div class="day-dots">
-<a class="day-dot" href="iceland-day1.html">1</a>
-<a class="day-dot" href="iceland-day2.html">2</a>
-<a class="day-dot" href="iceland-day3.html">3</a>
-<a class="day-dot" href="iceland-day4.html">4</a>
-<a class="day-dot" href="iceland-day5.html">5</a>
-<a class="day-dot active" href="iceland-day6.html" aria-current="page">6</a>
-<a class="day-dot" href="iceland-day7.html">7</a>
-<a class="day-dot" href="iceland-day8.html">8</a>
-<a class="day-dot" href="iceland-day9.html">9</a>
-<a class="day-dot" href="iceland-day10.html">10</a>
+<a class="day-dot" href="iceland-day1.html">1</a><a class="day-dot" href="iceland-day2.html">2</a><a class="day-dot" href="iceland-day3.html">3</a><a class="day-dot" href="iceland-day4.html">4</a><a class="day-dot" href="iceland-day5.html">5</a><a class="day-dot active" href="iceland-day6.html" aria-current="page">6</a><a class="day-dot" href="iceland-day7.html">7</a><a class="day-dot" href="iceland-day8.html">8</a><a class="day-dot" href="iceland-day9.html">9</a><a class="day-dot" href="iceland-day10.html">10</a>
 </div>
-<div class="alert-card alert-safety">
-<div class="alert-card-icon">🌊</div>
-<div class="alert-text">
-<strong>Whale watching:</strong> Wear warm layers and a waterproof jacket. The boats go ~3–6 mi out into Skjálfandi Bay and it's noticeably colder on the water, even in July.
-    </div>
-</div>
-
 <!-- Weather -->
 <div class="section">
 <div class="section-label">Weather</div>
@@ -376,38 +277,48 @@
 </div>
 <div class="weather-item">
 <div class="weather-icon">☁️</div>
-<div class="weather-value">46°F</div>
+<div class="weather-value">44°F</div>
 <div class="weather-label">Low</div>
 </div>
 <div class="weather-item">
 <div class="weather-icon">🌧️</div>
-<div class="weather-value">30%</div>
+<div class="weather-value">20%</div>
 <div class="weather-label">Rain</div>
 </div>
+<div class="weather-item">
+<div class="weather-icon">☀️</div>
+<div class="weather-value">2:57a</div>
+<div class="weather-label">Sunrise</div>
 </div>
-<a class="weather-link" href="https://www.yr.no/en/forecast/daily-table/2-3413889/Iceland/Northeastern%20Region/H%C3%BAsav%C3%ADk" target="_blank">
+<div class="weather-item">
+<div class="weather-icon">🌙</div>
+<div class="weather-value">12:14a</div>
+<div class="weather-label">Sunset</div>
+</div>
+</div>
+<a class="weather-link" href="https://www.yr.no/en/forecast/daily-table/2-3413890/Iceland/Northeastern%20Region/H%C3%BAsav%C3%ADk?i=1" target="_blank">
       🌤️ Full forecast →
     </a>
 </div>
 </div>
-<!-- Driving Banner -->
+<!-- Drive Banner -->
 <div class="section">
 <div class="card">
 <div class="driving-banner">
-<div class="icon">🚗</div>
-<div class="text">~3h in the car today · Mývatn → Húsavík → Ásbyrgi → Akureyri → Mývatn</div>
+<div class="icon">🐋</div>
+<div class="text">~3.5h total driving · Mývatn → Húsavík → Ásbyrgi → Akureyri → Mývatn</div>
 </div>
 </div>
 </div>
 <!-- Hotel -->
 <div class="section">
-<div class="section-label">Where You're Staying</div>
+<div class="section-label">Your Hotel</div>
 <div class="hotel-card">
 <div class="hotel-card-header">
 <span class="hotel-emoji">🏨</span>
 <div>
 <div class="hotel-name">Hótel Laxá</div>
-<div class="hotel-stars">Mývatn · 2nd night (return after day trip)</div>
+<div class="hotel-stars">Olnbogaás, 660 Mývatn</div>
 </div>
 </div>
 <div class="hotel-details">
@@ -415,12 +326,8 @@
 <span class="detail-icon">📞</span>
 <a href="tel:+3544641900">+354 464 1900</a>
 </div>
-<div class="hotel-detail-row">
-<span class="detail-icon">📍</span>
-<span>Olnbogaás, 660 Mývatn</span>
-</div>
-</div>
-<div class="hotel-actions">
+
+
 </div>
 </div>
 </div>
@@ -428,80 +335,75 @@
 <div class="section">
 <div class="section-label">Schedule</div>
 <div class="card timeline">
-<a class="timeline-item has-link" href="https://www.google.com/maps/dir/?api=1&amp;origin=H%C3%B3tel+Lax%C3%A1+M%C3%BDvatn&amp;destination=H%C3%BAsav%C3%ADk&amp;travelmode=driving" target="_blank">
-<div class="event-time"><div class="time">8:30</div><div class="period">AM</div></div>
+<div class="timeline-item">
+<div class="event-time"><div class="time">8:30</div><div class="period">AM (08:30)</div></div>
 <div class="event-dot-line"><div class="event-dot dot-travel"></div></div>
 <div class="event-details">
-<div class="event-title">Leave Hótel Laxá</div>
+<div class="event-title" style="color: var(--blue);">Leave Hótel Laxá</div>
 <div class="event-subtitle">Drive north to Húsavík · ~1 hour via Route 85</div>
-<div style="display:flex; align-items:center; gap:8px; margin-top:6px;"><span class="event-tag tag-directions">📍 Directions</span></div>
 </div>
-<div class="link-arrow">›</div>
-</a>
+</div>
 <div class="timeline-item has-link">
-<div class="event-time"><div class="time">9:00</div><div class="period">AM</div></div>
+<div class="event-time"><div class="time">9:00</div><div class="period">AM (09:00)</div></div>
 <div class="event-dot-line"><div class="event-dot dot-activity"></div></div>
 <div class="event-details">
 <div class="event-title">Whale Watching — North Sailing</div>
 <div class="event-subtitle">~3 hours · 13,990 ISK per person · 🎫 Booking ref ISSD-201023 · Departs from Húsavík harbour</div>
-<a class="event-tag tag-call" href="tel:+3544647270">📞 Call North Sailing · +354 464 7270</a>
-<div style="display:flex; align-items:center; gap:8px; margin-top:6px;"><span class="event-tag tag-directions">📍 Directions</span><a class="learn-more-link" href="detail-whale-watching.html" target="_blank">Learn more →</a></div>
-</div>
-<div class="link-arrow">›</div>
+<div style="display:flex; align-items:center; gap:8px; margin-top:6px; flex-wrap:wrap;"><span class="event-tag tag-link" onclick="window.open('https://www.northsailing.is/', '_blank')">🌐 northsailing.is</span><a class="event-tag tag-call" href="tel:+3544647272">📞 Tap to call</a></div>
 </div>
 
-<a class="timeline-item has-link" href="https://www.google.com/maps/dir/?api=1&amp;destination=H%C3%BAsav%C3%ADk+church&amp;travelmode=walking" target="_blank">
+</div>
+<div class="timeline-item">
 <div class="event-time"><div class="time">12:30</div><div class="period">PM (12:30)</div></div>
 <div class="event-dot-line"><div class="event-dot dot-activity"></div></div>
 <div class="event-details">
 <div class="event-title">Explore Húsavík town</div>
 <div class="event-subtitle">Walk the harbour · Visit the wooden church · Whale museums</div>
-<div style="display:flex; align-items:center; gap:8px; margin-top:6px;"><span class="event-tag tag-directions">📍 Directions</span><a class="learn-more-link" href="detail-husavik.html" target="_blank">Learn more →</a></div>
+
 </div>
-<div class="link-arrow">›</div>
-</a>
-<a class="timeline-item has-link" href="https://www.google.com/maps/dir/?api=1&amp;destination=Gamli+Baukur+H%C3%BAsav%C3%ADk&amp;travelmode=walking" target="_blank">
+
+</div>
+<div class="timeline-item has-link">
 <div class="event-time"><div class="time">1:30</div><div class="period">PM (13:30)</div></div>
 <div class="event-dot-line"><div class="event-dot dot-food"></div></div>
 <div class="event-details">
 <div class="event-title">Late lunch: Gamli Baukur</div>
 <div class="event-subtitle">Main meal of the day · No dinner needed · Dineout #8943480</div>
-<div style="display:flex; align-items:center; gap:8px; margin-top:6px;"><span class="event-tag tag-directions">📍 Directions</span></div>
+<div style="display:flex; align-items:center; gap:8px; margin-top:6px; flex-wrap:wrap;"><span class="event-tag tag-link" onclick="window.open('https://www.glibbakur.is/', '_blank')">🌐 glibbakur.is</span></div>
 </div>
-<div class="link-arrow">›</div>
-</a>
+
+</div>
 <div class="timeline-item has-link">
 <div class="event-time"><div class="time">3:00</div><div class="period">PM (15:00)</div></div>
 <div class="event-dot-line"><div class="event-dot dot-activity"></div></div>
 <div class="event-details">
 <div class="event-title">Ásbyrgi canyon + Hljóðaklettar</div>
-<div class="event-subtitle">~1 hour drive · Horseshoe-shaped canyon and the "echo rocks" basalt formations</div>
-<div style="display:flex; align-items:center; gap:8px; margin-top:6px;"><span class="event-tag tag-directions">📍 Directions</span><a class="learn-more-link" href="detail-asbyrgi.html" target="_blank">Learn more →</a></div>
+<div class="event-subtitle">~1 hour drive · Horseshoe-shaped canyon and the 'echo rocks' basalt formations</div>
+<div style="display:flex; align-items:center; gap:8px; margin-top:6px; flex-wrap:wrap;"><a class="learn-more-link" href="detail-asbyrgi.html" target="_blank">Learn more →</a></div>
 </div>
-<div class="link-arrow">›</div>
+
 </div>
-<a class="timeline-item has-link" href="https://www.google.com/maps/dir/?api=1&amp;origin=%C3%81sbyrgi&amp;destination=B%C3%B3nus+Akureyri&amp;travelmode=driving" target="_blank">
+<div class="timeline-item">
 <div class="event-time"><div class="time">5:30</div><div class="period">PM (17:30)</div></div>
 <div class="event-dot-line"><div class="event-dot dot-logistics"></div></div>
 <div class="event-details">
 <div class="event-title">Stop in Akureyri — stock up</div>
 <div class="event-subtitle">Last good grocery stop before Mývatn · Bónus (10–20) or Krónan (08–21)</div>
-<div style="display:flex; align-items:center; gap:8px; margin-top:6px;"><span class="event-tag tag-directions">📍 Directions</span><a class="learn-more-link" href="detail-akureyri.html" target="_blank">Learn more →</a></div>
+
 </div>
-<div class="link-arrow">›</div>
-</a>
-<a class="timeline-item has-link" href="https://www.google.com/maps/dir/?api=1&amp;origin=Akureyri&amp;destination=H%C3%B3tel+Lax%C3%A1+M%C3%BDvatn&amp;travelmode=driving" target="_blank">
+
+</div>
+<div class="timeline-item">
 <div class="event-time"><div class="time">7:00</div><div class="period">PM (19:00)</div></div>
 <div class="event-dot-line"><div class="event-dot dot-travel"></div></div>
 <div class="event-details">
 <div class="event-title">Arrive Hótel Laxá</div>
 <div class="event-subtitle">~1 hour drive back to Mývatn · No dinner needed — late lunch was the main meal</div>
-<div style="display:flex; align-items:center; gap:8px; margin-top:6px;"><span class="event-tag tag-directions">📍 Directions</span></div>
+
 </div>
-<div class="link-arrow">›</div>
-</a>
+
 </div>
-<!-- Legend -->
+<!-- Dot Legend -->
 <div class="card" style="margin-top: 10px;">
 <div class="dot-legend">
 <div class="dot-legend-item"><div class="dot-legend-dot dot-travel"></div>Travel</div>
@@ -511,28 +413,26 @@
 </div>
 </div>
 </div>
-
-</div>
 </div>
 <!-- Grocery -->
 <div class="section">
-<div class="section-label label-logistics">Grocery</div>
+<div class="section-label">Grocery Stores</div>
 <div class="card">
-<a class="grocery-item" href="https://www.google.com/maps/dir/?api=1&amp;origin=%C3%81sbyrgi&amp;destination=B%C3%B3nus+Langholt+1+Akureyri&amp;travelmode=driving" target="_blank">
+<a class="grocery-item" href="#" onclick="return false;">
 <span class="grocery-emoji">🛒</span>
 <div class="grocery-info">
 <div class="grocery-name">Bónus</div>
 <div class="grocery-detail">Langholt 1, 603 Akureyri · Daily 10:00–20:00</div>
-<div class="grocery-map-badge">📍 From Ásbyrgi · 60 mi · Stock up stop</div>
+
 </div>
 <span class="grocery-link">›</span>
 </a>
-<a class="grocery-item" href="https://www.google.com/maps/dir/?api=1&amp;origin=%C3%81sbyrgi&amp;destination=Kr%C3%B3nan+Akureyri&amp;travelmode=driving" target="_blank">
+<a class="grocery-item" href="#" onclick="return false;">
 <span class="grocery-emoji">🛒</span>
 <div class="grocery-info">
 <div class="grocery-name">Krónan</div>
 <div class="grocery-detail">Akureyri · 08:00–21:00</div>
-<div class="grocery-map-badge">📍 In Akureyri · Open early</div>
+
 </div>
 <span class="grocery-link">›</span>
 </a>
@@ -551,8 +451,9 @@
 <!-- Quote -->
 <div class="quote-section">
 <div class="quote-mark">"</div>
-<div class="quote-text">The poetry of the earth is never dead.</div>
-<div class="quote-author">— John Keats</div>
+<div class="quote-text">The reason for having two legs is that when one of them gets tired, you can stand on the other.</div>
+<div class="quote-author">— Terry Pratchett</div>
 </div>
-<div class="footer">🇮🇸 Built with love for the Iceland crew</div></body>
+<div class="footer">🇮🇸 Built with love for the Iceland crew</div>
+</body>
 </html>

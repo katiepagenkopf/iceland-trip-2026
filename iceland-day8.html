@@ -1,5 +1,4 @@
 <!DOCTYPE html>
-
 <html lang="en">
 <head>
 <meta charset="utf-8"/>
@@ -24,10 +23,6 @@
     --quote-border: #C7D2FE;
     --hotel-bg: #FFF8E1;
     --hotel-border: #FFE082;
-    --action-bg: #FFF3E0;
-    --action-border: #FFB74D;
-    --safety-bg: #FFEBEE;
-    --safety-border: #EF9A9A;
   }
 
   * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -61,7 +56,7 @@
     margin-bottom: 6px;
   }
   .header .day-title {
-    font-size: 28px;
+    font-size: 30px;
     font-weight: 700;
     margin-bottom: 4px;
     letter-spacing: -0.5px;
@@ -122,11 +117,6 @@
     letter-spacing: 0.8px;
     padding: 0 4px 8px 4px;
   }
-  .label-transport { color: #007AFF; }
-  .label-food { color: #34C759; }
-  .label-activity { color: #00C7BE; }
-  .label-logistics { color: #FF9500; }
-  .label-safety { color: #FF3B30; }
 
   /* ── Cards ── */
   .card {
@@ -157,32 +147,6 @@
   .driving-banner .icon { font-size: 24px; flex-shrink: 0; }
   .driving-banner .text { font-size: 16px; font-weight: 500; color: var(--blue); line-height: 1.35; }
 
-  /* ── Alerts ── */
-  .alert-section-icon {
-    display: inline-flex; align-items: center; justify-content: center;
-    width: 20px; height: 20px; border-radius: 50%;
-    background: #FF3B30; color: white;
-    font-size: 13px; font-weight: 700;
-    margin-right: 2px; vertical-align: middle;
-  }
-  .alert-card {
-    display: flex; align-items: flex-start; gap: 12px;
-    padding: 14px 16px; border-radius: 14px;
-  }
-  .alert-card + .alert-card { margin-top: 10px; }
-  .alert-card-icon { font-size: 20px; flex-shrink: 0; margin-top: 1px; }
-  .alert-card .alert-text { font-size: 15px; line-height: 1.45; overflow-wrap: break-word; word-wrap: break-word; }
-  .alert-card .alert-text strong { font-weight: 600; }
-  .alert-grocery {
-    background: #FFF8E1; border: 1.5px solid #FFE082;
-  }
-  .alert-grocery .alert-text { color: #5D4037; }
-  .alert-grocery .alert-text strong { color: #E65100; }
-  .alert-safety {
-    background: var(--safety-bg); border: 1.5px solid var(--safety-border);
-  }
-  .alert-safety .alert-text { color: #C62828; }
-
   /* ── Timeline ── */
   .timeline { padding: 4px 0; }
   .timeline-item {
@@ -198,10 +162,13 @@
   .event-time .period { font-size: 13px; color: var(--secondary); font-weight: 500; }
   .event-dot-line { display: flex; flex-direction: column; align-items: center; padding-top: 6px; flex-shrink: 0; }
   .event-dot { width: 10px; height: 10px; border-radius: 50%; flex-shrink: 0; }
+
+  /* Dot colors */
   .dot-travel { background: #007AFF; }
   .dot-food { background: #34C759; }
   .dot-activity { background: #00C7BE; }
   .dot-logistics { background: #FF9500; }
+
   .event-details { flex: 1; min-width: 0; }
   .event-title { font-size: 17px; font-weight: 600; margin-bottom: 2px; line-height: 1.3; }
   .event-subtitle { font-size: 15px; color: var(--secondary); line-height: 1.4; }
@@ -213,9 +180,8 @@
   .tag-call { background: #FFF3E0; color: #E65100; cursor: pointer; }
   .tag-call:active { opacity: 0.7; }
   .tag-link { background: #E3F2FD; color: #1565C0; }
-  .tag-walkin { background: #F2F2F7; color: #636366; white-space: nowrap; }
-  .tag-safety { background: #FFEBEE; color: #C62828; }
-  .tag-directions { background: #E0F7FA; color: #00695C; }
+  .tag-directions { background: #E0F7FA; color: #00695C; cursor: pointer; }
+  .tag-directions:active { opacity: 0.7; }
   .link-arrow { color: var(--tertiary); font-size: 16px; flex-shrink: 0; padding-top: 6px; }
   .learn-more-link { font-size: 14px; font-weight: 600; color: #007AFF; text-decoration: none; margin-left: auto; }
   .learn-more-link:active { opacity: 0.7; }
@@ -234,56 +200,6 @@
   .hotel-detail-row .detail-icon { font-size: 18px; width: 24px; text-align: center; flex-shrink: 0; }
   .hotel-detail-row a { color: var(--blue); text-decoration: none; font-weight: 500; }
   .hotel-detail-row a:active { opacity: 0.7; }
-  .hotel-actions { display: flex; gap: 10px; margin-top: 16px; }
-  .hotel-action-btn {
-    flex: 1; display: flex; align-items: center; justify-content: center; gap: 8px;
-    padding: 12px; background: white; border: 1px solid var(--hotel-border);
-    border-radius: 12px; text-decoration: none; color: var(--blue);
-    font-size: 15px; font-weight: 600; transition: opacity 0.15s;
-  }
-  .hotel-action-btn:active { opacity: 0.7; }
-
-  
-  
-  
-  
-  
-  
-  .badge-walkin { background: #F2F2F7; color: #636366; white-space: nowrap; }
-  .badge-rating { background: #FFF8E1; color: #F57F17; }
-  
-  
-  .meal-detail-row .label { color: var(--secondary); width: 70px; flex-shrink: 0; font-weight: 500; }
-  .meal-detail-row a { color: var(--blue); text-decoration: none; }
-  .meal-detail-row a:active { opacity: 0.7; }
-  
-  .meal-map-link:active { opacity: 0.7; }
-
-  /* ── Backup Card ── */
-  .backup-card {
-    background: #FFF8E1;
-    border: 1.5px solid #FFE082;
-    border-radius: 16px;
-    padding: 16px;
-  }
-  .backup-header {
-    display: flex; align-items: center; gap: 8px; margin-bottom: 8px;
-  }
-  .backup-icon { font-size: 18px; }
-  .backup-label { font-size: 14px; font-weight: 600; color: #F57F17; text-transform: uppercase; letter-spacing: 0.5px; }
-  .backup-name { font-size: 17px; font-weight: 700; color: var(--text); margin-bottom: 4px; }
-  .backup-detail { font-size: 15px; color: var(--secondary); line-height: 1.4; }
-  .backup-detail a { color: var(--blue); text-decoration: none; }
-  .backup-detail a:active { opacity: 0.7; }
-  .backup-strategy {
-    margin-top: 10px;
-    padding: 10px 12px;
-    background: rgba(255,224,130,0.3);
-    border-radius: 10px;
-    font-size: 14px;
-    color: #795548;
-    line-height: 1.4;
-  }
 
   /* ── Grocery Item ── */
   .grocery-item {
@@ -335,45 +251,19 @@
     color: inherit;
   }
   .day-dots a:visited { color: inherit; }
-
 </style>
 </head>
 <body>
 <!-- Header -->
 <div class="header">
 <div class="trip-label">🇮🇸 Iceland Trip</div>
-<div class="day-title">Vatnsnes Seals · Stykkishólmur · Sjávarpakkhúsið · <span style="white-space:nowrap">Kirkjufell</span></div>
+<div class="day-title">Snæfellsnes & Kirkjufell</div>
 <div class="day-date">Friday, July 10</div>
 <div class="day-of">Day 8 of 10</div>
 </div>
 <!-- Day Dots -->
 <div class="day-dots">
-<a class="day-dot" href="iceland-day1.html">1</a>
-<a class="day-dot" href="iceland-day2.html">2</a>
-<a class="day-dot" href="iceland-day3.html">3</a>
-<a class="day-dot" href="iceland-day4.html">4</a>
-<a class="day-dot" href="iceland-day5.html">5</a>
-<a class="day-dot" href="iceland-day6.html">6</a>
-<a class="day-dot" href="iceland-day7.html">7</a>
-<a class="day-dot active" href="iceland-day8.html" aria-current="page">8</a>
-<a class="day-dot" href="iceland-day9.html">9</a>
-<a class="day-dot" href="iceland-day10.html">10</a>
-</div>
-<!-- Alerts -->
-<div class="section">
-<div class="section-label"><span class="alert-section-icon">!</span> Alerts</div>
-<div class="alert-card alert-grocery">
-<div class="alert-card-icon">🛒</div>
-<div class="alert-text">
-<strong>Nothing at Arnarstapi!</strong> Stock up at the grocery in <strong>Stykkishólmur</strong> before dinner. Kassinn in Ólafsvík is the only closer option (5.1 mi from Arnarstapi).
-    </div>
-</div>
-<div class="alert-card alert-safety">
-<div class="alert-card-icon">🌊</div>
-<div class="alert-text">
-<strong>Hvítserkur:</strong> Cliffs are steep and the rocks near the water are slippery. Stay on marked paths and well back from the cliff edges.
-    </div>
-</div>
+<a class="day-dot" href="iceland-day1.html">1</a><a class="day-dot" href="iceland-day2.html">2</a><a class="day-dot" href="iceland-day3.html">3</a><a class="day-dot" href="iceland-day4.html">4</a><a class="day-dot" href="iceland-day5.html">5</a><a class="day-dot" href="iceland-day6.html">6</a><a class="day-dot" href="iceland-day7.html">7</a><a class="day-dot active" href="iceland-day8.html" aria-current="page">8</a><a class="day-dot" href="iceland-day9.html">9</a><a class="day-dot" href="iceland-day10.html">10</a>
 </div>
 <!-- Weather -->
 <div class="section">
@@ -387,51 +277,57 @@
 </div>
 <div class="weather-item">
 <div class="weather-icon">☁️</div>
-<div class="weather-value">45°F</div>
+<div class="weather-value">43°F</div>
 <div class="weather-label">Low</div>
 </div>
 <div class="weather-item">
 <div class="weather-icon">🌧️</div>
-<div class="weather-value">40%</div>
+<div class="weather-value">30%</div>
 <div class="weather-label">Rain</div>
 </div>
+<div class="weather-item">
+<div class="weather-icon">☀️</div>
+<div class="weather-value">2:55a</div>
+<div class="weather-label">Sunrise</div>
 </div>
-<a class="weather-link" href="https://www.yr.no/en/forecast/daily-table/2-3413897/Iceland/Southern%20Region/V%C3%ADk?i=1" target="_blank">
+<div class="weather-item">
+<div class="weather-icon">🌙</div>
+<div class="weather-value">12:18a</div>
+<div class="weather-label">Sunset</div>
+</div>
+</div>
+<a class="weather-link" href="https://www.yr.no/en/forecast/daily-table/2-3413884/Iceland/Western%20Region/Stykkish%C3%B3lmur?i=1" target="_blank">
       🌤️ Full forecast →
     </a>
 </div>
 </div>
-<!-- Driving Banner -->
+<!-- Drive Banner -->
 <div class="section">
 <div class="card">
 <div class="driving-banner">
 <div class="icon">🚗</div>
-<div class="text">~5h in the car today · Siglufjörður → Stykkishólmur → Kirkjufell → Arnarstapi</div>
+<div class="text">~4h in the car today · Siglufjörður to Arnarstapi via Snæfellsnes</div>
 </div>
 </div>
 </div>
 <!-- Hotel -->
 <div class="section">
-<div class="section-label">Where You're Staying</div>
+<div class="section-label">Your Hotel</div>
 <div class="hotel-card">
 <div class="hotel-card-header">
 <span class="hotel-emoji">🏨</span>
 <div>
 <div class="hotel-name">Arnarstapi Hotel</div>
-<div class="hotel-stars">Snæfellsnes Peninsula · 47 min drive from Kirkjufell</div>
+<div class="hotel-stars">Arnarstapi, 355 Snæfellsbær</div>
 </div>
 </div>
 <div class="hotel-details">
 <div class="hotel-detail-row">
 <span class="detail-icon">📞</span>
-<a href="tel:+354****4466">+354 416 4466</a>
+<a href="tel:+3544164466">+354 416 4466</a>
 </div>
-<div class="hotel-detail-row">
-<span class="detail-icon">📍</span>
-<span>Arnarstapi, 355 Snæfellsbær</span>
-</div>
-</div>
-<div class="hotel-actions">
+
+
 </div>
 </div>
 </div>
@@ -439,117 +335,105 @@
 <div class="section">
 <div class="section-label">Schedule</div>
 <div class="card timeline">
-<a class="timeline-item has-link" href="https://www.google.com/maps/dir/?api=1&amp;origin=Siglufj%C3%B6r%C3%B0ur&amp;destination=Vatnsnes+peninsula&amp;travelmode=driving" target="_blank">
-<div class="event-time"><div class="time">9:00</div><div class="period">AM</div></div>
+<div class="timeline-item">
+<div class="event-time"><div class="time">9:00</div><div class="period">AM (09:00)</div></div>
 <div class="event-dot-line"><div class="event-dot dot-travel"></div></div>
 <div class="event-details">
-<div class="event-title">Leave Siglufjörður</div>
+<div class="event-title" style="color: var(--blue);">Leave Siglufjörður</div>
 <div class="event-subtitle">Head south/west toward Vatnsnes peninsula</div>
-<div style="display:flex; align-items:center; gap:8px; margin-top:6px;"><span class="event-tag tag-directions">📍 Directions</span></div>
 </div>
-<div class="link-arrow">›</div>
-</a>
-<a class="timeline-item has-link" href="https://www.google.com/maps/dir/?api=1&amp;origin=Siglufj%C3%B6r%C3%B0ur&amp;destination=%C3%9Eingeyrakirkja&amp;travelmode=driving" target="_blank">
-<div class="event-time"><div class="time">10:30</div><div class="period">AM</div></div>
+</div>
+<div class="timeline-item">
+<div class="event-time"><div class="time">10:30</div><div class="period">AM (10:30)</div></div>
 <div class="event-dot-line"><div class="event-dot dot-activity"></div></div>
 <div class="event-details">
 <div class="event-title">Vatnsdalshólar / Þingeyrakirkja / Kolugljúfur</div>
 <div class="event-subtitle">Rolling hills, historic church, and a hidden canyon waterfall</div>
-<div style="display:flex; align-items:center; gap:8px; margin-top:6px;"><span class="event-tag tag-directions">📍 Directions</span><a class="learn-more-link" href="detail-vatnsdalsholar.html" target="_blank">Learn more →</a></div>
+
 </div>
-<div class="link-arrow">›</div>
-</a>
-<a class="timeline-item has-link" href="https://www.google.com/maps/dir/?api=1&amp;destination=Illugasta%C3%B0ir+seal+beach&amp;travelmode=driving" target="_blank">
-<div class="event-time"><div class="time">11:30</div><div class="period">AM</div></div>
+
+</div>
+<div class="timeline-item has-link">
+<div class="event-time"><div class="time">11:30</div><div class="period">AM (11:30)</div></div>
 <div class="event-dot-line"><div class="event-dot dot-activity"></div></div>
 <div class="event-details">
 <div class="event-title">Vatnsnes peninsula — seal viewing</div>
 <div class="event-subtitle">Illugastaðir or Hvítserkur · Seals on the beach and a striking basalt stack in the sea</div>
-<div style="display:flex; align-items:center; gap:8px; margin-top:6px;"><span class="event-tag tag-directions">📍 Directions</span><a class="learn-more-link" href="detail-vatnsnes.html" target="_blank">Learn more →</a></div>
+<div style="display:flex; align-items:center; gap:8px; margin-top:6px; flex-wrap:wrap;"><a class="learn-more-link" href="detail-hvitserkur.html" target="_blank">Learn more →</a></div>
 </div>
-<div class="link-arrow">›</div>
-</a>
-<a class="timeline-item has-link" href="https://www.google.com/maps/dir/?api=1&amp;origin=Vatnsnes&amp;destination=Borgarv%C3%ADkur&amp;travelmode=driving" target="_blank">
+
+</div>
+<div class="timeline-item">
 <div class="event-time"><div class="time">1:00</div><div class="period">PM (13:00)</div></div>
 <div class="event-dot-line"><div class="event-dot dot-activity"></div></div>
 <div class="event-details">
 <div class="event-title">Borgarvíki or Eiríksstaðir</div>
 <div class="event-subtitle">Viking fortress on the sea OR a viking longhouse museum (your pick)</div>
-<div style="display:flex; align-items:center; gap:8px; margin-top:6px;"><span class="event-tag tag-directions">📍 Directions</span><a class="learn-more-link" href="detail-borgarviki-eiriksstadir.html" target="_blank">Learn more →</a></div>
+
 </div>
-<div class="link-arrow">›</div>
-</a>
-<a class="timeline-item has-link" href="https://www.google.com/maps/dir/?api=1&amp;origin=Vatnsnes&amp;destination=Gu%C3%B0r%C3%BAnarlaug&amp;travelmode=driving" target="_blank">
+
+</div>
+<div class="timeline-item">
 <div class="event-time"><div class="time">3:00</div><div class="period">PM (15:00)</div></div>
 <div class="event-dot-line"><div class="event-dot dot-activity"></div></div>
 <div class="event-details">
 <div class="event-title">Guðrúnarlaug hot pot</div>
 <div class="event-subtitle">Quick soak · Small natural hot pool tied to the old Norse sagas</div>
-<div style="display:flex; align-items:center; gap:8px; margin-top:6px;"><span class="event-tag tag-directions">📍 Directions</span><a class="learn-more-link" href="detail-gudrunarlaug.html" target="_blank">Learn more →</a></div>
+
 </div>
-<div class="link-arrow">›</div>
-</a>
-<a class="timeline-item has-link" href="https://www.google.com/maps/dir/?api=1&amp;origin=Gu%C3%B0r%C3%BAnarlaug&amp;destination=Stykkish%C3%B3lmur&amp;travelmode=driving" target="_blank">
+
+</div>
+<div class="timeline-item">
 <div class="event-time"><div class="time">3:30</div><div class="period">PM (15:30)</div></div>
-<div class="event-dot-line"><div class="event-dot dot-activity"></div></div>
+<div class="event-dot-line"><div class="event-dot dot-travel"></div></div>
 <div class="event-details">
 <div class="event-title">Arrive Stykkishólmur</div>
 <div class="event-subtitle">Explore town · Harbour walk · Shops · Stock up at the grocery before dinner</div>
-<div style="display:flex; align-items:center; gap:8px; margin-top:6px;"><span class="event-tag tag-directions">📍 Directions</span></div>
+
 </div>
-<div class="link-arrow">›</div>
-</a>
-<a class="timeline-item has-link" href="https://www.google.com/maps/dir/?api=1&amp;origin=Stykkish%C3%B3lmur&amp;destination=Sj%C3%A1varpakkh%C3%BAsi%C3%B0&amp;travelmode=driving" target="_blank">
+
+</div>
+<div class="timeline-item has-link">
 <div class="event-time"><div class="time">6:00</div><div class="period">PM (18:00)</div></div>
 <div class="event-dot-line"><div class="event-dot dot-food"></div></div>
 <div class="event-details">
 <div class="event-title">Dinner: Sjávarpakkhúsið</div>
 <div class="event-subtitle">6-course tasting menu · Early dinner before Kirkjufell photos</div>
-<div style="display:flex; align-items:center; gap:8px; margin-top:6px;"><span class="event-tag tag-directions">📍 Directions</span></div>
+<div style="display:flex; align-items:center; gap:8px; margin-top:6px; flex-wrap:wrap;"><span class="event-tag tag-link" onclick="window.open('https://sjavarpakkhusid.is/', '_blank')">🌐 sjavarpakkhusid.is</span><a class="event-tag tag-call" href="tel:+3544381800">📞 Tap to call</a></div>
 </div>
-<div class="link-arrow">›</div>
-</a>
-<a class="timeline-item has-link" href="https://www.google.com/maps/dir/?api=1&amp;origin=Sj%C3%A1varpakkh%C3%BAsi%C3%B0&amp;destination=Kirkjufell&amp;travelmode=driving" target="_blank">
+
+</div>
+<div class="timeline-item">
 <div class="event-time"><div class="time">8:30</div><div class="period">PM (20:30)</div></div>
 <div class="event-dot-line"><div class="event-dot dot-travel"></div></div>
 <div class="event-details">
 <div class="event-title">Drive to Kirkjufell</div>
 <div class="event-subtitle">~43 min · The most photographed mountain in Iceland awaits</div>
-<div style="display:flex; align-items:center; gap:8px; margin-top:6px;"><span class="event-tag tag-directions">📍 Directions</span></div>
+
 </div>
-<div class="link-arrow">›</div>
-</a>
+
+</div>
 <div class="timeline-item has-link">
 <div class="event-time"><div class="time">9:15</div><div class="period">PM (21:15)</div></div>
 <div class="event-dot-line"><div class="event-dot dot-activity"></div></div>
 <div class="event-details">
 <div class="event-title">Kirkjufell — midnight sun photos</div>
 <div class="event-subtitle">Walk from the parking area · Iconic waterfall + mountain · Best light in the late evening</div>
-<div style="display:flex; align-items:center; gap:8px; margin-top:6px;"><span class="event-tag tag-directions">📍 Directions</span><a class="learn-more-link" href="detail-kirkjufell.html" target="_blank">Learn more →</a></div>
+<div style="display:flex; align-items:center; gap:8px; margin-top:6px; flex-wrap:wrap;"><a class="learn-more-link" href="detail-kirkjufell.html" target="_blank">Learn more →</a></div>
 </div>
-<div class="link-arrow">›</div>
+
 </div>
-<a class="timeline-item has-link" href="https://www.google.com/maps/dir/?api=1&amp;origin=Kirkjufell&amp;destination=Arnarstapi+Hotel&amp;travelmode=driving" target="_blank">
+<div class="timeline-item">
 <div class="event-time"><div class="time">9:45</div><div class="period">PM (21:45)</div></div>
 <div class="event-dot-line"><div class="event-dot dot-travel"></div></div>
 <div class="event-details">
 <div class="event-title">Drive to Arnarstapi Hotel</div>
 <div class="event-subtitle">~47 min · Final stretch on the Snæfellsnes peninsula</div>
-<div style="display:flex; align-items:center; gap:8px; margin-top:6px;"><span class="event-tag tag-directions">📍 Directions</span></div>
+
 </div>
-<div class="link-arrow">›</div>
-</a>
-<div class="timeline-item">
-<div class="event-time"><div class="time">10:30</div><div class="period">PM (22:30)</div></div>
-<div class="event-dot-line"><div class="event-dot dot-travel"></div></div>
-<div class="event-details">
-<div class="event-title">Arrive Arnarstapi Hotel</div>
-<div class="event-subtitle">Check in · Sleep with the sound of the Atlantic</div>
-<div style="display:flex; align-items:center; gap:8px; margin-top:6px;"><span class="event-tag tag-directions">📍 Directions</span></div>
+
 </div>
-</div>
-</div>
-<!-- Legend -->
+<!-- Dot Legend -->
 <div class="card" style="margin-top: 10px;">
 <div class="dot-legend">
 <div class="dot-legend-item"><div class="dot-legend-dot dot-travel"></div>Travel</div>
@@ -559,30 +443,26 @@
 </div>
 </div>
 </div>
-
-</div>
-
-</div>
 </div>
 <!-- Grocery -->
 <div class="section">
-<div class="section-label label-logistics">Grocery</div>
+<div class="section-label">Grocery Stores</div>
 <div class="card">
-<a class="grocery-item" href="https://www.google.com/maps/dir/?api=1&amp;origin=Stykkish%C3%B3lmur&amp;destination=B%C3%B3nus+Stykkish%C3%B3lmur&amp;travelmode=driving" target="_blank">
+<a class="grocery-item" href="#" onclick="return false;">
 <span class="grocery-emoji">🛒</span>
 <div class="grocery-info">
 <div class="grocery-name">Stykkishólmur supermarket</div>
 <div class="grocery-detail">Stock up before dinner · Nothing at Arnarstapi!</div>
-<div class="grocery-map-badge">📍 Stock up before dinner</div>
+<div class="grocery-map-badge">📍 Nothing at Arnarstapi!</div>
 </div>
 <span class="grocery-link">›</span>
 </a>
-<a class="grocery-item" href="https://www.google.com/maps/dir/?api=1&amp;origin=Arnarstapi&amp;destination=Kassinn+%C3%93lafsv%C3%ADk&amp;travelmode=driving" target="_blank">
-<span class="grocery-emoji">⛽</span>
+<a class="grocery-item" href="#" onclick="return false;">
+<span class="grocery-emoji">🛒</span>
 <div class="grocery-info">
 <div class="grocery-name">Kassinn</div>
 <div class="grocery-detail">Ólafsvík · Fri 09:00–20:00</div>
-<div class="grocery-map-badge">📍 From Arnarstapi · 5.1 mi</div>
+
 </div>
 <span class="grocery-link">›</span>
 </a>
@@ -601,8 +481,9 @@
 <!-- Quote -->
 <div class="quote-section">
 <div class="quote-mark">"</div>
-<div class="quote-text">The sea, once it casts its spell, holds one in its net of wonder forever.</div>
-<div class="quote-author">— Jacques Cousteau</div>
+<div class="quote-text">Pursue some path, however narrow and crooked, in which you can walk with love and reverence.</div>
+<div class="quote-author">— Henry David Thoreau</div>
 </div>
-<div class="footer">🇮🇸 Built with love for the Iceland crew</div></body>
+<div class="footer">🇮🇸 Built with love for the Iceland crew</div>
+</body>
 </html>

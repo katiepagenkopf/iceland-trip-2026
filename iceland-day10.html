@@ -1,5 +1,4 @@
 <!DOCTYPE html>
-
 <html lang="en">
 <head>
 <meta charset="utf-8"/>
@@ -24,10 +23,6 @@
     --quote-border: #C7D2FE;
     --hotel-bg: #FFF8E1;
     --hotel-border: #FFE082;
-    --action-bg: #FFF3E0;
-    --action-border: #FFB74D;
-    --safety-bg: #FFEBEE;
-    --safety-border: #EF9A9A;
   }
 
   * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -61,7 +56,7 @@
     margin-bottom: 6px;
   }
   .header .day-title {
-    font-size: 28px;
+    font-size: 30px;
     font-weight: 700;
     margin-bottom: 4px;
     letter-spacing: -0.5px;
@@ -122,11 +117,6 @@
     letter-spacing: 0.8px;
     padding: 0 4px 8px 4px;
   }
-  .label-transport { color: #007AFF; }
-  .label-food { color: #34C759; }
-  .label-activity { color: #00C7BE; }
-  .label-logistics { color: #FF9500; }
-  .label-safety { color: #FF3B30; }
 
   /* ── Cards ── */
   .card {
@@ -157,32 +147,6 @@
   .driving-banner .icon { font-size: 24px; flex-shrink: 0; }
   .driving-banner .text { font-size: 16px; font-weight: 500; color: var(--blue); line-height: 1.35; }
 
-  /* ── Alerts ── */
-  .alert-section-icon {
-    display: inline-flex; align-items: center; justify-content: center;
-    width: 20px; height: 20px; border-radius: 50%;
-    background: #FF3B30; color: white;
-    font-size: 13px; font-weight: 700;
-    margin-right: 2px; vertical-align: middle;
-  }
-  .alert-card {
-    display: flex; align-items: flex-start; gap: 12px;
-    padding: 14px 16px; border-radius: 14px;
-  }
-  .alert-card + .alert-card { margin-top: 10px; }
-  .alert-card-icon { font-size: 20px; flex-shrink: 0; margin-top: 1px; }
-  .alert-card .alert-text { font-size: 15px; line-height: 1.45; overflow-wrap: break-word; word-wrap: break-word; }
-  .alert-card .alert-text strong { font-weight: 600; }
-  .alert-grocery {
-    background: #FFF8E1; border: 1.5px solid #FFE082;
-  }
-  .alert-grocery .alert-text { color: #5D4037; }
-  .alert-grocery .alert-text strong { color: #E65100; }
-  .alert-safety {
-    background: var(--safety-bg); border: 1.5px solid var(--safety-border);
-  }
-  .alert-safety .alert-text { color: #C62828; }
-
   /* ── Timeline ── */
   .timeline { padding: 4px 0; }
   .timeline-item {
@@ -198,10 +162,13 @@
   .event-time .period { font-size: 13px; color: var(--secondary); font-weight: 500; }
   .event-dot-line { display: flex; flex-direction: column; align-items: center; padding-top: 6px; flex-shrink: 0; }
   .event-dot { width: 10px; height: 10px; border-radius: 50%; flex-shrink: 0; }
+
+  /* Dot colors */
   .dot-travel { background: #007AFF; }
   .dot-food { background: #34C759; }
   .dot-activity { background: #00C7BE; }
   .dot-logistics { background: #FF9500; }
+
   .event-details { flex: 1; min-width: 0; }
   .event-title { font-size: 17px; font-weight: 600; margin-bottom: 2px; line-height: 1.3; }
   .event-subtitle { font-size: 15px; color: var(--secondary); line-height: 1.4; }
@@ -213,12 +180,26 @@
   .tag-call { background: #FFF3E0; color: #E65100; cursor: pointer; }
   .tag-call:active { opacity: 0.7; }
   .tag-link { background: #E3F2FD; color: #1565C0; }
-  .tag-walkin { background: #F2F2F7; color: #636366; white-space: nowrap; }
-  .tag-safety { background: #FFEBEE; color: #C62828; }
-  .tag-directions { background: #E0F7FA; color: #00695C; }
+  .tag-directions { background: #E0F7FA; color: #00695C; cursor: pointer; }
+  .tag-directions:active { opacity: 0.7; }
   .link-arrow { color: var(--tertiary); font-size: 16px; flex-shrink: 0; padding-top: 6px; }
   .learn-more-link { font-size: 14px; font-weight: 600; color: #007AFF; text-decoration: none; margin-left: auto; }
   .learn-more-link:active { opacity: 0.7; }
+
+  /* ── Hotel Card ── */
+  .hotel-card {
+    background: var(--hotel-bg); border: 1.5px solid var(--hotel-border);
+    border-radius: 16px; padding: 20px; box-shadow: 0 1px 4px rgba(0,0,0,0.05);
+  }
+  .hotel-card-header { display: flex; align-items: center; gap: 12px; margin-bottom: 14px; }
+  .hotel-card-header .hotel-emoji { font-size: 28px; }
+  .hotel-card-header .hotel-name { font-size: 22px; font-weight: 700; color: var(--text); }
+  .hotel-card-header .hotel-stars { font-size: 14px; color: var(--orange); margin-top: 2px; }
+  .hotel-details { display: flex; flex-direction: column; gap: 10px; }
+  .hotel-detail-row { display: flex; align-items: center; gap: 10px; font-size: 16px; line-height: 1.4; }
+  .hotel-detail-row .detail-icon { font-size: 18px; width: 24px; text-align: center; flex-shrink: 0; }
+  .hotel-detail-row a { color: var(--blue); text-decoration: none; font-weight: 500; }
+  .hotel-detail-row a:active { opacity: 0.7; }
 
   /* ── Grocery Item ── */
   .grocery-item {
@@ -244,21 +225,18 @@
   .tip-icon { font-size: 16px; flex-shrink: 0; padding-top: 2px; }
   .tip-text { font-size: 15px; color: var(--secondary); line-height: 1.45; }
 
-  /* ── Trip Complete ── */
-  .complete-section {
-    margin: 24px 16px 0 16px; padding: 32px 20px; text-align: center;
-    background: linear-gradient(135deg, #F0F4FF 0%, #E0E7FF 100%);
-    border: 1.5px solid var(--quote-border);
+  /* ── Quote ── */
+  .quote-section {
+    margin: 24px 16px 0 16px; padding: 24px 20px; text-align: center;
+    background: var(--quote-bg); border: 1.5px solid var(--quote-border);
     border-radius: 16px; box-shadow: 0 2px 8px rgba(0,0,0,0.04);
   }
-  .complete-mark { font-size: 48px; line-height: 1; margin-bottom: 8px; }
-  .complete-title {
-    font-size: 24px; font-weight: 700; color: #1E293B;
-    margin-bottom: 8px;
+  .quote-mark { font-size: 36px; color: #A5B4FC; line-height: 1; margin-bottom: 4px; }
+  .quote-text {
+    font-size: 19px; font-style: italic; color: #1E293B;
+    line-height: 1.55; margin-bottom: 10px; font-weight: 500;
   }
-  .complete-text {
-    font-size: 16px; color: #475569; line-height: 1.55;
-  }
+  .quote-author { font-size: 15px; color: #475569; font-weight: 600; letter-spacing: 0.5px; }
 
   /* ── Dot Legend ── */
   .dot-legend { display: flex; flex-wrap: wrap; gap: 10px 16px; padding: 12px 16px; font-size: 13px; color: var(--secondary); }
@@ -273,29 +251,19 @@
     color: inherit;
   }
   .day-dots a:visited { color: inherit; }
-
 </style>
 </head>
 <body>
 <!-- Header -->
 <div class="header">
 <div class="trip-label">🇮🇸 Iceland Trip</div>
-<div class="day-title">Departure Day · Last Stop in <span style="white-space:nowrap">Borgarnes</span></div>
+<div class="day-title">Departure</div>
 <div class="day-date">Sunday, July 12</div>
 <div class="day-of">Day 10 of 10</div>
 </div>
 <!-- Day Dots -->
 <div class="day-dots">
-<a class="day-dot" href="iceland-day1.html">1</a>
-<a class="day-dot" href="iceland-day2.html">2</a>
-<a class="day-dot" href="iceland-day3.html">3</a>
-<a class="day-dot" href="iceland-day4.html">4</a>
-<a class="day-dot" href="iceland-day5.html">5</a>
-<a class="day-dot" href="iceland-day6.html">6</a>
-<a class="day-dot" href="iceland-day7.html">7</a>
-<a class="day-dot" href="iceland-day8.html">8</a>
-<a class="day-dot" href="iceland-day9.html">9</a>
-<a class="day-dot active" href="iceland-day10.html" aria-current="page">10</a>
+<a class="day-dot" href="iceland-day1.html">1</a><a class="day-dot" href="iceland-day2.html">2</a><a class="day-dot" href="iceland-day3.html">3</a><a class="day-dot" href="iceland-day4.html">4</a><a class="day-dot" href="iceland-day5.html">5</a><a class="day-dot" href="iceland-day6.html">6</a><a class="day-dot" href="iceland-day7.html">7</a><a class="day-dot" href="iceland-day8.html">8</a><a class="day-dot" href="iceland-day9.html">9</a><a class="day-dot active" href="iceland-day10.html" aria-current="page">10</a>
 </div>
 <!-- Weather -->
 <div class="section">
@@ -309,80 +277,94 @@
 </div>
 <div class="weather-item">
 <div class="weather-icon">☁️</div>
-<div class="weather-value">48°F</div>
+<div class="weather-value">47°F</div>
 <div class="weather-label">Low</div>
 </div>
 <div class="weather-item">
 <div class="weather-icon">🌧️</div>
-<div class="weather-value">25%</div>
+<div class="weather-value">15%</div>
 <div class="weather-label">Rain</div>
 </div>
+<div class="weather-item">
+<div class="weather-icon">☀️</div>
+<div class="weather-value">2:53a</div>
+<div class="weather-label">Sunrise</div>
 </div>
-<a class="weather-link" href="https://www.yr.no/en/forecast/daily-table/2-3413897/Iceland/Southern%20Region/V%C3%ADk?i=1" target="_blank">
+<div class="weather-item">
+<div class="weather-icon">🌙</div>
+<div class="weather-value">12:22a</div>
+<div class="weather-label">Sunset</div>
+</div>
+</div>
+<a class="weather-link" href="https://www.yr.no/en/forecast/daily-table/2-6690953/Iceland/Capital%20Region/Reykjav%C3%ADk?i=1" target="_blank">
       🌤️ Full forecast →
     </a>
 </div>
 </div>
-<!-- Driving Banner -->
+<!-- Drive Banner -->
 <div class="section">
 <div class="card">
 <div class="driving-banner">
-<div class="icon">🛫</div>
+<div class="icon">✈️</div>
 <div class="text">No driving — shuttle/transfer to KEF</div>
 </div>
 </div>
 </div>
+<!-- Hotel -->
+
 <!-- Schedule -->
 <div class="section">
 <div class="section-label">Schedule</div>
 <div class="card timeline">
-<a class="timeline-item has-link" href="https://www.google.com/maps/dir/?api=1&amp;origin=H%C3%B3tel+Fr%C3%B3n&amp;destination=Hertz+Reykjav%C3%ADk&amp;travelmode=driving" target="_blank">
-<div class="event-time"><div class="time">8:30</div><div class="period">AM</div></div>
+<div class="timeline-item">
+<div class="event-time"><div class="time">8:30</div><div class="period">AM (08:30)</div></div>
 <div class="event-dot-line"><div class="event-dot dot-logistics"></div></div>
 <div class="event-details">
 <div class="event-title">Car drop-off at Hertz Reykjavík office</div>
 <div class="event-subtitle">Shuttle from the office back to your hotel for breakfast</div>
-<div style="display:flex; align-items:center; gap:8px; margin-top:6px;"><span class="event-tag tag-directions">📍 Directions</span></div>
+
 </div>
-<div class="link-arrow">›</div>
-</a>
-<a class="timeline-item has-link" href="https://www.google.com/maps/dir/?api=1&amp;destination=B%C3%A9ritable+Reykjav%C3%ADk&amp;travelmode=walking" target="_blank">
-<div class="event-time"><div class="time">9:00</div><div class="period">AM</div></div>
+
+</div>
+<div class="timeline-item">
+<div class="event-time"><div class="time">9:00</div><div class="period">AM (09:00)</div></div>
 <div class="event-dot-line"><div class="event-dot dot-food"></div></div>
 <div class="event-details">
 <div class="event-title">Breakfast at hotel or nearby bakery</div>
 <div class="event-subtitle">One last flatbread and coffee in Reykjavík</div>
-<div style="display:flex; align-items:center; gap:8px; margin-top:6px;"><span class="event-tag tag-directions">📍 Directions</span></div>
+
 </div>
-<div class="link-arrow">›</div>
-</a>
-<a class="timeline-item has-link" href="https://www.google.com/maps/dir/?api=1&amp;destination=Laugavegur&amp;travelmode=walking" target="_blank">
-<div class="event-time"><div class="time">10:00</div><div class="period">AM</div></div>
+
+</div>
+<div class="timeline-item">
+<div class="event-time"><div class="time">10:00</div><div class="period">AM (10:00)</div></div>
 <div class="event-dot-line"><div class="event-dot dot-activity"></div></div>
 <div class="event-details">
 <div class="event-title">Optional: last walk around Reykjavík</div>
 <div class="event-subtitle">Laugavegur shopping · Souvenirs · Final coffee</div>
-<div style="display:flex; align-items:center; gap:8px; margin-top:6px;"><span class="event-tag tag-directions">📍 Directions</span><a class="learn-more-link" href="detail-reykjavik.html" target="_blank">Learn more →</a></div>
+
 </div>
-<div class="link-arrow">›</div>
-</a>
-<a class="timeline-item has-link" href="https://www.google.com/maps/dir/?api=1&amp;origin=H%C3%B3tel+Fr%C3%B3n&amp;destination=Keflav%C3%ADk+International+Airport&amp;travelmode=driving" target="_blank">
-<div class="event-time"><div class="time">11:00</div><div class="period">AM</div></div>
+
+</div>
+<div class="timeline-item has-link">
+<div class="event-time"><div class="time">11:00</div><div class="period">AM (11:00)</div></div>
 <div class="event-dot-line"><div class="event-dot dot-travel"></div></div>
 <div class="event-details">
 <div class="event-title">Shuttle/transfer to KEF</div>
 <div class="event-subtitle">RPC Transfers · +354 565 1989 / 892 0888</div>
-<div style="display:flex; align-items:center; gap:8px; margin-top:6px; flex-wrap:wrap;"><span class="event-tag tag-call">📞 Call transfer</span><span class="event-tag tag-directions">📍 Directions</span></div>
+<div style="display:flex; align-items:center; gap:8px; margin-top:6px; flex-wrap:wrap;"><a class="event-tag tag-call" href="tel:+3545651989">📞 Tap to call</a></div>
 </div>
-<div class="link-arrow">›</div>
-</a>
+
+</div>
 <div class="timeline-item">
 <div class="event-time"><div class="time">1:30</div><div class="period">PM (13:30)</div></div>
 <div class="event-dot-line"><div class="event-dot dot-logistics"></div></div>
 <div class="event-details">
 <div class="event-title">Arrive KEF</div>
 <div class="event-subtitle">Check in · Duty free shopping · Last chance for Icelandic chocolate, skyr, and alcohol at reasonable prices</div>
+
 </div>
+
 </div>
 <div class="timeline-item">
 <div class="event-time"><div class="time">5:00</div><div class="period">PM (17:00)</div></div>
@@ -390,10 +372,11 @@
 <div class="event-details">
 <div class="event-title">Depart KEF — FI623</div>
 <div class="event-subtitle">Take off · Iceland fades into the clouds · Until next time</div>
+
 </div>
+
 </div>
-</div>
-<!-- Legend -->
+<!-- Dot Legend -->
 <div class="card" style="margin-top: 10px;">
 <div class="dot-legend">
 <div class="dot-legend-item"><div class="dot-legend-dot dot-travel"></div>Travel</div>
@@ -403,16 +386,17 @@
 </div>
 </div>
 </div>
+</div>
 <!-- Grocery -->
 <div class="section">
-<div class="section-label label-logistics">Grocery</div>
+<div class="section-label">Grocery Stores</div>
 <div class="card">
-<a class="grocery-item" href="https://www.google.com/maps/dir/?api=1&amp;destination=B%C3%B3nus+Borgarnes&amp;travelmode=driving" target="_blank">
+<a class="grocery-item" href="#" onclick="return false;">
 <span class="grocery-emoji">🛒</span>
 <div class="grocery-info">
 <div class="grocery-name">Bónus — Borgarnes</div>
 <div class="grocery-detail">Digranesgata 6 · Daily 10:00–20:00</div>
-<div class="grocery-map-badge">📍 If driving yourself to KEF</div>
+<div class="grocery-map-badge">📍 En route to KEF</div>
 </div>
 <span class="grocery-link">›</span>
 </a>
@@ -425,11 +409,12 @@
 <div class="tip-item"><span class="tip-icon">🛍️</span><span class="tip-text">Duty free at KEF: last chance for Icelandic chocolate, skyr, and alcohol at reasonable prices.</span></div>
 </div>
 </div>
-<!-- Trip Complete -->
-<div class="complete-section">
-<div class="complete-mark">🇮🇸✨</div>
-<div class="complete-title">Trip Complete</div>
-<div class="complete-text">Ten days, two thousand miles of lava and moss, and a lifetime of stories to tell. Safe travels home — Iceland will be waiting.</div>
+<!-- Quote -->
+<div class="quote-section">
+<div class="quote-mark">"</div>
+<div class="quote-text">There is something deeply and quintessentially wrong with a species that is prepared to strap itself into a hurtling metal tube and zoom through the air at 35,000 feet, eating plastic meals and watching a tiny screen.</div>
+<div class="quote-author">— Bill Bryson</div>
 </div>
-<div class="footer">🇮🇸 Built with love for the Iceland crew</div></body>
+<div class="footer">🇮🇸 Built with love for the Iceland crew</div>
+</body>
 </html>
