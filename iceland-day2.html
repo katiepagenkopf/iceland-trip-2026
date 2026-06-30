@@ -256,6 +256,97 @@
   .badge-walk { background: #E8F5E9; color: #2E7D32; }
   .badge-drive { background: #E3F2FD; color: #1565C0; }
   .grocery-map-badge { display: inline-flex; align-items: center; gap: 4px; padding: 4px 10px; border-radius: 8px; font-size: 13px; font-weight: 600; margin-top: 4px; }
+
+  /* ── Session 3: Meal Detail Cards ── */
+  .meal-detail-card {
+    margin: 8px 0 4px 0;
+    padding: 10px 12px;
+    background: #F8F9FA;
+    border-radius: 10px;
+    border: 1px solid #E5E5EA;
+  }
+  .meal-detail-card .detail-row {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 3px 0;
+    font-size: 13px;
+    color: #636366;
+  }
+  .meal-detail-card .detail-row .detail-label {
+    font-weight: 600;
+    color: #8E8E93;
+    min-width: 36px;
+  }
+  .meal-detail-card .detail-row .detail-value {
+    color: #1C1C1E;
+  }
+  .meal-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    padding: 3px 10px;
+    border-radius: 6px;
+    font-size: 12px;
+    font-weight: 600;
+    margin-bottom: 6px;
+  }
+  .badge-reserved {
+    background: #E3F2FD;
+    color: #1565C0;
+  }
+  .badge-walkin {
+    background: #E8F5E9;
+    color: #2E7D32;
+  }
+  .badge-backup {
+    background: #FFF3E0;
+    color: #E65100;
+  }
+  .backup-restaurant-card {
+    margin: 6px 0 4px 0;
+    padding: 10px 12px;
+    background: #FFFBF0;
+    border-radius: 10px;
+    border: 1px dashed #FFD54F;
+    opacity: 0.85;
+  }
+  .backup-restaurant-card .backup-header {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    margin-bottom: 4px;
+  }
+  .backup-restaurant-card .backup-label {
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    color: #E65100;
+  }
+  .backup-restaurant-card .backup-name {
+    font-size: 15px;
+    font-weight: 600;
+    color: #1C1C1E;
+  }
+  .backup-restaurant-card .backup-subtitle {
+    font-size: 13px;
+    color: #636366;
+    margin-top: 2px;
+  }
+  .backup-restaurant-card .detail-row {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 2px 0;
+    font-size: 13px;
+    color: #636366;
+  }
+  .backup-restaurant-card .detail-row .detail-label {
+    font-weight: 600;
+    color: #8E8E93;
+    min-width: 36px;
+  }
 </style>
 </head>
 <body>
@@ -374,10 +465,10 @@
 <div class="event-dot-line"><div class="event-dot dot-food"></div></div>
 <div class="event-details">
 <div class="event-title">Lunch: Friðheimar Winebar &amp; Bistro</div>
-<div class="event-subtitle">Walk-in · Geothermal tomatoes · Hours 12:00-22:00</div>
+<div class="event-subtitle">Walk-in · Geothermal tomatoes · Hours 12:00-22:00</div><div class="meal-badge badge-walkin">🚶 Walk-in</div>
 <div style="display:flex; align-items:center; gap:8px; margin-top:6px; flex-wrap:wrap;"><span class="event-tag tag-link" onclick="window.open('https://vinstofa.fridheimar.is/', '_blank')">🌐 fridheimar.is</span><a class="learn-more-link" href="detail-fridheimar.html" target="_blank">Learn more →</a></div>
 <div style="display:flex; align-items:center; gap:8px; margin-top:6px; flex-wrap:wrap;"><span class="event-tag tag-directions" onclick="window.open('https://www.google.com/maps/dir/?api=1&amp;destination=64.108443,-20.39894&amp;travelmode=driving', '_blank')">📍 Get Directions</span></div></div>
-</div>
+</div><div class="backup-restaurant-card"><div class="backup-header"><span class="meal-badge badge-backup">🔄 Backup</span></div><div class="backup-name">Farmers Bistro</div><div class="backup-subtitle">If Friðheimar is packed</div><div class="detail-row"><span>🔑</span><span class="detail-label">Confirmation</span><span class="detail-value">#8943165</span></div><div class="detail-row"><span>🕐</span><span class="detail-label">Time</span><span class="detail-value">2:30–4:00 PM</span></div><div class="detail-row"><span>📞</span><span class="detail-label">Phone</span><span class="detail-value">+354 519 0808</span></div><div class="detail-row"><span>📍</span><span class="detail-label">Location</span><span class="detail-value">Flúðir</span></div></div>
 <div class="timeline-item has-link">
 <div class="event-time"><div class="time">3:30</div><div class="period">PM (15:30)</div></div>
 <div class="event-dot-line"><div class="event-dot dot-activity"></div></div>
@@ -400,7 +491,7 @@
 <div class="event-dot-line"><div class="event-dot dot-food"></div></div>
 <div class="event-details">
 <div class="event-title">Dinner: Minilik</div>
-<div class="event-subtitle">Ethiopian · Flúðir · Phone reservation only</div>
+<div class="event-subtitle">Ethiopian · Flúðir · Phone reservation only</div><div class="meal-badge badge-walkin">🚶 Walk-in</div>
 <div style="display:flex; align-items:center; gap:8px; margin-top:6px; flex-wrap:wrap;"><a class="event-tag tag-call" href="tel:+3548469798">📞 Tap to call</a></div>
 <div style="display:flex; align-items:center; gap:8px; margin-top:6px; flex-wrap:wrap;"><span class="event-tag tag-directions" onclick="window.open('https://www.google.com/maps/dir/?api=1&amp;destination=64.1083,-20.3986&amp;travelmode=driving', '_blank')">📍 Get Directions</span></div></div>
 </div>
