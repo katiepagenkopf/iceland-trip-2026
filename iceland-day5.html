@@ -252,6 +252,10 @@
     color: inherit;
   }
   .day-dots a:visited { color: inherit; }
+
+  .badge-walk { background: #E8F5E9; color: #2E7D32; }
+  .badge-drive { background: #E3F2FD; color: #1565C0; }
+  .grocery-map-badge { display: inline-flex; align-items: center; gap: 4px; padding: 4px 10px; border-radius: 8px; font-size: 13px; font-weight: 600; margin-top: 4px; }
 </style>
 </head>
 <body>
@@ -416,28 +420,28 @@
 <div class="section">
 <div class="section-label">Grocery Stores</div>
 <div class="card">
-<a class="grocery-item" href="#" onclick="return false;">
+<a class="grocery-item" href="https://www.google.com/maps/dir/?api=1&amp;destination=64.1083,-20.3986&amp;travelmode=driving" target="_blank">
 <span class="grocery-emoji">🛒</span>
 <div class="grocery-info">
 <div class="grocery-name">Krambúðin</div>
 <div class="grocery-detail">Reykjahlíð · Closes 7:00pm (19:00) weekdays — you'll likely miss it!</div>
-</div>
+<div class="grocery-map-badge badge-walk">🚶 Walkable from guesthouse</div></div>
 <span class="grocery-link">›</span>
 </a>
-<a class="grocery-item" href="#" onclick="return false;">
+<a class="grocery-item" href="https://www.google.com/maps/dir/?api=1&amp;destination=65.0667,-14.3833&amp;travelmode=driving" target="_blank">
 <span class="grocery-emoji">🛒</span>
 <div class="grocery-info">
 <div class="grocery-name">Bónus</div>
 <div class="grocery-detail">Miðvangur 13, Egilsstaðir · 10:00–20:00</div>
-</div>
+<div class="grocery-map-badge badge-drive">🚗 Stock up while passing through</div></div>
 <span class="grocery-link">›</span>
 </a>
-<a class="grocery-item" href="#" onclick="return false;">
+<a class="grocery-item" href="https://www.google.com/maps/dir/?api=1&amp;destination=64.2541,-15.2064&amp;travelmode=driving" target="_blank">
 <span class="grocery-emoji">🛒</span>
 <div class="grocery-info">
 <div class="grocery-name">Nettó</div>
 <div class="grocery-detail">Kaupvangur 6, Egilsstaðir · 08:00–20:00</div>
-</div>
+<div class="grocery-map-badge badge-drive">🚗 Short drive from hotel</div></div>
 <span class="grocery-link">›</span>
 </a>
 </div>

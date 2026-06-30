@@ -252,6 +252,10 @@
     color: inherit;
   }
   .day-dots a:visited { color: inherit; }
+
+  .badge-walk { background: #E8F5E9; color: #2E7D32; }
+  .badge-drive { background: #E3F2FD; color: #1565C0; }
+  .grocery-map-badge { display: inline-flex; align-items: center; gap: 4px; padding: 4px 10px; border-radius: 8px; font-size: 13px; font-weight: 600; margin-top: 4px; }
 </style>
 </head>
 <body>
@@ -417,12 +421,12 @@
 <div class="section">
 <div class="section-label">Grocery Stores</div>
 <div class="card">
-<a class="grocery-item" href="#" onclick="return false;">
+<a class="grocery-item" href="https://www.google.com/maps/dir/?api=1&amp;destination=64.2541,-15.2064&amp;travelmode=driving" target="_blank">
 <span class="grocery-emoji">🛒</span>
 <div class="grocery-info">
 <div class="grocery-name">Nettó</div>
 <div class="grocery-detail">Miðbær, Litlabrú, Höfn · Mon-Fri 08:00-19:00, Sat-Sun 09:00-19:00</div>
-</div>
+<div class="grocery-map-badge badge-drive">🚗 Short drive from hotel</div></div>
 <span class="grocery-link">›</span>
 </a>
 </div>

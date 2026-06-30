@@ -252,6 +252,10 @@
     color: inherit;
   }
   .day-dots a:visited { color: inherit; }
+
+  .badge-walk { background: #E8F5E9; color: #2E7D32; }
+  .badge-drive { background: #E3F2FD; color: #1565C0; }
+  .grocery-map-badge { display: inline-flex; align-items: center; gap: 4px; padding: 4px 10px; border-radius: 8px; font-size: 13px; font-weight: 600; margin-top: 4px; }
 </style>
 </head>
 <body>
@@ -411,12 +415,12 @@
 <div class="section">
 <div class="section-label">Grocery Stores</div>
 <div class="card">
-<a class="grocery-item" href="#" onclick="return false;">
+<a class="grocery-item" href="https://www.google.com/maps/dir/?api=1&amp;destination=66.15,-18.9&amp;travelmode=driving" target="_blank">
 <span class="grocery-emoji">🛒</span>
 <div class="grocery-info">
 <div class="grocery-name">Coop Úrval</div>
 <div class="grocery-detail">Tungata, 580 Siglufjörður · Mon–Fri 09:00–18:00, Sat 10:00–17:00</div>
-<div class="grocery-map-badge">📍 Right around the corner from hotel</div>
+<div class="grocery-map-badge badge-walk">🚶 Right around the corner from hotel</div>
 </div>
 <span class="grocery-link">›</span>
 </a>
